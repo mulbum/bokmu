@@ -245,6 +245,8 @@ nav button[aria-current="true"]{font-weight:700}
 .stat .sub{font-size:12px;white-space:nowrap;letter-spacing:-.02em}.hero .stop.l0 small{display:none}
 .srow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 0;border-top:1px solid var(--line)}.srow b{font-size:16px;font-weight:700}.srow .pill{margin-left:6px;vertical-align:2px}.srow .sub{font-size:13px;line-height:1.55}.srow .samt{font-size:17px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;padding-top:1px}.srow:not(.done) b,.srow:not(.done) .samt{color:var(--sub)}.srow.cur{background:var(--soft);margin:0 -12px;padding:14px 12px;border-radius:14px;border-top-color:transparent}.srow.cur+.srow{border-top-color:transparent}.srow.cur .samt{color:var(--acc)}
 .cd i{font-size:11.5px}.cd u{font-size:9px;font-weight:500;letter-spacing:-.03em;opacity:.85}
+.cmt{display:flex;align-items:center;gap:8px;justify-content:center;flex:1;min-width:0}.today{border:0;background:var(--acc);color:var(--acc-ink);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;min-height:30px;line-height:1}
+.calg{gap:3px}.cd{min-height:56px;padding:5px 0 4px;gap:1px;border-radius:10px}.cd b{font-size:14px}.cd i{font-size:11px}.cd u{font-size:8.5px}.dw{font-size:12px}
 </style>
 </head>
 <body>
@@ -364,7 +366,7 @@ var _st=settings;settings=function(){var h=_st(),i=h.indexOf('<div class="card">
  +'<div class="card"><h2>연가·대체휴무</h2><div class="sub">대체휴무는 월별로 (주간 1일 + 야간 2일 환산 출근일) − 일근요원 출근일(월~금, 공휴일 제외)만큼 자동 적립돼요. 그 달에 쓰지 않은 대체휴무는 다음 달로 넘어가지 않고 사라져요.</div><div class="g3">'+numIn("a1","1년차 연가",S.annual1,"S.annual1=+this.value;save()")+numIn("a2","2년차 연가",S.annual2,"S.annual2=+this.value;save()")+'</div></div>';
  var k=h.indexOf('<div class="card"><h2>연가와 휴가 규칙'),tc='<div class="card"><h2>휴가별 식비·교통비</h2><div class="sub">체크한 항목은 그날 지급되지 않아요. 반가·지참·조퇴·외출은 0.5일처럼 소수로 등록하면 하루에 한 번만 빠져요.</div>'+S.types.map(function(t,i){return '<div class="row"><b>'+esc(t.n)+'</b><span style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end"><label class="chk" style="margin:0"><input type="checkbox" '+(t.a?'checked':'')+' onchange="S.types['+i+'].a=this.checked;save()">연가</label><label class="chk" style="margin:0"><input type="checkbox" '+(t.m?'checked':'')+' onchange="S.types['+i+'].m=this.checked;save()">식비 제외</label><label class="chk" style="margin:0"><input type="checkbox" '+(t.t?'checked':'')+' onchange="S.types['+i+'].t=this.checked;save()">교통비 제외</label></span></div>'}).join('')+'</div>';
  var tr='<div class="card"><h2>훈련소·보은교육</h2><div class="sub">두 기간 모두 식비와 교통비가 나오지 않고 기본급은 그대로예요. 훈련소는 복무 시작일부터 계산하고 근무표와 대체휴무에서 빠져요. 보은교육은 근무한 것으로 쳐서 하루를 주간 1일로 대체휴무에 넣어요.</div>'+numIn('td','훈련소 일수(기본 22일)',S.trainDays,'S.trainDays=+this.value;save()')+'<div class="g2"><div><label for="bs">보은교육 시작일</label><input id="bs" type="date" value="'+S.boeun+'" onchange="S.boeun=this.value;save()"></div>'+numIn('bd','보은교육 일수',S.boeunDays,'S.boeunDays=+this.value;save()')+'</div></div>';
- var hc='<div class="card"><h2>공휴일</h2><div class="sub">2026년과 2027년 공휴일(노동절·제헌절·대체공휴일 포함)이 자동으로 들어 있어요. 2028년 이후나 임시공휴일은 날짜를 추가하세요. 예: 2028-04-12</div><textarea id="hol" rows="3" style="width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px" onchange="S.hol=this.value;save()">'+esc(S.hol||'')+'</textarea></div>';
+ var hc='<div class="card"><h2>공휴일</h2><div class="sub">2026~2028년 공휴일(노동절·제헌절·선거일·대체공휴일 포함)이 자동으로 들어 있어요. 2029년 이후나 임시공휴일은 날짜를 추가하세요. 예: 2029-05-01</div><textarea id="hol" rows="3" style="width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px" onchange="S.hol=this.value;save()">'+esc(S.hol||'')+'</textarea></div>';
  var pl='<div class="card"><h2>근무지·월급일</h2><label for="pla" style="margin-top:0">근무지</label><input id="pla" value="'+esc(S.place||'')+'" placeholder="예: 서울교통공사 ○○역" onchange="S.place=this.value;save()">'+numIn('pday','월급일(다음 달 며칠)',(+S.payDay||25),'S.payDay=+this.value;save()')+'<div class="note">월급은 다음 달 이 날짜에 들어와요. 주말이나 공휴일이면 그 전 평일로 당겨져요.</div></div>';
  return h.slice(0,i)+card+pl+tr+hc+h.slice(j,k)+tc};
 function def(){return{start:'',months:21,cyc:'',cycShift:0,annual1:15,annual2:13,adj:0,promo:{'일병':'','상병':'','병장':''},pay:{'이병':750000,'일병':900000,'상병':1200000,'병장':1500000},meal:9000,trans:3200,trainDays:22,boeun:'',boeunDays:5,extras:[],
@@ -745,6 +747,16 @@ pay=function(){var h=_pay5(),sv=sav(),c=sv.C&&sv.C[0];if(!c||!c.N)return h;
  h=h.replace(/<div class="row" style="margin-top:8px"><span>지금까지 \((\d+)회차\)<\/span><b>원금 ([^·]*) · 이자 ([^·]*) · 매칭 ([^<]*)<\/b><\/div>/,function(m,n,p,i,mt){return '<div class="sub" style="margin:18px 0 2px">지금까지 '+n+'회 납입</div><div class="row"><span>원금</span><b>'+p+'</b></div><div class="row"><span>이자</span><b>'+i+'</b></div><div class="row"><span>매칭 <span class="sub">(만기 때 지급)</span></span><b>'+mt+'</b></div>'});
  h=h.replace(' · 연 '+sv.r+'% 단리 · 비과세',' · 연 '+sv.r+'% 단리 · 비과세');
  var k=h.indexOf('<div class="card"><h2>복무 전체 합계');return k<0?h+card:h.slice(0,k)+card+h.slice(k)};
+
+/* ---- 2028년 공휴일 ---- */
+HOLS=HOLS.filter(function(d){return d.indexOf('2028-')!==0}).concat(('2028-01-01 2028-01-26 2028-01-27 2028-01-28 2028-03-01 2028-04-12 2028-05-01 2028-05-02 2028-05-05 2028-06-06 2028-07-17 2028-08-15 2028-10-02 2028-10-03 2028-10-04 2028-10-05 2028-10-09 2028-12-25').split(' '));
+isHol=function(d){var y=d.getFullYear(),k=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),ds=y+'-'+k;
+ if(HOLS.indexOf(ds)>=0||String(S.hol||'').split(/[\s,]+/).indexOf(ds)>=0)return true;
+ return y>2028&&['01-01','03-01','05-01','05-05','06-06','07-17','08-15','10-03','10-09','12-25'].indexOf(k)>=0};
+
+/* ---- 달력: 오늘로 이동 ---- */
+var _cal2=cal;cal=function(){var h=_cal2(),t=ymOf(today());
+ return h.replace(/<h2 style="margin:0;font-size:18px">([^<]*)<\/h2>/,function(m,txt){return '<div class="cmt"><h2 style="margin:0;font-size:18px">'+txt+'</h2>'+(cym!==t?'<button class="today" onclick="cym=ymOf(today());sel=null;render()">오늘</button>':'')+'</div>'})};
 applyTheme();
 setInterval(pctTick,100);
 render();
