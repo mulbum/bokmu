@@ -794,6 +794,24 @@ var _def=def;def=function(){var d=_def();d.banks=[{n:'군적금',amt:550000,rate
 function fixBanks(o){if(!o||typeof o!=='object')return o;if(!Array.isArray(o.banks)||!o.banks.length){var a=o.savAmt===undefined?550000:+o.savAmt||0;o.banks=[{n:'군적금',amt:a,rate:o.savRate===undefined||o.savRate===''?5:+o.savRate,day:+o.savDay||1}]}else if(o.banks.length>1){var b0=o.banks[0];o.banks=[{n:'군적금',amt:o.banks.reduce(function(s,b){return s+(+b.amt||0)},0),rate:+b0.rate||0,day:+b0.day||1}]}return o}
 var _rt2=restoreText;restoreText=function(v){try{var o=JSON.parse(String(v||'').trim());_rt2(JSON.stringify(fixBanks(o)))}catch(e){_rt2(v)}};
 fixBanks(S);
+/* ---- 통장 기준(들어오는 달) 정리 ---- */
+function prevYm(y){var a=y.split('-');return ymOf(new Date(+a[0],+a[1]-2,1))}
+function cash(y){var py=prevYm(y),s=pd(S.start),has=!!s&&py>=ymOf(s),inc=has?calcMonth(py).total:0,si=savIn(y),out=si?si.amt:0;
+ return{y:y,py:py,has:has&&inc>0,inc:inc,pd:payDate(py),si:si,left:inc-out,real:inc+(si?si.match:0)}}
+function sd(d){return (d.getMonth()+1)+'/'+d.getDate()+' ('+'일월화수목금토'[d.getDay()]+')'}
+var _pay7=pay;pay=function(){var h=_pay7(),c=cash(ym),mo=+ym.split('-')[1],pm=+c.py.split('-')[1];
+ h=h.replace('>계산할 달</label>','>계산할 달 (근무한 달)</label>').replace(/(<h2>\d+년 \d+월) · /,'$1 근무분 · ').replace('<span>월급 지급일</span>','<span>통장에 들어오는 날</span>');
+ var card='<div class="card"><h2>'+mo+'월 통장 흐름</h2><div class="sub" style="margin:-6px 0 6px">월급은 일한 다음 달에 들어와요. '+mo+'월 통장에는 '+pm+'월분 월급이 들어'+(c.si?'오고 '+mo+'월 적금이 나가요.':'와요.')+'</div>'
+ +'<div class="row"><span>들어오는 돈 <span class="sub" style="display:block">'+(c.has?pm+'월분 월급 · '+sd(c.pd):'아직 없음')+'</span></span><b>'+(c.has?'+'+won(c.inc):'0원')+'</b></div>'
+ +(c.si?'<div class="row"><span>나가는 돈 <span class="sub" style="display:block">군적금 '+c.si.n+'/'+savMax()+'회차 · '+sd(c.si.d)+'</span></span><b>−'+won(c.si.amt)+'</b></div>':'<div class="row"><span>나가는 돈 <span class="sub" style="display:block">이 달은 적금 납입 없음</span></span><b>0원</b></div>')
+ +'<div class="total"><span>'+mo+'월에 남는 돈</span><span'+(c.left<0?' class="neg"':'')+'>'+won(c.left)+'</span></div>'
+ +(c.si?'<div class="row"><span>매칭지원금 적립 <span class="sub" style="display:block">'+savMatch()+'% · 만기 때 받음</span></span><b>+'+won(c.si.match)+'</b></div><div class="row"><span>매칭까지 합친 실질 수입</span><b>'+won(c.real)+'</b></div>':'')
+ +(!c.has?'<div class="note">첫 월급은 일한 다음 달에 들어와요. 그래서 첫 달 적금은 가지고 있던 돈으로 내야 해요.</div>':'')+'</div>';
+ var i=h.indexOf('<div class="card"><h2>적금 포함 · 미포함 월급</h2>');if(i<0)return h;var j=h.indexOf('<div class="card"',i+10);return h.slice(0,i)+card+(j<0?'':h.slice(j))};
+var _hm9=home;home=function(){var h=_hm9();if(!pd(S.start))return h;var c=cash(hm),mo=+hm.split('-')[1],pm=+c.py.split('-')[1];
+ h=h.replace(/<div class="sub">[^<·]* · 지급 [^<]*<\/div>/,'<div class="sub">'+mo+'월 근무분 · '+sd(payDate(hm))+' 지급</div>');
+ return h.replace(/<div class="row"><span>\d+월 적금 내고 남는 돈<\/span><b>[^<]*<\/b><\/div><div class="row"><span>\d+월 적금 포함 실질 월급<\/span><b>[^<]*<\/b><\/div>/,
+  '<div class="row"><span>'+mo+'월 통장에 남는 돈 <span class="sub" style="display:block">'+(c.has?pm+'월분 월급 − 적금':'첫 월급 전')+'</span></span><b>'+won(c.left)+'</b></div><div class="row"><span>매칭까지 합친 실질 수입</span><b>'+won(c.real)+'</b></div>')};
 applyTheme();
 setInterval(pctTick,100);
 render();
