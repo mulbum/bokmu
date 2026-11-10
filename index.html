@@ -770,7 +770,7 @@ function restoreText(v){v=String(v||'').trim();if(!v){bmsg='붙여넣을 백업 
 function pasteRestore(){try{if(!navigator.clipboard||!navigator.clipboard.readText)throw 0;navigator.clipboard.readText().then(restoreText,function(){bmsg='붙여넣기가 허용되지 않았어요. 아래 칸에 길게 눌러 붙여넣고 "이 내용으로 복원"을 누르세요.';render()})}catch(e){bmsg='이 화면에서는 바로 붙여넣기가 안 돼요. 아래 칸에 길게 눌러 붙여넣어 주세요.';render()}}
 function bkName(){var t=today();return '복무계산기-백업-'+t.getFullYear()+z(t.getMonth()+1)+z(t.getDate())+'.json'}
 function fileExport(){var j=JSON.stringify(S),n=bkName();
- try{var f=new File([j],n,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:n}).then(function(){bmsg='공유 화면에서 "파일에 저장"을 골랐다면 저장됐어요.';render()},function(){});return}}catch(e){}
+ try{var f=new File([j],n,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f]}).then(function(){bmsg='공유 화면에서 "파일에 저장"을 골랐다면 저장됐어요.';render()},function(){});return}}catch(e){}
  try{var u=URL.createObjectURL(new Blob([j],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);bmsg=n+' 파일을 저장했어요.';render()}catch(e){bmsg='이 화면에서는 파일 저장이 막혀 있어요. "백업 내용 복사"를 써 주세요.';render()}}
 function fileImport(inp){var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){restoreText(r.result)};r.onerror=function(){bmsg='파일을 읽지 못했어요.';render()};r.readAsText(f);inp.value=''}
 function undoRestore(){try{var o=JSON.parse(sessionStorage.getItem('bk-undo')||'null');if(!o)return;sessionStorage.removeItem('bk-undo');S=Object.assign(def(),o);save();location.reload()}catch(e){}}
