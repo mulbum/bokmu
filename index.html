@@ -977,7 +977,7 @@ bankUI=function(){var b=S.banks[0],s=pd(S.start),N=bankDeps(b).length;
  +'<div class="note">자동 값은 장병내일준비적금 최대 한도(월 55만원), 기본금리 연 5%, 매칭지원금 100%예요. 회차는 첫 납입 월부터 소집해제 전까지 자동으로 세요. 우대금리를 받으면 직접 입력으로 바꿔 금리를 넣으세요.</div>'};
 var _st9=settings;settings=function(){var h=_st9(),i=h.indexOf('<div class="card"><h2>월급 금액</h2>');if(i<0)return h;var j=h.indexOf('<div class="card">',i+10);return h.slice(0,i)+payCard()+(j<0?'':h.slice(j))};
 var _rt3=restoreText;restoreText=function(v){try{var o=JSON.parse(String(v||'').trim());['payAuto','mealAuto','savAuto'].forEach(function(k){if(o[k]===undefined)delete o[k]});_rt3(JSON.stringify(o))}catch(e){_rt3(v)}};
-APP_VER='2026.11.12-4';
+APP_VER='2026.11.12-5';
 applyTheme();
 setInterval(function(){pctTick()},100);
 render();
