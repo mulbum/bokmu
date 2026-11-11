@@ -253,6 +253,33 @@ input,select,textarea,.ta,.prow input,.bank .g3 input,.bhd input{font-size:16px!
 .okbox{background:var(--soft);color:var(--acc);font-weight:700;font-size:14px;border-radius:14px;padding:12px 14px;margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.okbox .ghost{background:var(--card);color:var(--ink)}
 .bkmore{margin-top:12px}.bkmore>summary{font-size:13.5px;color:var(--sub);cursor:pointer;padding:6px 0}
 .bkh+.g2{align-items:stretch}.bkh+.g2 .btn{margin-top:0;white-space:nowrap}
+.pgw{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pgt{background:var(--tile);border-radius:16px;padding:14px 14px 12px;min-width:0}.pgl{font-size:17px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgb{height:6px;border-radius:3px;background:var(--line);margin:10px 0 8px;overflow:hidden}.pgb i{display:block;height:100%;border-radius:3px;background:var(--acc)}.pgf{display:flex;justify-content:space-between;align-items:baseline;gap:6px}.pgf b{font-size:15px;font-weight:800}.pgf span{font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.stat .pgb{margin:8px 0 6px;height:5px}.stat .pgf b{font-size:14px}.stat .pgf span{font-size:13px}.stat .pgf+.sub{margin-top:1px}
+.sbd{position:fixed;inset:0;z-index:19;background:rgba(0,0,0,.32);-webkit-tap-highlight-color:transparent}.sbd.in{animation:sbdIn .22s ease-out}
+.sh-in{will-change:transform;overscroll-behavior:contain}.sh-in.in{animation:shUp .32s cubic-bezier(.2,.9,.3,1)}
+.grabz{margin:-10px -16px 4px;padding:10px 0 14px;cursor:grab;touch-action:none}.grabz .grab{margin:0 auto}
+@keyframes shUp{from{transform:translateY(100%)}to{transform:none}}@keyframes sbdIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.sh-in.in,.sbd.in{animation:none}}
+.rks{align-items:stretch}.rks .stat{padding:11px 13px}.rks .stat .k{display:flex;justify-content:space-between;gap:6px}.rks .kp{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}.rks .stat .v{font-size:18px;margin-top:1px}.rks .stat .sub{margin-top:1px}.rks .stat .sub b{color:var(--ink);font-weight:700}.rks .pgb{height:4px;margin:7px 0 5px}
+.row.sub2{padding:9px 0 9px 6px;border-top:0;font-size:14.5px}.row.sub2>span{color:var(--sub)}.row.sub2 b{font-weight:600}
+.mt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:6px}.mt th,.mt td{padding:11px 0;text-align:right;font-size:15px;border-top:1px solid var(--line);white-space:nowrap}.mt thead th{font-size:12.5px;font-weight:600;color:var(--sub);border-top:0;padding:4px 0 6px}.mt tbody th{text-align:left;font-weight:500;color:var(--ink2)}.mt td{font-weight:700;padding-left:10px}.mt tr.m td,.mt tr.m th{color:var(--sub);font-weight:500}.mt tr.t th{font-weight:700;color:var(--ink)}.mt tr.t td{color:var(--acc);font-weight:800;font-size:16px}
+.mt td{font-size:14px;padding-left:6px;letter-spacing:-.02em}.mt tbody th{font-size:14px}.mt tr.t td{font-size:15px}
+
+/* 월급 탭 */
+.pmn{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border-radius:24px;padding:10px;margin-bottom:14px;box-shadow:var(--shadow)}
+.pmn .ghost{width:44px;height:44px;min-width:44px;border-radius:50%;font-size:22px;padding:0;line-height:1}
+.pml{position:relative;flex:1;text-align:center;margin:0!important;cursor:pointer}.pml span{display:block;font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.03em}.pml small{display:block;font-size:12px;color:var(--sub);font-weight:500}
+.pml input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;min-height:0}
+[data-tab="pay"] .card.pc{position:relative;overflow:hidden}
+[data-tab="pay"] .card.pc::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--dc)}
+[data-tab="pay"] .card.pc>h2,[data-tab="pay"] details.pc>summary b{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.025em;margin-bottom:12px}
+[data-tab="pay"] .card.pc>h2::before{width:8px;height:8px;background:var(--dc)}
+[data-tab="pay"] .total{padding:16px 18px;font-size:16.5px}[data-tab="pay"] .total>span:last-child{font-size:22px}
+[data-tab="pay"] .row{font-size:15.5px}[data-tab="pay"] .row b{font-size:16px}
+b.pos{color:var(--acc)!important}b.mns{color:var(--warn)!important}
+details.pc>summary{flex-wrap:wrap;row-gap:2px}.sms{font-size:13px;color:var(--sub);font-weight:600;margin-left:auto;margin-right:6px}
+details.pc[open]>summary{margin-bottom:6px}
+[data-tab="pay"] details.pc>summary b{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -446,7 +473,7 @@ function sheet(){if(!sel)return '';var D=pd(sel),x=dayInfo(D);if(!x.in)return ''
  var has=S.ov&&S.ov[sel]!==undefined,cur=x.tr?'훈련':RK[x.h];
  var sb=RK.map(function(k,n){var on=!x.ls.length&&!x.tr&&x.h===n;return '<button class="ob'+(on?' on':'')+'" data-v="'+n+'" onclick="setShift(this.dataset.v)">'+k+'</button>'}).join('');
  var lb=S.types.map(function(t){var on=x.ls.some(function(l){return l.type===t.n});return '<button class="ob'+(on?' on':'')+'" data-t="'+esc(t.n)+'" onclick="toggleLeave(this.dataset.t)">'+esc(t.n)+'</button>'}).join('');
- return '<div style="height:380px"></div><div class="sheet" role="dialog" aria-label="근무 변경"><div class="sh-in"><div class="grab"></div><h2 style="font-size:20px">'+sel+'</h2><div class="sub" style="margin-bottom:12px">현재: <b>'+(x.ls.length?x.ls.map(function(l){return l.type}).join(', '):cur)+'</b> ('+(has?'직접 변경':'루틴 자동')+')</div><div class="og">'+sb+lb+'</div>'
+ return '<div style="height:380px"></div><div class="sheet" role="dialog" aria-label="근무 변경"><div class="sh-in"><div class="grabz"><div class="grab"></div></div><h2 style="font-size:20px">'+sel+'</h2><div class="sub" style="margin-bottom:12px">현재: <b>'+(x.ls.length?x.ls.map(function(l){return l.type}).join(', '):cur)+'</b> ('+(has?'직접 변경':'루틴 자동')+')</div><div class="og">'+sb+lb+'</div>'
   +(has?'<button class="ghost" style="margin-top:10px" onclick="resetShift()">루틴으로 되돌리기</button>':'')+'<button class="btn" onclick="sel=null;render()">닫기</button><div class="sub" style="margin-top:10px">야간을 고르면 다음날은 자동으로 비번이 돼요. 휴가는 다시 누르면 취소돼요.</div></div></div>'}
 var _cal=cal;cal=function(){return _cal()+sheet()};
 var _lv2=leaves;leaves=function(){var y=ymOf(today());return _lv2().replace(/<div class="card"><h2>대체휴무<\/h2>.*?<\/div><\/div>/,'<div class="card"><h2>이번 달 대체휴무</h2><div class="big" style="font-size:32px">'+rnd(monthRem(y))+'일</div><div class="sub">적립 '+rnd(monthAcc(y))+'일 − 사용 '+rnd(monthUsed(y))+'일 · 쓰지 않으면 이 달 말에 사라져요</div></div>')};
@@ -812,8 +839,90 @@ var _hm9=home;home=function(){var h=_hm9();if(!pd(S.start))return h;var c=cash(h
  h=h.replace(/<div class="sub">[^<·]* · 지급 [^<]*<\/div>/,'<div class="sub">'+mo+'월 근무분 · '+sd(payDate(hm))+' 지급</div>');
  return h.replace(/<div class="row"><span>\d+월 적금 내고 남는 돈<\/span><b>[^<]*<\/b><\/div><div class="row"><span>\d+월 적금 포함 실질 월급<\/span><b>[^<]*<\/b><\/div>/,
   '<div class="row"><span>'+mo+'월 통장에 남는 돈 <span class="sub" style="display:block">'+(c.has?pm+'월분 월급 − 적금':'첫 월급 전')+'</span></span><b>'+won(c.left)+'</b></div><div class="row"><span>매칭까지 합친 실질 수입</span><b>'+won(c.real)+'</b></div>')};
+/* ---- 다음 진급·호봉 진행률 ---- */
+function rkProg(){var s=pd(S.start);if(!s)return null;var now=Date.now(),t=today(),st=hoSteps(),cur=null,nx=null;
+ st.forEach(function(x){if(x.d.getTime()<=now)cur=x;else if(!nx)nx=x});var ri=rankInfo(t),rs=ri.r==='이병'?s:promoD(ri.r),pr=hoNext().filter(function(x){return x.i.r!==ri.r})[0]||null;
+ function pc(a,b){if(!a||!b)return 100;return Math.min(100,Math.max(0,(now-a.getTime())/(b.getTime()-a.getTime())*100))}
+ return{ho:nx?{lab:nx.i.r+' '+nx.i.h+'호봉',d:nx.d,p:pc(cur?cur.d:s,nx.d)}:null,pr:pr?{lab:pr.i.r,d:pr.d,p:pc(rs,pr.d)}:null}}
+function pgTile(id,o,empty){if(!o)return '<div class="pgt"><div class="pgl">'+empty+'</div><div class="pgb"><i style="width:100%"></i></div><div class="pgf"><b>완료</b><span>100%</span></div></div>';
+ return '<div class="pgt"><div class="pgl">'+o.lab+'</div><div class="pgb"><i id="'+id+'b" style="width:'+o.p+'%"></i></div><div class="pgf"><b>'+dd(o.d)+'</b><span id="'+id+'p">'+o.p.toFixed(2)+'%</span></div></div>'}
+var _hm10=home;home=function(){var h=_hm10(),g=rkProg();if(!g)return h;var i=h.indexOf('<div class="card"><h2>계급 · 호봉</h2>');if(i<0)return h;
+ var j=h.indexOf('<div style="margin-top:10px">',i),k=h.indexOf('<div class="card">',i+10);if(j<0||(k>=0&&j>k))j=k;
+ var t=today(),ri=rankInfo(t),pr=g.pr,nb=pr?(+S.pay[pr.lab]||0):0,cb=+S.pay[ri.r]||0;
+ function pt(id,k,o,v,emp){if(!o)return stat(k,emp,'');return '<div class="stat"><div class="k"><span>'+k+'</span><span class="kp" id="'+id+'p">'+o.p.toFixed(2)+'%</span></div><div class="v">'+v+'</div><div class="pgb"><i id="'+id+'b" style="width:'+o.p+'%"></i></div><div class="sub"><b>'+dd(o.d)+'</b> · '+fdz(o.d)+'</div></div>'}
+ var c='<div class="card"><h2>계급 · 호봉</h2><div class="stats rks">'+stat('지금',ri.r+' '+ri.h+'호봉',won(cb))
+ +(pr?stat(pr.lab+' 진급 시',won(nb),'기본급 +'+won(nb-cb)):stat('병장 기본급',won(cb),'마지막 계급'))
+ +pt('pgh','다음 호봉',g.ho,g.ho?g.ho.lab:'','마지막 호봉이에요')
+ +(function(){var o=pr,v=pr?pr.lab:'소집해제';if(!pr){var e=endD(),s0=promoD(ri.r)||pd(S.start),now=Date.now();o={d:e,p:Math.min(100,Math.max(0,(now-s0.getTime())/(e.getTime()-s0.getTime())*100))}}return pt('pgr','다음 진급',o,v,'')})()+'</div>'
+ +'<div class="bkh" style="margin:20px 0 2px">앞으로의 호봉</div>';
+ return h.slice(0,i)+c+h.slice(j)};
+var _pt=pctTick;pctTick=function(){_pt();if(!document.getElementById('pgrp')&&!document.getElementById('pghp'))return;var g=rkProg();if(!g)return;
+ var _pr=g.pr;if(!_pr){var _e=endD(),_ri=rankInfo(today()),_s=promoD(_ri.r)||pd(S.start);_pr={p:Math.min(100,Math.max(0,(Date.now()-_s.getTime())/(_e.getTime()-_s.getTime())*100))}}[['pgr',_pr],['pgh',g.ho]].forEach(function(x){if(!x[1])return;var p=document.getElementById(x[0]+'p'),b=document.getElementById(x[0]+'b');if(p)p.textContent=x[1].p.toFixed(2)+'%';if(b)b.style.width=x[1].p+'%'})};
+/* ---- 날짜 시트: 바깥 눌러 닫기·아래로 밀어 닫기 ---- */
+var shLast=null;
+var _sh2=sheet;sheet=function(){var h=_sh2();if(!h)return h;var anim=shLast!==sel;shLast=sel;
+ return h.replace('<div class="sheet"','<div class="sbd'+(anim?' in':'')+'" id="sbd" onclick="closeSheet()" aria-hidden="true"></div><div class="sheet"').replace('<div class="sh-in">','<div class="sh-in'+(anim?' in':'')+'" id="shin">').replace('onclick="sel=null;render()">닫기</button>','onclick="closeSheet()">닫기</button>')};
+function closeSheet(){var p=document.getElementById('shin'),b=document.getElementById('sbd');if(!p){sel=null;shLast=null;render();return}
+ if(p.dataset.closing)return;p.dataset.closing='1';p.style.transition='transform .24s cubic-bezier(.3,0,.8,.15)';p.style.transform='translateY(110%)';if(b){b.style.transition='opacity .24s';b.style.opacity='0'}
+ setTimeout(function(){sel=null;shLast=null;render()},230)}
+function bindSheet(){var p=document.getElementById('shin');if(!p||p.dataset.bound)return;p.dataset.bound='1';var b=document.getElementById('sbd'),y0=0,t0=0,dy=0,on=false,startTop=0;
+ function start(y,fromGrab){startTop=p.scrollTop;if(!fromGrab&&startTop>0)return;on=true;y0=y;t0=Date.now();dy=0;p.style.transition='none'}
+ function move(y,e){if(!on)return;dy=Math.max(0,y-y0);if(dy>0){if(e&&e.cancelable)e.preventDefault();p.style.transform='translateY('+dy+'px)';if(b)b.style.opacity=String(Math.max(0,1-dy/(p.offsetHeight||400)))}}
+ function end(){if(!on)return;on=false;var v=dy/Math.max(1,Date.now()-t0);if(dy>Math.min(120,(p.offsetHeight||400)*.25)||(v>.6&&dy>24)){closeSheet()}else{p.style.transition='transform .28s cubic-bezier(.2,.9,.3,1.2)';p.style.transform='';if(b){b.style.transition='opacity .2s';b.style.opacity=''}}}
+ p.addEventListener('touchstart',function(e){var g=e.target.closest&&e.target.closest('.grab,h2,.grabz');start(e.touches[0].clientY,!!g)},{passive:true});
+ p.addEventListener('touchmove',function(e){move(e.touches[0].clientY,e)},{passive:false});
+ p.addEventListener('touchend',end);p.addEventListener('touchcancel',end);
+ p.addEventListener('mousedown',function(e){if(!(e.target.closest&&e.target.closest('.grab,.grabz')))return;start(e.clientY,true);function mm(ev){move(ev.clientY,ev)}function mu(){document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',mu);end()}document.addEventListener('mousemove',mm);document.addEventListener('mouseup',mu)})}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sel&&tab==='cal')closeSheet()});
+var _rn4=render;render=function(){if(tab!=='cal'||!sel)shLast=null;_rn4();bindSheet()};
+/* ---- 복무 전체 합계 정리 ---- */
+var _pay8=pay;pay=function(){var h=_pay8(),i=h.indexOf('<div class="card"><h2>복무 전체 합계</h2>');if(i<0)return h;var n=h.indexOf('<div class="note">',i),j=h.indexOf('</div></div>',n);if(n<0||j<0)return h;j+=12;
+ var a=payAll(),sv=sav(),liv=a.all-sv.P,tot=liv+sv.TOT;
+ var c='<div class="card"><h2>복무 전체 합계</h2>'
+ +'<div class="row"><span>받는 월급 합계 <span class="sub" style="display:block">입소부터 소집해제까지</span></span><b>'+won(a.all)+'</b></div>'
+ +(sv.P?'<div class="row sub2"><span>└ 적금으로 넣는 돈</span><b>−'+won(sv.P)+'</b></div><div class="row sub2"><span>└ 생활비로 쓰는 돈</span><b>'+won(liv)+'</b></div>'
+ +'<div class="row"><span>군적금 만기 수령 <span class="sub" style="display:block">원금 + 이자 + 매칭지원금</span></span><b>+'+won(sv.TOT)+'</b></div>':'')
+ +'<div class="total"><span>복무 중 받는 돈 전체</span><span>'+won(tot)+'</span></div>'
+ +'<div class="note">생활비로 쓰는 돈과 소집해제 때 받는 적금 만기액을 더한 금액이에요. 적금 원금은 월급에서 나간 돈이라 한 번만 셌어요.</div></div>';
+ return h.slice(0,i)+c+h.slice(j)};
+/* ---- 누적 월급: 적금 뺀 금액 2칸 ---- */
+function man(n){var m=Math.round(n/1e4);return m.toLocaleString('ko-KR')+'만원'}
+var _pay9=pay;pay=function(){var h=_pay9(),i=h.indexOf('<div class="card"><h2>누적 월급</h2><div class="stats">');if(i<0)return h;var m='</div><div class="total">',j=h.indexOf(m,i);if(j<0)return h;
+ var a=payAll(),sv=sav(),fp=sv.P-sv.p;
+ var add=stat('적금 제외 받은 금액',won(a.got-sv.p),'적금 '+man(sv.p)+' 제외')+stat('적금 제외 받을 금액',won(a.all-a.got-fp),'적금 '+man(fp)+' 제외');
+ return h.slice(0,j)+add+h.slice(j)};
+/* ---- 누적 월급 + 복무 전체 합계 → 한 장으로 ---- */
+function cut(h,start){var i=h.indexOf(start);if(i<0)return{h:h,i:-1};var j=h.indexOf('<div class="card"',i+10),k=h.indexOf('<details class="card"',i+10);if(j<0||(k>=0&&k<j))j=k;return{h:h.slice(0,i)+(j<0?'':h.slice(j)),i:i}}
+var _pay10=pay;pay=function(){var h=_pay10(),a=payAll();if(!a.list.length)return h;var sv=sav(),fp=sv.P-sv.p,left=a.all-a.got,pc=a.all?a.got/a.all*100:0,liv=a.all-sv.P,tot=liv+sv.TOT;
+ var r1=cut(h,'<div class="card"><h2>누적 월급</h2>');h=r1.h;var r2=cut(h,'<div class="card"><h2>복무 전체 합계</h2>');h=r2.h;
+ function tr(k,x,y,cl){return '<tr'+(cl?' class="'+cl+'"':'')+'><th>'+k+'</th><td>'+x+'</td><td>'+y+'</td></tr>'}
+ var c='<div class="card"><h2>복무 기간 전체 돈</h2>'
+ +'<div class="sub">소집해제까지 받는 돈 전체</div><div class="big" style="font-size:34px;margin:2px 0 4px">'+won(tot)+'</div><div class="sub">적금 제외 월급 '+won(liv)+'<br>+ 적금 만기 '+won(sv.TOT)+'</div>'
+ +'<div class="pgb" style="height:8px;margin:16px 0 6px"><i style="width:'+pc+'%"></i></div><div class="pgf" style="margin-bottom:6px"><span class="sub">월급 '+pc.toFixed(0)+'% 받음</span><span class="sub">'+a.list.filter(function(o){return o.p}).length+'/'+a.list.length+'개월</span></div>'
+ +'<table class="mt"><thead><tr><th></th><th>받은 돈</th><th>받을 돈</th></tr></thead><tbody>'
+ +tr('월급',won(a.got),won(left))
+ +(sv.P?tr('적금 납입','−'+won(sv.p),'−'+won(fp),'m'):'')
+ +tr('적금 제외 월급',won(a.got-sv.p),won(left-fp),'t')+'</tbody></table>'
+ +(sv.P?'<div class="row" style="margin-top:12px"><span>군적금 만기 수령 <span class="sub" style="display:block">'+fdz(sv.end)+' 소집해제 때</span></span><b>+'+won(sv.TOT)+'</b></div>':'')
+ +'<div class="note">월급 합계는 '+won(a.all)+'이에요. 적금 원금은 월급에서 빠져나가 만기 때 돌아오니 한 번만 셌어요. 앞으로의 달은 지금 설정한 금액으로 계산해요.</div></div>';
+ var at=r1.i>=0?r1.i:(r2.i>=0?r2.i:h.length);if(r1.i<0&&r2.i>=0)at=r2.i;return h.slice(0,at)+c+h.slice(at)};
+/* ---- 월급 탭 가독성 ---- */
+function ymShift(n){var a=ym.split('-');ym=ymOf(new Date(+a[0],+a[1]-1+n,1));render()}
+var PAYC={'근무분':'#06a152','통장 흐름':'#2f6fe4','복무 기간 전체 돈':'#0a7a45','군적금 만기 예상':'#c9971c','회차별 적립 현황':'#c9971c'};
+var _pay11=pay;pay=function(){var h=_pay11(),a=ym.split('-'),cur=ymOf(today());
+ var nav='<div class="pmn"><button class="ghost" onclick="ymShift(-1)" aria-label="이전 달">‹</button><label class="pml"><span>'+a[0]+'년 '+(+a[1])+'월</span><small>근무한 달 기준 · 눌러서 선택</small><input type="month" value="'+ym+'" onchange="ym=this.value||ym;render()" aria-label="계산할 달"></label><button class="ghost" onclick="ymShift(1)" aria-label="다음 달">›</button></div>'
+ +(ym!==cur?'<div style="text-align:center;margin:-4px 0 12px"><button class="today" onclick="ym=ymOf(today());render()">이번 달로</button></div>':'');
+ h=h.replace(/<div class="card"><label for="ym"[\s\S]*?<\/div>/,nav);
+ h=h.replace(/<div class="card"><h2>([^<]*)<\/h2>/g,function(m,t){var c='';for(var k in PAYC)if(t.indexOf(k)>=0){c=PAYC[k];break}return '<div class="card'+(c?' pc" style="--dc:'+c:'')+'"><h2>'+t+'</h2>'});
+ h=h.replace(/<b>\+/g,'<b class="pos">+').replace(/<b>−/g,'<b class="mns">−');
+ var i=h.indexOf('<h2>회차별 적립 현황</h2>');if(i>=0){var s=h.lastIndexOf('<div class="card',i),sv=sav(),c=sv.C&&sv.C[0],n=c?c.n:0,N=c?c.N:0,amt=c?n*c.b.amt+Math.round(c.mon*n*(n+1)/2):0;
+  var e=h.indexOf('<div class="card',i);var k2=h.indexOf('<details class="card"',i);if(e<0||(k2>=0&&k2<e))e=k2;if(e<0)e=h.length;
+  var body=h.slice(s,e).replace(/^<div class="card[^"]*"[^>]*><h2>회차별 적립 현황<\/h2>/,'').replace(/<\/div>$/,'');
+  h=h.slice(0,s)+'<details class="card pc" style="--dc:#c9971c"'+(setOpen['회차별']?' open':'')+' ontoggle="setOpen[\'회차별\']=this.open"><summary><b>회차별 적립 현황</b><span class="sms">'+n+'/'+N+'회차 · '+won(amt)+'</span></summary>'+body+'</details>'+h.slice(e)}
+ return h};
+var _rn5=render;render=function(){try{document.body.setAttribute('data-tab',tab)}catch(e){}_rn5()};
 applyTheme();
-setInterval(pctTick,100);
+setInterval(function(){pctTick()},100);
 render();
 </script>
 <script>
