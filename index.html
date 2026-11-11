@@ -13,7 +13,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<title>지하철 복무 월급 계산기</title>
+<title>사회복무요원 복무 계산기</title>
 <style>
 :root{--bg:#f3f5f4;--card:#fff;--ink:#16211c;--sub:#68736d;--line:#dfe5e1;--acc:#00a651;--acc-ink:#fff;--soft:#e4f4ea;--warn:#c2410c;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -286,6 +286,11 @@ details.pc[open]>summary{margin-bottom:6px}
 .dis>*{position:relative;z-index:1}.dis-k{font-size:20px;font-weight:900;letter-spacing:-.03em;display:flex;align-items:center;gap:6px}.dis-k::before{content:"★";font-size:16px}
 .dis-d{white-space:nowrap;font-size:12.5px;opacity:.92;font-weight:600;margin-top:1px}.dis-r{text-align:right}.dis-r b{display:block;font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1.1}.dis-r span{font-size:12px;opacity:.92;font-weight:600;white-space:nowrap}
 .ver{text-align:center;font-size:12.5px;color:var(--sub);margin:18px 0 4px}
+.ahd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:16px 0 8px}.ahd b{font-size:15px}.atag{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--acc)}.atag.m{background:#fff1e6;color:#d9630b}
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.arow>div{background:var(--tile);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:baseline;gap:6px}.arow span{font-size:13px;color:var(--sub)}.arow b{font-size:15px;font-variant-numeric:tabular-nums}
+.lnk{border:0;background:none;color:var(--acc);font-weight:700;font-size:13.5px;padding:8px 0 0;min-height:32px}
+.ahd+.row{border-top:0;background:var(--tile);border-radius:12px;padding:10px 12px}
+@media (max-width:340px){.arow{grid-template-columns:1fr}.row[style*="white-space:nowrap"] b .sub{display:none}.row[style*="flex-wrap:wrap"]{flex-wrap:wrap!important;white-space:normal!important}.row[style*="flex-wrap:wrap"]>span:last-child{text-align:left!important}main{padding-left:12px;padding-right:12px}.card{padding:16px}}
 </style>
 </head>
 <body>
@@ -726,7 +731,7 @@ function promoUI(){var s=pd(S.start);if(!s)return '<div class="note">복무 시�
 if(!Array.isArray(S.banks)){var _a=S.savAmt===undefined?550000:+S.savAmt||0,_r=S.savRate===undefined||S.savRate===''?5:+S.savRate,_d=+S.savDay||1;
  S.banks=_a===550000?[{n:'은행 1',amt:300000,rate:_r,day:_d},{n:'은행 2',amt:250000,rate:_r,day:_d}]:[{n:'은행 1',amt:_a,rate:_r,day:_d}];save()}
 function bankDeps(b){var s=pd(S.start),e=endD(),out=[];if(!s||!(+b.amt))return out;var f=S.savFirst?S.savFirst.split('-'):[s.getFullYear(),s.getMonth()+1],day=+b.day||1;
- for(var q=new Date(+f[0],+f[1]-1,1);out.length<savMax();q=new Date(q.getFullYear(),q.getMonth()+1,1)){var dim=new Date(q.getFullYear(),q.getMonth()+1,0).getDate(),d=new Date(q.getFullYear(),q.getMonth(),Math.min(day,dim));if(d>=e)break;out.push({n:out.length+1,y:ymOf(q),d:d,amt:+b.amt})}return out}
+ for(var q=new Date(+f[0],+f[1]-1,1);out.length<savMax();q=new Date(q.getFullYear(),q.getMonth()+1,1)){var dim=new Date(q.getFullYear(),q.getMonth()+1,0).getDate(),d=new Date(q.getFullYear(),q.getMonth(),Math.min(day,dim));if(d>=e)break;if(d<s)continue;out.push({n:out.length+1,y:ymOf(q),d:d,amt:+b.amt})}return out}
 function bankCalc(b){var e=endD(),t=today(),D=bankDeps(b),r=(+b.rate||0)/100,to=t<e?t:e,past=D.filter(function(x){return x.d<=t});
  function it(list,end){return Math.floor(list.reduce(function(s,x){return s+x.amt*r*Math.max(0,Math.round((end-x.d)/864e5))/365},0))}
  return{b:b,D:D,N:D.length,n:past.length,P:D.length*(+b.amt),p:past.length*(+b.amt),I:it(D,e),i:it(past,to)}}
@@ -938,6 +943,41 @@ var _rn6=render;render=function(){_rn6();addDischarge()};
 /* ---- 앱 버전 표시 ---- */
 var APP_VER='2026.11.12';
 var _st8=settings;settings=function(){return _st8()+'<div class="ver">앱 버전 '+APP_VER+'</div>'};
+/* ---- 봉급·식비·군적금 자동 입력 ---- */
+var RATE_SRC={y:2026,pay:{'이병':750000,'일병':900000,'상병':1200000,'병장':1500000},meal:9000,sav:{amt:550000,rate:5,match:100}};
+(function(){var p=S.pay||{},same=['이병','일병','상병','병장'].every(function(k){return +p[k]===RATE_SRC.pay[k]});
+ if(S.payAuto===undefined)S.payAuto=same||!(+p['이병']);if(S.mealAuto===undefined)S.mealAuto=(+S.meal===RATE_SRC.meal)||!(+S.meal);
+ if(S.savAuto===undefined){var b=S.banks&&S.banks[0]||{};S.savAuto=(+b.amt===550000||!b.amt)&&(+b.rate===5||!b.rate)&&(S.savMatch===undefined||+S.savMatch===100)}save()})();
+function syncAuto(){if(S.payAuto)S.pay=Object.assign({},RATE_SRC.pay);if(S.mealAuto)S.meal=RATE_SRC.meal;
+ if(S.savAuto){S.banks=S.banks&&S.banks.length?S.banks:[{n:'군적금',day:1}];S.banks[0].amt=RATE_SRC.sav.amt;S.banks[0].rate=RATE_SRC.sav.rate;S.savMatch=RATE_SRC.sav.match;S.savMax=24}}
+syncAuto();
+var _sm=savMax,_smIn=false;savMax=function(){if(S.savAuto){if(_smIn)return +S.months||21;_smIn=true;try{return Math.max(1,bankDeps(S.banks[0]).length||21)}finally{_smIn=false}}return _sm()};
+function setAuto(k,v){if(k==='savAuto'&&!v)S.savMax=savMax();S[k]=v;syncAuto();save();render()}
+function autoTag(on){return '<span class="atag'+(on?'':' m')+'">'+(on?'자동 · '+RATE_SRC.y+'년 기준':'직접 입력')+'</span>'}
+function payCard(){var R=['이병','일병','상병','병장'];
+ var pays=S.payAuto?'<div class="arow">'+R.map(function(k){return '<div><span>'+k+'</span><b>'+won(S.pay[k])+'</b></div>'}).join('')+'</div>'
+  :'<div class="g2">'+R.map(function(k){return numIn('b'+k,k+' 기본급(월)',S.pay[k],"S.pay['"+k+"']=+this.value;save()")}).join('')+'</div>';
+ var meal=S.mealAuto?'<div class="row"><span>식비(1일)</span><b>'+won(S.meal)+'</b></div>':numIn('meal','식비(1일)',S.meal,'S.meal=+this.value;save()');
+ return '<div class="card"><h2>월급 금액</h2>'
+ +'<div class="ahd"><b>기본급</b>'+autoTag(S.payAuto)+'</div>'+pays
+ +'<button class="lnk" onclick="setAuto(\'payAuto\','+(!S.payAuto)+')">'+(S.payAuto?'직접 입력하기':'자동으로 되돌리기')+'</button>'
+ +'<div class="ahd"><b>식비</b>'+autoTag(S.mealAuto)+'</div>'+meal
+ +'<button class="lnk" onclick="setAuto(\'mealAuto\','+(!S.mealAuto)+')">'+(S.mealAuto?'직접 입력하기':'자동으로 되돌리기')+'</button>'
+ +'<div class="ahd"><b>교통비</b><span class="atag m">직접 입력</span></div>'+numIn('trans','왕복 교통비(1일)',S.trans,'S.trans=+this.value;save()')
+ +'<div class="note">자동 값은 '+RATE_SRC.y+'년 병사 봉급(이병 75만·일병 90만·상병 120만·병장 150만)과 사회복무요원 중식비 1일 9,000원이에요. 사회복무요원은 현역병 봉급과 같은 금액을 받아요. 교통비는 실제 왕복 요금이라 직접 넣어 주세요.</div></div>'}
+bankUI=function(){var b=S.banks[0],s=pd(S.start),N=bankDeps(b).length;
+ var man='<div class="g2">'+numIn('bd0','납입일(매달 며칠)',+b.day||1,'S.banks[0].day=Math.max(1,Math.min(31,+this.value||1));save();render()')
+ +'<div><label for="svf">첫 납입 월</label><input id="svf" type="month" value="'+(S.savFirst||(s?ymOf(s):''))+'" onchange="S.savFirst=this.value;save();render()"></div></div>';
+ var auto=S.savAuto?'<div class="ahd"><b>나머지</b>'+autoTag(true)+'</div><div class="arow"><div><span>월 납입액</span><b>'+won(b.amt)+'</b></div><div><span>연 금리</span><b>'+(+b.rate)+'%</b></div><div><span>회차</span><b>'+N+'회</b></div><div><span>매칭</span><b>'+savMatch()+'%</b></div></div>'
+  :'<div class="ahd"><b>나머지</b>'+autoTag(false)+'</div><div class="g2">'+numIn('ba0','월 납입액(최대 55만)',b.amt,'S.banks[0].amt=Math.min(550000,+this.value);save();render()')
+   +'<div><label for="br0">연 금리(%)</label><input id="br0" type="number" inputmode="decimal" step="0.01" min="0" value="'+(+b.rate||0)+'" onchange="S.banks[0].rate=+this.value;save()"></div>'
+   +numIn('svm','납입 회차 수',_sm(),'S.savMax=+this.value;save()')+numIn('svx','매칭 비율(%)',savMatch(),'S.savMatch=+this.value;save()')+'</div>';
+ return '<div class="ahd" style="margin-top:0"><b>직접 넣을 것</b><span class="atag m">직접 입력</span></div>'+man+auto
+ +'<button class="lnk" onclick="setAuto(\'savAuto\','+(!S.savAuto)+')">'+(S.savAuto?'금액·금리 직접 입력하기':'자동으로 되돌리기')+'</button>'
+ +'<div class="note">자동 값은 장병내일준비적금 최대 한도(월 55만원), 기본금리 연 5%, 매칭지원금 100%예요. 회차는 첫 납입 월부터 소집해제 전까지 자동으로 세요. 우대금리를 받으면 직접 입력으로 바꿔 금리를 넣으세요.</div>'};
+var _st9=settings;settings=function(){var h=_st9(),i=h.indexOf('<div class="card"><h2>월급 금액</h2>');if(i<0)return h;var j=h.indexOf('<div class="card">',i+10);return h.slice(0,i)+payCard()+(j<0?'':h.slice(j))};
+var _rt3=restoreText;restoreText=function(v){try{var o=JSON.parse(String(v||'').trim());['payAuto','mealAuto','savAuto'].forEach(function(k){if(o[k]===undefined)delete o[k]});_rt3(JSON.stringify(o))}catch(e){_rt3(v)}};
+APP_VER='2026.11.12-4';
 applyTheme();
 setInterval(function(){pctTick()},100);
 render();
