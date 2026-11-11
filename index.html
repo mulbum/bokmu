@@ -280,6 +280,11 @@ b.pos{color:var(--acc)!important}b.mns{color:var(--warn)!important}
 details.pc>summary{flex-wrap:wrap;row-gap:2px}.sms{font-size:13px;color:var(--sub);font-weight:600;margin-left:auto;margin-right:6px}
 details.pc[open]>summary{margin-bottom:6px}
 [data-tab="pay"] details.pc>summary b{margin-bottom:0}
+.disgap{text-align:center;color:var(--sub);font-size:18px;line-height:1;padding:6px 0 2px;letter-spacing:0}
+.dis{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding:16px 16px;border-radius:18px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(120% 120% at 100% 0,rgba(255,255,255,.25) 0,rgba(255,255,255,0) 55%),linear-gradient(135deg,#f0b429 0%,#e8862a 45%,#06a152 100%);box-shadow:0 10px 24px rgba(232,134,42,.32)}
+.dis::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;border:14px solid rgba(255,255,255,.14)}
+.dis>*{position:relative;z-index:1}.dis-k{font-size:20px;font-weight:900;letter-spacing:-.03em;display:flex;align-items:center;gap:6px}.dis-k::before{content:"★";font-size:16px}
+.dis-d{white-space:nowrap;font-size:12.5px;opacity:.92;font-weight:600;margin-top:1px}.dis-r{text-align:right}.dis-r b{display:block;font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1.1}.dis-r span{font-size:12px;opacity:.92;font-weight:600;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -921,6 +926,14 @@ var _pay11=pay;pay=function(){var h=_pay11(),a=ym.split('-'),cur=ymOf(today());
   h=h.slice(0,s)+'<details class="card pc" style="--dc:#c9971c"'+(setOpen['회차별']?' open':'')+' ontoggle="setOpen[\'회차별\']=this.open"><summary><b>회차별 적립 현황</b><span class="sms">'+n+'/'+N+'회차 · '+won(amt)+'</span></summary>'+body+'</details>'+h.slice(e)}
  return h};
 var _rn5=render;render=function(){try{document.body.setAttribute('data-tab',tab)}catch(e){}_rn5()};
+/* ---- 호봉 목록 끝에 소집해제 ---- */
+function addDischarge(){if(tab!=='home'||!document.querySelectorAll)return;var e=endD();if(!e)return;var h2=[].filter.call(document.querySelectorAll('#app h2'),function(x){return x.textContent==='계급 · 호봉'})[0];if(!h2)return;
+ var card=h2.parentNode,list=[].filter.call(card.children,function(c){return c.style&&c.style.marginTop==='10px'})[0];if(!list||list.querySelector('.dis'))return;
+ var more=card.querySelector('button.btn.line'),folded=more&&!hoAll;
+ if(folded){var gap=document.createElement('div');gap.className='disgap';gap.textContent='⋮';list.appendChild(gap)}
+ var r=document.createElement('div');r.className='dis';var d=new Date(e.getFullYear(),e.getMonth(),e.getDate()+1);
+ r.innerHTML='<div><div class="dis-k">소집해제</div><div class="dis-d">'+fdz(e)+' · 복무 마지막 날</div></div><div class="dis-r"><b>'+dd(e)+'</b></div>';list.appendChild(r)}
+var _rn6=render;render=function(){_rn6();addDischarge()};
 applyTheme();
 setInterval(function(){pctTick()},100);
 render();
