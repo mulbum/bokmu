@@ -291,6 +291,67 @@ details.pc[open]>summary{margin-bottom:6px}
 .lnk{border:0;background:none;color:var(--acc);font-weight:700;font-size:13.5px;padding:8px 0 0;min-height:32px}
 .ahd+.row{border-top:0;background:var(--tile);border-radius:12px;padding:10px 12px}
 @media (max-width:340px){.arow{grid-template-columns:1fr}.row[style*="white-space:nowrap"] b .sub{display:none}.row[style*="flex-wrap:wrap"]{flex-wrap:wrap!important;white-space:normal!important}.row[style*="flex-wrap:wrap"]>span:last-child{text-align:left!important}main{padding-left:12px;padding-right:12px}.card{padding:16px}}
+/* 히어로 카드 정리 */
+.card.hero{background:linear-gradient(160deg,#17583e 0%,#0f4430 55%,#0b3826 100%);box-shadow:0 10px 26px rgba(11,56,38,.28);padding:20px 20px 18px;--tile:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--sub:rgba(255,255,255,.72)}
+.card.hero::after{display:none}
+.hero .place{font-size:13px;font-weight:600;color:rgba(255,255,255,.78)}
+.hero .hl{font-size:15px;margin-top:8px}.hero .hl.sub{font-size:13px;margin-top:4px;color:rgba(255,255,255,.72)}
+.hero .badge{background:rgba(255,255,255,.16);color:#fff;font-size:12.5px;font-weight:700;padding:3px 10px}
+.hero .track{height:8px;margin:30px 0 26px;background:rgba(255,255,255,.14)}.hero .stop{height:8px}
+.hero .fill{background:#5fe39a;box-shadow:none}
+.hero .stop.on{background:rgba(11,56,38,.6)}.hero .stop span{font-size:11px;font-weight:600;color:rgba(255,255,255,.6)}.hero .stop.on span{color:#fff}.hero .stop small{color:rgba(255,255,255,.55)}
+.hero .dp{margin-bottom:14px}.hero .dp b{font-size:34px;letter-spacing:-.025em}.hero .dp span{font-size:13.5px;color:rgba(255,255,255,.8);font-weight:600}
+.hero .tri{background:rgba(255,255,255,.07);-webkit-backdrop-filter:none;backdrop-filter:none;padding:12px 0}.hero .tri>div{border-left-color:rgba(255,255,255,.12)}.hero .tri .k{font-size:12px;color:rgba(255,255,255,.65)}.hero .tri .v{font-size:19px}
+:root[data-theme="dark"] .card.hero{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card.hero{box-shadow:0 0 0 1px rgba(255,255,255,.06)}}
+.hero .track{margin-bottom:34px}
+.card.hero{background:radial-gradient(120% 90% at 100% 0,rgba(255,255,255,.14) 0,rgba(255,255,255,0) 60%),linear-gradient(150deg,#1d9c60 0%,#15885a 55%,#0f7449 100%);box-shadow:0 10px 24px rgba(15,116,73,.28)}
+.hero .fill{background:#e3fff0}.hero .track{background:rgba(255,255,255,.2)}.hero .stop.on{background:rgba(15,116,73,.55)}
+.hero .tri{background:rgba(255,255,255,.1)}
+.svh{display:flex;align-items:center;gap:8px}.svh b{font-size:17px;font-weight:800}.svn{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,.65);font-weight:600}
+.svk{font-size:13px;color:rgba(255,255,255,.65);margin-top:14px}.sva{font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.2;font-variant-numeric:tabular-nums}
+.savc .pbar{margin:12px 0 14px}
+.sv3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.sv3>div{background:rgba(255,255,255,.07);border-radius:12px;padding:9px 10px;min-width:0}.sv3 span{display:block;font-size:12px;color:rgba(255,255,255,.6)}.sv3 b{display:block;font-size:14px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.svm{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}.svm span{font-size:15px;color:rgba(255,255,255,.85)}.svm small{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:1px}.svm b{font-size:19px;font-weight:800;color:#f0cb72;white-space:nowrap}
+@media (max-width:360px){.sv3 b{font-size:12.5px}.sva{font-size:26px}}
+.pill,.sms,.frac{font-variant-numeric:proportional-nums;font-feature-settings:"tnum" 0}.frac i{font-style:normal;margin:0 .14em;opacity:.75}
+.stats.st3{grid-template-columns:repeat(3,1fr)}.stats.st3 .stat{padding:12px}.stats.st3 .stat .v{font-size:18px}.stats.st3 .stat .sub{white-space:normal;font-size:11.5px;letter-spacing:-.02em}
+.lvy{display:flex;align-items:center;justify-content:center;gap:28px;margin:-4px 0 14px}.lvy b{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.lvy .ghost{width:40px;height:40px;min-width:40px;border-radius:50%;padding:0;font-size:20px;background:var(--card)}
+.lvh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-bottom:14px;border-bottom:2px solid var(--ink)}.lvh .ghost{flex:none;border-radius:999px;padding:0 16px;min-height:36px;font-size:14px}
+.lvn{font-size:15px;font-weight:700;color:var(--ink2)}.lvr{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-top:2px}.lvp{font-size:14px;color:var(--sub);margin-top:2px;font-variant-numeric:tabular-nums}.lvx{font-size:12.5px;color:var(--sub);margin-top:4px;line-height:1.5}
+.lvl{padding-top:4px}.lvm{padding:12px 0 2px}.lvm>b{display:block;font-size:15px;font-weight:800;margin-bottom:3px}.lvm>div{font-size:15.5px;color:var(--ink2);line-height:1.8;font-variant-numeric:tabular-nums}
+.lvt{white-space:nowrap}.lvt.r{color:var(--warn)}.lvt.b{color:#3b74e0}.lvt em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--sub);background:var(--tile);border-radius:6px;padding:1px 5px;margin-left:3px;vertical-align:1px}
+.lvt button{border:0;background:var(--warn);color:#fff;width:20px;height:20px;border-radius:50%;font-size:13px;line-height:20px;padding:0;margin-left:4px;vertical-align:1px;min-height:0}
+.lvc{color:var(--sub)}.lvempty{font-size:14px;color:var(--sub);padding:14px 0 4px}
+.trs{padding:14px 0 12px}.trs .k{font-size:12.5px}.trs .v{font-size:21px;margin:2px 0 1px}.ts{font-size:11.5px;color:var(--sub);letter-spacing:-.02em}
+.lvsec{font-size:18px;font-weight:800;letter-spacing:-.02em;margin:26px 4px 10px}
+.ltw{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.lt{background:var(--tile);border-radius:16px;padding:12px 12px 11px;min-width:0}.lk{font-size:12.5px;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:5px;white-space:nowrap}.lk i{width:7px;height:7px;border-radius:50%;flex:none}
+.lval{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-top:4px;font-variant-numeric:tabular-nums}.lval small{font-size:14px;font-weight:700;margin-left:1px}.ls{font-size:11.5px;color:var(--sub);margin-top:1px;white-space:nowrap;letter-spacing:-.02em}
+.lnote{font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.5}.lnote+.lnote{margin-top:2px}.lwarn{font-size:13px;font-weight:600;color:var(--warn);background:rgba(229,72,77,.08);border-radius:10px;padding:8px 10px;margin-top:8px}
+.lhd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.lyr{display:flex;align-items:center;gap:6px}.lyr b{font-size:16px;font-weight:800;min-width:44px;text-align:center;font-variant-numeric:tabular-nums}.lyr .ghost{width:32px;height:32px;min-width:32px;min-height:32px;border-radius:50%;padding:0;font-size:16px}
+.lchs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -2px 6px;padding:0 2px}.lchs::-webkit-scrollbar{display:none}.lch{flex:none;border:0;background:var(--tile);color:var(--ink2);border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:600;min-height:34px}.lch b{font-weight:800;margin-left:2px}.lch.on{background:var(--ink);color:var(--card)}
+.lmo{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line)}.lmo:first-of-type{border-top:0}.lmo>b{flex:none;width:34px;font-size:14.5px;font-weight:800;padding-top:4px}.lmo>div{display:flex;flex-wrap:wrap;gap:6px}
+.tk{display:inline-flex;align-items:center;gap:5px;background:var(--tile);border-radius:10px;padding:5px 9px;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}.tk i{width:7px;height:7px;border-radius:50%}.tk em{font-style:normal;font-size:12px;font-weight:600;color:var(--sub)}.tk.r{color:var(--warn)}.tk.b{color:#3b74e0}
+.tk button{border:0;background:var(--warn);color:#fff;width:18px;height:18px;border-radius:50%;font-size:12px;line-height:18px;padding:0;min-height:0;margin-left:2px}
+@media (max-width:360px){.lval{font-size:22px}.lt{padding:10px}}
+.lchs{flex-wrap:wrap;overflow:visible}.lch{padding:6px 11px;font-size:13px;min-height:32px}
+h2.m0{margin:0}
+.lbw{margin-top:14px;border-top:1px solid var(--line);padding-top:4px}.lb{padding:11px 0 2px}.lbh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.lbh span{display:flex;align-items:center;gap:6px;font-size:14.5px;font-weight:600;color:var(--ink2)}.lbh i,.ldot{width:7px;height:7px;border-radius:50%;flex:none;display:inline-block}.lbh b{font-size:14.5px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lbb{height:6px;border-radius:3px;background:var(--tile);margin:7px 0 5px;overflow:hidden}.lbb i{display:block;height:100%;border-radius:3px}.lbs{font-size:12px;color:var(--sub)}
+.ldot{margin-right:7px;vertical-align:2px}
+.shc .sms{font-variant-numeric:tabular-nums}.sgp{padding:14px 0 4px;border-top:1px solid var(--line)}.sgp:first-of-type{border-top:0}
+.sgh{display:flex;align-items:center;gap:10px}.sgb{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;background:var(--c);flex:none}
+.sgh b{font-size:22px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.sgh b small{font-size:14px;margin-left:2px}.sgn{font-size:13px;color:var(--sub);font-weight:600}
+.sgl{margin:8px 0 6px 44px;font-size:14.5px;line-height:1.75;color:var(--ink2);font-variant-numeric:tabular-nums}.sd{white-space:nowrap}.sd.r{color:var(--warn)}.sd.b{color:#3b74e0}.sd em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--sub);background:var(--tile);border-radius:6px;padding:1px 5px;margin-left:3px;vertical-align:1px}
+.nw{white-space:nowrap}.note,.lnote,.lbs,.lvx{text-wrap:pretty}
+.wseg{display:inline-block;max-width:100%}.note,.lnote,.lbs,.lwarn,.sub{text-wrap:pretty}
+.ttb{width:100%;border-collapse:collapse;margin-top:10px;font-size:14.5px}.ttb th,.ttb td{padding:9px 4px;border-top:1px solid var(--line);text-align:center}.ttb thead th{border-top:0;font-size:12px;color:var(--sub);font-weight:600;line-height:1.3;padding-top:2px}.ttb tbody th{text-align:left;font-weight:600;color:var(--ink);white-space:nowrap}.ttb td input{margin:0;vertical-align:middle}.ttb th:first-child{width:38%}
+.wsep{white-space:pre}
+.sgh b{font-size:28px;line-height:1}.sgh b small{font-size:15px;font-weight:700;margin-left:2px}.sgn{font-size:12px;font-weight:500;color:var(--sub);padding-top:6px}.sgh{align-items:center}.sgb{width:32px;height:32px;font-size:14px}.sgl{margin-left:42px}
+.note,.sub{white-space:pre-line}
+.sgl{font-size:14px;letter-spacing:-.015em;margin-left:42px;margin-top:6px}
+.mtl span{display:block;white-space:nowrap}
+.shm{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--tile);border-radius:12px;padding:4px;margin-bottom:10px}.shm button{border:0;background:none;border-radius:9px;min-height:36px;font-size:13.5px;font-weight:600;color:var(--sub)}.shm button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
 </style>
 </head>
 <body>
@@ -636,7 +697,7 @@ var _pay4=pay;pay=function(){var h=_pay4(),m=calcMonth(ym),si=savIn(ym),sv=sav()
  +'<div class="total" style="font-size:17px"><span>적금 포함 실질 월급</span><span>'+won(m.total+si.match)+'</span></div>'
  +'<div class="note">실질 월급 = 월급 + 이 달 납입분에 붙는 매칭지원금. 납입한 55만원은 없어지는 돈이 아니라 적금에 모이는 돈이에요. 이자는 아래 만기 예상에 따로 넣었어요.</div>'
  :'<div class="note">이 달에는 군적금 납입 회차가 없어요.</div>')+'</div>';
- var mt=sv.N?'<div class="card"><h2>군적금 만기 예상</h2><div class="sub">'+fdz(sv.end)+' 소집해제일 만기 · 월 '+won(sv.amt)+' × '+sv.N+'회 · 연 '+sv.r+'% 단리 · 비과세</div>'
+ var mt=sv.N?'<div class="card"><h2>군적금 만기 예상</h2><div class="sub mtl" data-seg="1"><span>'+fdz(sv.end)+' 소집해제일 만기</span><span>월 '+won(sv.amt)+' × '+sv.N+'회 · 연 '+sv.r+'% · 단리 · 비과세</span></div>'
  +'<div class="row" style="margin-top:6px"><span>납입 원금</span><b>'+won(sv.P)+'</b></div><div class="row"><span>은행 이자</span><b>'+won(sv.I)+'</b></div><div class="row"><span>매칭지원금 ('+sv.mr+'%)</span><b>'+won(sv.M)+'</b></div>'
  +'<div class="total"><span>만기 수령 예상</span><span>'+won(sv.TOT)+'</span></div>'
  +'<div class="row" style="margin-top:8px"><span>지금까지 ('+sv.n+'회차)</span><b>원금 '+won(sv.p)+' · 이자 '+won(sv.i)+' · 매칭 '+won(sv.m)+'</b></div></div>':'';
@@ -722,7 +783,7 @@ function autoPromo(k){var s=pd(S.start);if(!s)return null;return new Date(s.getF
 function setPromo(k,v){var a=autoPromo(k);S.promo[k]=v&&(!a||v!==dstr(a))?v:'';save();render()}
 function promoUI(){var s=pd(S.start);if(!s)return '<div class="note">복무 시작일을 넣으면 진급일이 자동으로 채워져요.</div>';var anyM=false;
  var rows=['일병','상병','병장'].map(function(k){var m=!!S.promo[k],d=promoD(k);if(m)anyM=true;
-  return '<div class="prow"><div><b>'+k+'</b><span class="ptag'+(m?' m':'')+'">'+(m?'직접 입력':'자동')+'</span><div class="sub">'+dd(d)+(m?' · 자동이면 '+fdz(autoPromo(k)):' · '+(k==='일병'?'입소월 포함 3번째 달':k==='상병'?'9번째 달':'15번째 달')+' 1일')+'</div></div>'
+  return '<div class="prow"><div><b>'+k+'</b><span class="ptag'+(m?' m':'')+'">'+(m?'직접 입력':'자동')+'</span><div class="sub">'+dd(d)+(m?' · 자동이면 '+fdz(autoPromo(k)):' · '+(k==='일병'?'3':k==='상병'?'9':'15')+'개월째 1일')+'</div></div>'
   +'<input type="date" aria-label="'+k+' 진급일" value="'+dstr(d)+'" onchange="setPromo(\''+k+'\',this.value)">'
   +(m?'<button class="ghost" onclick="setPromo(\''+k+'\',\'\')" aria-label="'+k+' 자동으로 되돌리기">자동</button>':'')+'</div>'}).join('');
  return '<div class="plist">'+rows+'</div>'+(anyM?'<button class="btn line" onclick="S.promo={\'일병\':\'\',\'상병\':\'\',\'병장\':\'\'};save();render()">진급일 모두 자동으로 되돌리기</button>':'')
@@ -942,7 +1003,7 @@ function addDischarge(){if(tab!=='home'||!document.querySelectorAll)return;var e
 var _rn6=render;render=function(){_rn6();addDischarge()};
 /* ---- 앱 버전 표시 ---- */
 var APP_VER='2026.11.12';
-var _st8=settings;settings=function(){return _st8()+'<div class="ver">앱 버전 '+APP_VER+'</div>'};
+var _st8=settings;settings=function(){return _st8()+'<div class="ver">버전 '+APP_VER+' · '+APP_DATE+' 업데이트</div>'};
 /* ---- 봉급·식비·군적금 자동 입력 ---- */
 var RATE_SRC={y:2026,pay:{'이병':750000,'일병':900000,'상병':1200000,'병장':1500000},meal:9000,sav:{amt:550000,rate:5,match:100}};
 (function(){var p=S.pay||{},same=['이병','일병','상병','병장'].every(function(k){return +p[k]===RATE_SRC.pay[k]});
@@ -977,7 +1038,265 @@ bankUI=function(){var b=S.banks[0],s=pd(S.start),N=bankDeps(b).length;
  +'<div class="note">자동 값은 장병내일준비적금 최대 한도(월 55만원), 기본금리 연 5%, 매칭지원금 100%예요. 회차는 첫 납입 월부터 소집해제 전까지 자동으로 세요. 우대금리를 받으면 직접 입력으로 바꿔 금리를 넣으세요.</div>'};
 var _st9=settings;settings=function(){var h=_st9(),i=h.indexOf('<div class="card"><h2>월급 금액</h2>');if(i<0)return h;var j=h.indexOf('<div class="card">',i+10);return h.slice(0,i)+payCard()+(j<0?'':h.slice(j))};
 var _rt3=restoreText;restoreText=function(v){try{var o=JSON.parse(String(v||'').trim());['payAuto','mealAuto','savAuto'].forEach(function(k){if(o[k]===undefined)delete o[k]});_rt3(JSON.stringify(o))}catch(e){_rt3(v)}};
-APP_VER='2026.11.12-5';
+APP_VER='2026.11.12-7';
+/* ---- 홈 군적금 카드 정리 ---- */
+var _hm11=home;home=function(){var h=_hm11(),i=h.indexOf('<div class="card savc">');if(i<0)return h;var j=h.indexOf('<div class="card',i+10);if(j<0)j=h.length;
+ var sv=sav(),mx=savMax(),pc=mx?Math.min(100,sv.n/mx*100):0,t=today(),nx=(sv.L||[]).filter(function(x){return x.d>t})[0];
+ var c='<div class="card savc"><div class="svh"><b>군적금</b><span class="pill">'+sv.n+'/'+mx+'회차</span>'+(nx?'<span class="svn">다음 납입 '+(nx.d.getMonth()+1)+'/'+nx.d.getDate()+'</span>':'')+'</div>'
+ +(sv.amt?'<div class="svk">지금까지 쌓인 돈</div><div class="sva">'+won(sv.p+sv.i+sv.m)+'</div><div class="pbar"><i style="width:'+pc+'%"></i></div>'
+ +'<div class="sv3"><div><span>원금</span><b>'+won(sv.p)+'</b></div><div><span>이자</span><b>'+won(sv.i)+'</b></div><div><span>매칭</span><b>'+won(sv.m)+'</b></div></div>'
+ +'<div class="svm"><span>만기 수령 예상<small>'+fdz(sv.end)+' 소집해제 때</small></span><b>'+won(sv.TOT)+'</b></div>'
+ :'<div class="sub" style="margin-top:8px">설정 탭의 군적금에서 납입일을 입력하세요.</div>')+'</div>';
+ return h.slice(0,i)+c+h.slice(j)};
+APP_VER='2026.11.12-8';
+/* ---- 회차 표기·홈 간소화 ---- */
+function frac(a,b){return '<span class="frac">'+a+'<i>/</i>'+b+'</span>'}
+var _hm12=home;home=function(){var h=_hm12();
+ h=h.replace(/<span class="pill">(\d+)\/(\d+)회차<\/span>/g,function(m,a,b){return '<span class="pill">'+frac(a,b)+'회차</span>'});
+ return h.replace('<div class="card"><h2>휴가</h2><div class="stats">','<div class="card"><h2>휴가</h2><div class="stats st3">')};
+var _pay12=pay;pay=function(){return _pay12().replace(/<span class="sms">(\d+)\/(\d+)회차/g,function(m,a,b){return '<span class="sms">'+frac(a,b)+'회차'})};
+var _ad=addDischarge;addDischarge=function(){_ad();if(tab!=='home'||!document.querySelectorAll)return;var h2=[].filter.call(document.querySelectorAll('#app h2'),function(x){return x.textContent==='계급 · 호봉'})[0];if(!h2)return;
+ var card=h2.parentNode,list=[].filter.call(card.children,function(c){return c.style&&c.style.marginTop==='10px'})[0],lab=[].filter.call(card.children,function(c){return c.className==='bkh'})[0],btn=card.querySelector('button.btn.line');
+ if(!list)return;var n=hoNext().length;if(!btn){btn=document.createElement('button');btn.className='btn line';list.parentNode.insertBefore(btn,list.nextSibling)}
+ if(!hoAll){list.style.display='none';if(lab)lab.style.display='none';btn.textContent='앞으로의 호봉 보기 ('+n+'개)';btn.setAttribute('onclick','hoAll=true;render()')}
+ else{btn.textContent='접기';btn.setAttribute('onclick','hoAll=false;render()')}};
+/* ---- 휴가 탭: 종류별·월별 사용 내역 ---- */
+var lvY=today().getFullYear(),lvEd={};
+var LG=[{k:'연가',t:function(n){return leaveType(n).a}},{k:'병가',t:function(n){return SICK.indexOf(n)>=0}},{k:'대체휴무',t:function(n){return !!leaveType(n).r}},{k:'기타',t:null}];
+function lvGroupOf(n){for(var i=0;i<3;i++)if(LG[i].t(n))return LG[i].k;return '기타'}
+function lvList(g){var out={},y=String(lvY);S.leaves.forEach(function(l,i){if(!l.date||l.date.slice(0,4)!==y||lvGroupOf(l.type)!==g)return;var m=+l.date.slice(5,7);(out[m]=out[m]||[]).push({l:l,i:i})});
+ var ms=Object.keys(out).map(Number).sort(function(a,b){return a-b});if(!ms.length)return '<div class="lvempty">'+lvY+'년에 쓴 '+(g==='기타'?'휴가':g)+'가 없어요</div>';
+ return ms.map(function(m){var arr=out[m].sort(function(a,b){return a.l.date<b.l.date?-1:1});return '<div class="lvm"><b>'+m+'월</b><div>'+arr.map(function(o){var d=pd(o.l.date),dw=d.getDay(),cl=dw===0||isHol(d)?' r':dw===6?' b':'';
+  var tag=g==='연가'&&o.l.type!=='연가'||g==='기타'?' <em>'+esc(SHORT[o.l.type]||o.l.type)+'</em>':'';
+  return '<span class="lvt'+cl+'">'+d.getDate()+'('+'일월화수목금토'[dw]+'/'+rnd(+o.l.days)+')'+tag+(lvEd[g]?'<button aria-label="삭제" onclick="delLeave('+o.i+')">×</button>':'')+'</span>'}).join('<span class="lvc">, </span>')+'</div></div>'}).join('')}
+function lvCard(g,head){return '<div class="card lvg"><div class="lvh"><div>'+head+'</div><button class="ghost" onclick="lvEd[\''+g+'\']=!lvEd[\''+g+'\'];render()">'+(lvEd[g]?'완료':'편집')+'</button></div><div class="lvl">'+lvList(g)+'</div></div>'}
+leaves=function(){var old=_lv6().replace(/<span class="pill">([^<]+)<\/span>/g,function(m,t){var c=lc(t.replace(/&amp;/g,'&'));return c==='#6b7280'?m:'<span class="pill" style="background:'+c+'22;color:'+c+'">'+t+'</span>'}),i=old.indexOf('<div class="card"><h2>휴가 등록'),j=old.indexOf('<div class="card"',i+10),reg=i<0?'':old.slice(i,j<0?old.length:j);
+ var s=pd(S.start),e=endD(),t=today();if(!s)return old;
+ var cy=sy(t),r=yrRange(cy),other=cy==1?yrRange(2):yrRange(1),aRem=aTot(cy)-usedA(cy);
+ var aH='<div class="lvn">연가</div><div class="lvr">잔여 '+rnd(Math.max(0,aRem))+'일</div><div class="lvp">'+fdz(r.a)+' – '+fdz(r.b)+' ('+aTot(cy)+'일)</div>'
+  +(cy==1&&other&&other.a<=other.b?'<div class="lvx">1년차 남은 연가는 '+fdz(r.b)+'에 소멸 · 2년차 '+aTot(2)+'일은 '+(other.a.getMonth()+1)+'/'+other.a.getDate()+'부터</div>':(cy==2?'<div class="lvx">1년차 '+(aTot(1)-usedA(1)>0?rnd(aTot(1)-usedA(1))+'일 소멸':'모두 사용')+'</div>':''));
+ var sk=SICK_MAX-sickUsed(),te=trainEnd()||s,so=sickOver();
+ var sH='<div class="lvn">병가</div><div class="lvr">잔여 '+rnd(Math.max(0,sk))+'일</div><div class="lvp">'+fdz(te)+' – '+fdz(e)+' ('+SICK_MAX+'일)</div>'+(so?'<div class="lvx neg">'+rnd(so)+'일 초과 · 소집해제 '+Math.ceil(so)+'일 늦어짐</div>':'<div class="lvx">병가외출 포함 · 공무상병가 제외</div>');
+ var y0=ymOf(t),mr=monthRem(y0),ma=monthAcc(y0);
+ var rH='<div class="lvn">대체휴무</div><div class="lvr'+(mr<0?' neg':'')+'">잔여 '+rnd(mr)+'일</div><div class="lvp">'+(t.getMonth()+1)+'월 적립 '+sg(ma)+'일 · 사용 '+rnd(monthUsed(y0))+'일</div><div class="lvx">그 달에 안 쓰면 달 말에 사라져요 ('+dd(new Date(t.getFullYear(),t.getMonth()+1,0))+')</div>';
+ var oH='<div class="lvn">기타</div><div class="lvp" style="margin-top:2px">공가 · 특별휴가 · 청원휴가 · 지참 · 조퇴 · 외출</div>';
+ var nav='<div class="lvy"><button class="ghost" onclick="lvY--;render()" aria-label="이전 해">‹</button><b>'+lvY+'</b><button class="ghost" onclick="lvY++;render()" aria-label="다음 해">›</button></div>';
+ return old+'<div class="lvsec">사용한 날 한눈에 보기</div>'+nav+lvCard('연가',aH)+lvCard('병가',sH)+lvCard('대체휴무',rH)+lvCard('기타',oH)};
+APP_VER='2026.11.12-10';
+var _hm13=home;home=function(){var h=_hm13(),i=h.indexOf('<div class="card"><h2>휴가</h2>');if(i<0||!pd(S.start))return h;var j=h.indexOf('<div class="card"',i+10);if(j<0)j=h.length;
+ var t=today(),cy=sy(t),r=yrRange(cy),ar=aTot(cy)-usedA(cy),sk=SICK_MAX-sickUsed(),y0=ymOf(t),mr=monthRem(y0);
+ function c(k,v,s,neg){return '<div><div class="k">'+k+'</div><div class="v'+(neg?' neg':'')+'">'+v+'</div><div class="ts">'+s+'</div></div>'}
+ var card='<div class="card"><h2>남은 휴가</h2><div class="tri trs">'+c(cy+'년차 연가',rnd(Math.max(0,ar))+'일',(cy==1?'소멸 ':'해제 ')+dd(new Date(r.b.getFullYear(),r.b.getMonth(),r.b.getDate()+1)))+c('병가',rnd(Math.max(0,sk))+'일','복무 전체 30일')+c('대체휴무',rnd(mr)+'일','달 말 소멸',mr<0)+'</div></div>';
+ return h.slice(0,i)+card+h.slice(j)};
+APP_VER='2026.11.12-10';
+/* ---- 휴가 탭 순서: 한눈에 보기 → 등록 → 사용 내역(접힘) ---- */
+var lvHistOpen=false;
+var _lv7=leaves;leaves=function(){var h=_lv7(),a=h.indexOf('<div class="lvsec">');if(a<0)return h;var tail=h.slice(a);h=h.slice(0,a);
+ var r=h.indexOf('<div class="card"><h2>휴가 등록'),u=h.indexOf('<div class="card"><h2>사용 내역');if(r<0)return h+tail;
+ var reg=h.slice(r,u>r?u:h.length),use=u>r?h.slice(u):'';var top=h.slice(0,r);
+ if(use){var n=S.leaves.length;use=use.replace('<div class="card"><h2>사용 내역</h2>','<details class="card"'+(lvHistOpen?' open':'')+' ontoggle="lvHistOpen=this.open"><summary><b>전체 사용 내역</b><span class="sms">'+n+'건</span></summary>');use=use.replace(/<\/div>\s*$/,'</details>')}
+ return top+tail+reg+use};
+APP_VER='2026.11.12-11';
+/* ---- 군적금 22회차 (소집해제 달 납입, 매칭 없음) ---- */
+function svCap(){return +S.months||21}
+var _bd=bankDeps;bankDeps=function(b){var out=_bd(b);if(!S.sav22||!out.length)return out;var e=endD(),last=out[out.length-1];if(!e||e.getDate()<2)return out;
+ var ey=ymOf(e);if(last.y>=ey)return out;var nx=new Date(last.d.getFullYear(),last.d.getMonth()+1,1);if(ymOf(nx)!==ey)return out;
+ var d=new Date(e.getFullYear(),e.getMonth(),Math.min(+b.day||1,e.getDate()-1));if(out.length>=svCap()+1)return out;out.push({n:out.length+1,y:ey,d:d,amt:+b.amt,x:true});return out};
+var _sm2=savMax;savMax=function(){if(S.savAuto&&_smIn)return svCap()+(S.sav22?1:0);return _sm2()};
+var _sav2=sav;sav=function(){var r=_sav2(),amt=+S.banks[0].amt||0,cap=svCap()*amt,mr=savMatch()/100;r.M=Math.min(r.P,cap)*mr;r.m=Math.min(r.p,cap)*mr;r.TOT=r.P+r.I+r.M;r.tot=r.p+r.i;r.extra=r.N>svCap();return r};
+var _sin=savIn;savIn=function(y){var o=_sin(y);if(o&&o.n>svCap())o.match=0;return o};
+var _bui=bankUI;bankUI=function(){var e=endD(),h=_bui();return h+'<label class="chk" style="margin-top:12px"><input type="checkbox" '+(S.sav22?'checked':'')+' onchange="S.sav22=this.checked;save();render()">소집해제 달에도 넣기 (22회차)</label><div class="note" style="margin-top:4px">소집해제 날 전에 한 번 더 넣으면 22회차가 돼요. 이자는 붙지만 매칭지원금은 21회차까지만 나와요'+(e?' · 22회차 납입일 '+fdz(new Date(e.getFullYear(),e.getMonth(),Math.min(+S.banks[0].day||1,Math.max(1,e.getDate()-1)))):'')+'</div>'};
+var _pay13=pay;pay=function(){var h=_pay13(),sv=sav();if(!sv.extra)return h;
+ h=h.replace(/(<div class="srow[^"]*"><div><b>22회차<\/b>)/,'$1<span class="pill" style="background:#fff1e6;color:#d9630b">매칭 없음</span>');
+ return h.replace(/(<span>매칭지원금 \(100%\)<\/span>)/,'<span>매칭지원금 (21회차까지)</span>')};
+/* ---- 휴가 탭 새 구성 ---- */
+var lvF='전체';
+var LGC={'연가':'#e5484d','병가':'#a855f7','대체휴무':'#0891b2','기타':'#8d6e4f'};
+leaves=function(){var old=_lv6(),i=old.indexOf('<div class="card"><h2>휴가 등록'),j=old.indexOf('<div class="card"',i+10),reg=i<0?'':old.slice(i,j<0?old.length:j);
+ var s=pd(S.start);if(!s)return '<h1>휴가 관리</h1><div class="card"><div class="empty">설정 탭에서 복무 시작일을 입력하세요.</div></div>'+reg;
+ var t=today(),cy=sy(t),r=yrRange(cy),ar=aTot(cy)-usedA(cy),sk=SICK_MAX-sickUsed(),y0=ymOf(t),mr=monthRem(y0),ma=monthAcc(y0),so=sickOver();
+ function tile(k,v,sub,neg,c){return '<div class="lt"><div class="lk"><i style="background:'+c+'"></i>'+k+'</div><div class="lval'+(neg?' neg':'')+'">'+v+'<small>일</small></div><div class="ls">'+sub+'</div></div>'}
+ var warn=[];if(so)warn.push('병가 30일을 '+rnd(so)+'일 넘어서 소집해제가 '+Math.ceil(so)+'일 늦어져요');if(monthOver(y0))warn.push('대체휴무를 적립보다 '+rnd(monthOver(y0))+'일 더 등록했어요');
+ if(cy==1&&ar>0&&(r.b-t)/864e5<60)warn.push('1년차 연가 '+rnd(ar)+'일이 '+fdz(r.b)+'에 사라져요');
+ var nx=cy==1?yrRange(2):null;
+ var sum='<div class="card"><h2>남은 휴가</h2><div class="ltw">'
+  +tile(cy+'년차 연가',rnd(Math.max(0,ar)),(cy==1?'소멸 ':'해제 ')+dd(new Date(r.b.getFullYear(),r.b.getMonth(),r.b.getDate()+1)),false,LGC['연가'])
+  +tile('병가',rnd(Math.max(0,sk)),'30일 중',false,LGC['병가'])
+  +tile('대체휴무',rnd(mr),(t.getMonth()+1)+'월 적립 '+sg(ma),mr<0,LGC['대체휴무'])+'</div>'
+  +(nx&&nx.a<=nx.b?'<div class="lnote">2년차 연가 '+aTot(2)+'일은 '+fdz(nx.a)+'부터 새로 생겨요. 1년차 연가는 넘어가지 않아요.</div>':'')
+  +'<div class="lnote">대체휴무는 그 달 안에 써야 해요.</div>'
+  +warn.map(function(w){return '<div class="lwarn">'+w+'</div>'}).join('')+'</div>';
+ var y=String(lvY),items=S.leaves.map(function(l,k){return{l:l,i:k,g:lvGroupOf(l.type)}}).filter(function(o){return o.l.date&&o.l.date.slice(0,4)===y});
+ var tot={};items.forEach(function(o){tot[o.g]=(tot[o.g]||0)+(+o.l.days||0)});
+ var shown=items.filter(function(o){return lvF==='전체'||o.g===lvF}),byM={};shown.forEach(function(o){var m=+o.l.date.slice(5,7);(byM[m]=byM[m]||[]).push(o)});
+ var chips=['전체','연가','병가','대체휴무','기타'].map(function(k){return '<button class="lch'+(lvF===k?' on':'')+'" data-k="'+k+'" onclick="lvF=this.dataset.k;render()">'+k+(k!=='전체'&&tot[k]?' <b>'+rnd(tot[k])+'</b>':'')+'</button>'}).join('');
+ var ms=Object.keys(byM).map(Number).sort(function(a,b){return a-b}),ed=!!lvEd._;
+ var list=ms.length?ms.map(function(m){var arr=byM[m].sort(function(a,b){return a.l.date<b.l.date?-1:1});return '<div class="lmo"><b>'+m+'월</b><div>'+arr.map(function(o){var d=pd(o.l.date),dw=d.getDay(),cl=dw===0||isHol(d)?' r':dw===6?' b':'',sh=SHORT[o.l.type]||o.l.type;
+   return '<span class="tk'+cl+'"><i style="background:'+LGC[o.g]+'"></i>'+d.getDate()+'('+'일월화수목금토'[dw]+') <em>'+esc(sh)+(+o.l.days!==1?' '+rnd(+o.l.days):'')+'</em>'+(ed?'<button aria-label="삭제" onclick="delLeave('+o.i+')">×</button>':'')+'</span>'}).join('')+'</div></div>'}).join(''):'<div class="lvempty">'+lvY+'년에 쓴 '+(lvF==='전체'?'휴가':lvF)+'가 없어요</div>';
+ var hist='<div class="card"><div class="lhd"><h2 class="m0">사용한 날</h2><div class="lyr"><button class="ghost" onclick="lvY--;render()" aria-label="이전 해">‹</button><b>'+lvY+'</b><button class="ghost" onclick="lvY++;render()" aria-label="다음 해">›</button></div></div>'
+  +'<div class="lchs">'+chips+'</div>'+list+(items.length?'<button class="lnk" onclick="lvEd._=!lvEd._;render()">'+(ed?'완료':'잘못 등록한 휴가 지우기')+'</button>':'')+'</div>';
+ return '<h1>휴가 관리</h1>'+sum+hist+reg};
+APP_VER='2026.11.12-12';
+/* ---- 휴가 탭 보강: 사용 현황 막대 + 다가오는 휴가 ---- */
+function lbar(k,c,used,tot,sub,txt){var p=tot>0?Math.min(100,used/tot*100):0;return '<div class="lb"><div class="lbh"><span><i style="background:'+c+'"></i>'+k+'</span><b>'+(txt||rnd(used)+' / '+tot+'일')+'</b></div><div class="lbb"><i style="width:'+p+'%;background:'+c+'"></i></div><div class="lbs">'+sub+'</div></div>'}
+var _lv8=leaves;leaves=function(){var h=_lv8(),s=pd(S.start);if(!s)return h;var t=today(),e=endD(),cy=sy(t),y0=ymOf(t);
+ var r1=yrRange(1),r2=yrRange(2),rows=lbar('1년차 연가',LGC['연가'],usedA(1),aTot(1),fdz(r1.a)+' ~ '+fdz(r1.b)+(cy==1?' · 사용 중':' · 끝남'));
+ if(r2&&r2.a<=r2.b)rows+=lbar('2년차 연가',LGC['연가'],usedA(2),aTot(2),fdz(r2.a)+' ~ '+fdz(r2.b)+(cy==2?' · 사용 중':' · 1년차가 끝나면 시작'));
+ rows+=lbar('병가',LGC['병가'],sickUsed(),SICK_MAX,'복무 전체 · 병가외출 포함 · 공무상병가 제외');
+ var ma=Math.max(0,monthAcc(y0)),mu=monthUsed(y0);rows+=lbar((t.getMonth()+1)+'월 대체휴무',LGC['대체휴무'],mu,ma,'그 달에만 쓸 수 있어요 · 말일 소멸 '+dd(new Date(t.getFullYear(),t.getMonth()+1,0)),'사용 '+rnd(mu)+' / 적립 '+rnd(monthAcc(y0))+'일');
+ var t0=dstr(t),up=S.leaves.filter(function(l){return l.date>=t0}).sort(function(a,b){return a.date<b.date?-1:1}),more=up.length>5;up=up.slice(0,5);
+ var upc='<div class="card"><h2>다가오는 휴가</h2>'+(up.length?up.map(function(l){var d=pd(l.date),g=lvGroupOf(l.type);return '<div class="row"><span><i class="ldot" style="background:'+LGC[g]+'"></i>'+(d.getMonth()+1)+'/'+d.getDate()+' ('+'일월화수목금토'[d.getDay()]+') <span class="sub">'+esc(l.type)+(+l.days!==1?' '+rnd(+l.days)+'일':'')+'</span></span><b>'+dd(d)+'</b></div>'}).join('')+(more?'<div class="note">5건만 보여요. 나머지는 아래 사용한 날에서 볼 수 있어요.</div>':''):'<div class="lvempty" style="padding-top:2px">예정된 휴가가 없어요. 달력에서 날짜를 눌러 바로 등록할 수 있어요.</div>')+'</div>';
+ var a=h.indexOf('<div class="lnote">'),b=h.indexOf('<div class="card"><div class="lhd">');if(a<0||b<0)return h;
+ var endSum=h.lastIndexOf('</div>',b);var mid=h.slice(a,endSum);var warns=(mid.match(/<div class="lwarn">.*?<\/div>/g)||[]).join('');
+ return h.slice(0,a)+'<div class="lbw">'+rows+'</div>'+warns+h.slice(endSum,b)+upc+h.slice(b)};
+APP_VER='1.13';var APP_DATE='2026.11.12';
+/* ---- 달력: 이 달 근무일 모아보기 ---- */
+var FULLDAY=function(l){return (+l.days||0)>=1};
+function monthShifts(y){var a=y.split('-'),Y=+a[0],M=+a[1]-1,n=new Date(Y,M+1,0).getDate(),g={0:[],1:[],2:[],3:[],hy:[],tr:[],bo:[]};
+ for(var d=1;d<=n;d++){var D=new Date(Y,M,d),x=dayInfo(D);if(!x.in)continue;if(x.tr){g.tr.push({D:D});continue}if(x.bo){g.bo.push({D:D});continue}
+  var lv=x.ls.filter(FULLDAY)[0];if(lv){g.hy.push({D:D,t:lv.type,h:x.h});continue}if(x.h===3){g.hy.push({D:D});continue}g[x.h].push({D:D})}return g}
+function shiftCard(){var g=monthShifts(cym),M=+cym.split('-')[1];
+ var G=[['주','주간',g[0],'#4f7cf3'],['야','야간',g[1],'#8b6df0'],['비','비번',g[2],'#8a8f98'],['휴','휴무',g.hy,'#2f9e63']];if(g.bo.length)G.splice(1,0,['보','보은교육',g.bo,'#7c8a2e']);if(g.tr.length)G.unshift(['훈','훈련소',g.tr,'#7c8a2e']);
+ var sumL=G.filter(function(x){return x[2].length}).map(function(x){return x[0]+' '+x[2].length}).join(' · ');
+ function dt(o){var D=o.D,w=D.getDay(),cl=w===0||isHol(D)?' r':w===6?' b':'';return '<span class="sd'+cl+'">'+M+'.'+D.getDate()+'('+'일월화수목금토'[w]+')'+(o.t?'<em>'+esc(SHORT[o.t]||o.t)+'</em>':'')+'</span>'}
+ var body=G.map(function(x){return '<div class="sgp"><div class="sgh"><span class="sgb" style="--c:'+x[3]+'">'+x[0]+'</span><b>'+x[2].length+'<small>일</small></b><span class="sgn">'+x[1]+'</span></div>'+(x[2].length?'<div class="sgl">'+x[2].map(dt).join('<span class="lvc">, </span>')+'</div>':'<div class="sgl sub">없음</div>')+'</div>'}).join('');
+ if(!sumL)return ''; var hl=g.hy.filter(function(o){return o.t}).length;
+ return '<details class="card shc"'+(setOpen['근무일']?' open':'')+' ontoggle="setOpen[\'근무일\']=this.open"><summary><b>'+M+'월 근무일</b><span class="sms">'+(sumL||'근무 없음')+'</span></summary>'+body+(hl?'<div class="note">주간·야간·비번 날에 하루짜리 휴가(연가·병가·대체휴무 등)를 쓰면 휴로 옮겨 셌어요. 반가·외출처럼 반나절은 그대로 근무로 쳐요.</div>':'')+'</details>'}
+var _cal3=cal;cal=function(){var h=_cal3();if(!pd(S.start))return h;var k=h.indexOf('<div class="card"><div class="row"><span>이 달 대체휴무');if(k<0)return h;return h.slice(0,k)+shiftCard()+h.slice(k)};
+APP_VER='1.14';APP_DATE='2026.11.12';
+/* ---- 안내 문구 간결화 ---- */
+var TXT=[
+[/^주간·야간·비번 날에 하루짜리 휴가.*$/,'하루 휴가를 쓴 날은 ‘휴’로 셌어요 · 반가는 근무 그대로'],
+[/^식비·교통비 지급일\(주간·야간·비번\) (\d+)일에서 휴가·보은교육으로 빠진 식비 (\d+)일, 교통비 (\d+)일을 뺐어요\. 계급은 해당 월 1일 기준이에요\.$/,'출근 $1일 중 식비 $2일 · 교통비 $3일 제외 · 계급은 1일 기준'],
+[/^월급은 일한 다음 달에 들어와요\. \d+월 통장에는 (\d+)월분 월급이 들어오고 (\d+)월 적금이 나가요\.$/,'$1월분 월급 입금 · $2월 적금 출금'],
+[/^월급은 일한 다음 달에 들어와요\. \d+월 통장에는 (\d+)월분 월급이 들어와요\.$/,'$1월분 월급 입금'],
+[/^월급 합계는 ([\d,]+원)이에요\..*$/,'월급 합계 $1 · 적금 원금은 한 번만 셌어요'],
+[/^(\d{4}\.\d\d\.\d\d) 소집해제일 만기 · 월 ([\d,]+원) × (\d+)회 · 연 ([\d.]+)% 단리 · 비과세$/,'$1 만기 · 월 $2 × $3회 · 연 $4%'],
+[/^월 [\d,]+원 · 연 [\d.]+% 단리 · 비과세 · 매칭지원금 제외$/,'매칭지원금을 뺀 금액이에요'],
+[/^입소월을 1개월째로 쳐서.*$/,'3·9·15개월째 1일 자동 진급 · 다르면 날짜만 바꾸세요'],
+[/^월급은 다음 달 이 날짜에 들어와요\..*$/,'주말·공휴일이면 그 전 평일에 들어와요'],
+[/^두 기간 모두 식비와 교통비가 나오지 않고.*$/,'식비·교통비 없음 · 기본급 그대로 · 보은교육은 주간 근무로 쳐요'],
+[/^기준일에 어떤 근무였는지만 알려주면.*$/,'기준일 근무만 고르면 4일 주기로 자동 · 비우면 시작일이 주간'],
+[/^2026~2028년 공휴일.*$/,'2026~2028년은 자동 · 그 외 날짜만 추가 (예: 2029-05-01)'],
+[/^자동 값은 2026년 병사 봉급.*$/,'2026년 병사 봉급·중식비 기준 · 교통비는 직접 입력'],
+[/^자동 값은 장병내일준비적금.*$/,'월 55만원 · 연 5% · 매칭 100% 기준 · 우대금리는 직접 입력'],
+[/^소집해제 날 전에 한 번 더 넣으면 22회차가 돼요\..*22회차 납입일 (.*)$/,'22회차는 이자만 붙고 매칭 없음 · 납입일 $1'],
+[/^대체휴무는 월별로 \(주간 1일.*$/,'(주간 1 + 야간 2) − 평일 근무일만큼 매달 적립 · 다음 달로 안 넘어가요'],
+[/^체크한 항목은 그날 지급되지 않아요\..*$/,'체크하면 그날 지급 안 돼요 · 반나절은 0.5일로 등록'],
+[/^입력한 내용은 이 기기 안에만 저장돼요\..*$/,'데이터는 이 기기에만 저장돼요 · 가끔 백업해 두세요'],
+[/^저장: 공유 화면이 뜨면.*$/,'저장 → ‘파일에 저장’ 선택 · 가져오기 → 백업 파일 선택'],
+[/^2년차 연가 (\d+)일은 (\S+)부터 새로 생겨요\..*$/,'2년차 연가 $1일은 $2부터'],
+[/^앞으로의 달은 지금 설정한 금액과 근무표로 계산해요\..*$/,'앞으로의 달은 지금 설정으로 계산해요']];
+function tidyText(){var app=document.getElementById('app');if(!app||!document.createTreeWalker)return;var w=document.createTreeWalker(app,4,null),n;
+ while(n=w.nextNode()){var v=n.nodeValue;if(!v||v.length<8)continue;var t=v.trim();for(var i=0;i<TXT.length;i++){if(TXT[i][0].test(t)){n.nodeValue=t.replace(TXT[i][0],TXT[i][1]);break}}}}
+var _rn7=render;render=function(){_rn7();tidyText()};
+APP_VER='1.15';APP_DATE='2026.11.12';
+/* ---- 안내 문구: 너무 줄인 건 보충 ---- */
+TXT=[
+[/^주간·야간·비번 날에 하루짜리 휴가.*$/,'하루짜리 휴가(연가·병가 등)를 쓴 날은 원래 근무 대신 ‘휴’로 셌어요. 반가·외출은 근무로 그대로 둬요.'],
+[/^식비·교통비 지급일\(주간·야간·비번\) (\d+)일에서 휴가·보은교육으로 빠진 식비 (\d+)일, 교통비 (\d+)일을 뺐어요\. 계급은 해당 월 1일 기준이에요\.$/,'휴가·보은교육 날은 식비·교통비가 안 나와요 (이번 달 식비 $2일, 교통비 $3일 빠짐). 기본급은 그달 1일 계급으로 계산해요.'],
+[/^월급은 일한 다음 달에 들어와요\. (\d+)월 통장에는 (\d+)월분 월급이 들어오고 (\d+)월 적금이 나가요\.$/,'월급은 일한 다음 달에 들어와요. 그래서 $1월 통장엔 $2월분 월급이 들어오고, $3월 적금이 빠져나가요.'],
+[/^월급은 일한 다음 달에 들어와요\. (\d+)월 통장에는 (\d+)월분 월급이 들어와요\.$/,'월급은 일한 다음 달에 들어와요. 그래서 $1월 통장엔 $2월분 월급이 들어와요.'],
+[/^월급 합계는 ([\d,]+원)이에요\..*$/,'월급 합계는 $1이에요. 이 중 적금으로 넣은 돈은 만기 때 그대로 돌려받으니, 총액은 ‘적금 제외 월급 + 적금 만기’로 계산했어요.'],
+[/^(\d{4}\.\d\d\.\d\d) 소집해제일 만기 · 월 ([\d,]+원) × (\d+)회 · 연 ([\d.]+)% 단리 · 비과세$/,'$1 소집해제일 만기\n월 $2 × $3회 · 연 $4% · 비과세'],
+[/^월 [\d,]+원 · 연 [\d.]+% 단리 · 비과세 · 매칭지원금 제외$/,'회차마다 쌓인 원금 + 이자예요 (매칭지원금은 만기 때 따로 받아요)'],
+[/^입소월을 1개월째로 쳐서.*$/,'입소한 달을 1개월째로 쳐서 3·9·15개월째 1일에 자동 진급해요. 실제 날짜가 다르면 바꾸세요.'],
+[/^월급은 다음 달 이 날짜에 들어와요\..*$/,'일한 다음 달 이 날짜에 들어와요. 주말·공휴일이면 그 전 평일이에요.'],
+[/^두 기간 모두 식비와 교통비가 나오지 않고.*$/,'이 기간엔 식비·교통비가 없고 기본급은 그대로예요. 보은교육 날은 주간 근무로 쳐서 대체휴무에 들어가요.'],
+[/^기준일에 어떤 근무였는지만 알려주면.*$/,'기준일이 무슨 근무였는지만 고르면 주간→야간→비번→휴무 순서로 자동 계산돼요. 비워두면 시작일을 주간으로 봐요.'],
+[/^2026~2028년 공휴일.*$/,'2026~2028년 공휴일은 자동으로 들어가 있어요. 2029년 이후나 임시공휴일만 추가하세요. (예: 2029-05-01)'],
+[/^자동 값은 2026년 병사 봉급.*$/,'2026년 병사 봉급과 사회복무요원 중식비(하루 9,000원)로 자동 입력돼요. 교통비는 본인 왕복 요금을 넣으세요.'],
+[/^자동 값은 장병내일준비적금.*$/,'최대 한도 월 55만원 · 연 5% · 매칭 100%로 자동 입력돼요. 우대금리를 받으면 직접 입력으로 바꾸세요.'],
+[/^소집해제 날 전에 한 번 더 넣으면 22회차가 돼요\..*22회차 납입일 (.*)$/,'소집해제 달에 한 번 더 넣는 회차예요. 이자는 붙지만 매칭지원금은 21회차까지만 나와요. (납입일 $1)'],
+[/^대체휴무는 월별로 \(주간 1일.*$/,'매달 (주간 1일 + 야간 2일) − 평일 근무일(공휴일 제외)만큼 쌓여요. 그 달에 안 쓰면 사라져요.'],
+[/^체크한 항목은 그날 지급되지 않아요\..*$/,'체크한 휴가를 쓴 날은 식비·교통비가 안 나와요. 반가·지참·조퇴·외출은 0.5일로 등록하세요.'],
+[/^입력한 내용은 이 기기 안에만 저장돼요\..*$/,'데이터는 이 기기에만 저장돼요. 폰을 바꾸거나 앱을 지우기 전에 백업하세요.'],
+[/^저장: 공유 화면이 뜨면.*$/,'저장: 공유 화면에서 ‘파일에 저장’ 선택 · 가져오기: 저장해 둔 백업 파일 선택'],
+[/^2년차 연가 (\d+)일은 (\S+)부터 새로 생겨요\..*$/,'2년차 연가 $1일은 $2부터 새로 생겨요. 1년차 연가는 넘어가지 않아요.'],
+[/^앞으로의 달은 지금 설정한 금액과 근무표로 계산해요\..*$/,'앞으로의 달은 지금 설정한 금액으로 계산해요.']];
+APP_VER='1.16';APP_DATE='2026.11.12';
+/* ---- 안내 문구: 개조식(간결체) ---- */
+TXT=[
+[/^주간·야간·비번 날에 하루짜리 휴가.*$/,'하루 휴가(연가·병가 등) 쓴 날 → ‘휴’로 집계 · 반가·외출은 근무 유지'],
+[/^식비·교통비 지급일\(주간·야간·비번\) (\d+)일에서 휴가·보은교육으로 빠진 식비 (\d+)일, 교통비 (\d+)일을 뺐어요\. 계급은 해당 월 1일 기준이에요\.$/,'휴가·보은교육 날 식비·교통비 미지급 (식비\u00a0$2일,\u00a0교통비\u00a0$3일) · 기본급은 1일 계급 기준'],
+[/^월급은 일한 다음 달에 들어와요\. (\d+)월 통장에는 (\d+)월분 월급이 들어오고 (\d+)월 적금이 나가요\.$/,'월급은 일한 다음 달 입금 → $1월 통장: $2월분 월급 입금 · $3월 적금 출금'],
+[/^월급은 일한 다음 달에 들어와요\. (\d+)월 통장에는 (\d+)월분 월급이 들어와요\.$/,'월급은 일한 다음 달 입금 → $1월 통장: $2월분 월급 입금'],
+[/^월급 합계는 ([\d,]+원)이에요\..*$/,'월급 합계 $1 · 적금 원금은 만기 때 돌려받음 → 총액 = 적금 제외 월급 + 적금 만기'],
+[/^(\d{4}\.\d\d\.\d\d) 소집해제일 만기 · 월 ([\d,]+원) × (\d+)회 · 연 ([\d.]+)% 단리 · 비과세$/,'$1 소집해제일 만기\n월 $2 × $3회 · 연 $4% · 비과세'],
+[/^월 [\d,]+원 · 연 [\d.]+% 단리 · 비과세 · 매칭지원금 제외$/,'회차별 누적 원금 + 이자 (매칭지원금은 만기 때 별도)'],
+[/^입소월을 1개월째로 쳐서.*$/,'입소한 달 = 1개월째 → 3·9·15개월째 1일 자동 진급 · 실제와 다르면 날짜 수정'],
+[/^월급은 다음 달 이 날짜에 들어와요\..*$/,'일한 다음 달 이 날짜 입금 · 주말·공휴일이면 직전 평일'],
+[/^두 기간 모두 식비와 교통비가 나오지 않고.*$/,'이 기간 식비·교통비 미지급 · 기본급은 그대로 · 보은교육 날은 주간 근무로 대체휴무 적립'],
+[/^기준일에 어떤 근무였는지만 알려주면.*$/,'기준일 근무만 선택 → 주간→야간→비번→휴무 자동 반복 · 비우면 시작일 = 주간'],
+[/^2026~2028년 공휴일.*$/,'2026~2028년 자동 입력 · 2029년 이후·임시공휴일만 추가 (예: 2029-05-01)'],
+[/^자동 값은 2026년 병사 봉급.*$/,'2026년 병사 봉급·중식비(1일 9,000원) 자동 입력 · 교통비는 본인 왕복 요금 입력'],
+[/^자동 값은 장병내일준비적금.*$/,'월 55만원(최대) · 연 5% · 매칭 100% 자동 입력 · 우대금리 받으면 직접 입력'],
+[/^소집해제 날 전에 한 번 더 넣으면 22회차가 돼요\..*22회차 납입일 (.*)$/,'소집해제 달 추가 납입 · 이자는 붙음 · 매칭지원금은 21회차까지만 · 납입일 $1'],
+[/^대체휴무는 월별로 \(주간 1일.*$/,'매달 (주간 1일 + 야간 2일) − 평일 근무일(공휴일 제외) 만큼 적립 · 그 달 안 쓰면 소멸'],
+[/^체크한 항목은 그날 지급되지 않아요\..*$/,'체크한 휴가 쓴 날 식비·교통비 미지급 · 반가·지참·조퇴·외출은 0.5일로 등록'],
+[/^입력한 내용은 이 기기 안에만 저장돼요\..*$/,'데이터는 이 기기에만 저장 · 폰 교체·앱 삭제 전 백업 필수'],
+[/^저장: 공유 화면이 뜨면.*$/,'저장: 공유 화면 → ‘파일에 저장’ · 가져오기: 백업 파일 선택'],
+[/^2년차 연가 (\d+)일은 (\S+)부터 새로 생겨요\..*$/,'2년차 연가 $1일은 $2부터 · 1년차 남은 연가는 이월 안 됨'],
+[/^앞으로의 달은 지금 설정한 금액과 근무표로 계산해요\..*$/,'앞으로의 달은 현재 설정 기준'],
+[/^그 달에만 쓸 수 있어요 · (.*)$/,'그 달에만 사용 · $1'],
+[/^대체휴무는 그 달 안에 써야 해요\.$/,'대체휴무는 그 달 안에 사용'],
+[/^예정된 휴가가 없어요\..*$/,'예정된 휴가 없음 · 달력에서 날짜 눌러 등록'],
+[/^5건만 보여요\..*$/,'최근 5건만 표시 · 나머지는 아래 ‘사용한 날’'],
+[/^(\d{4})년에 쓴 (.+)가 없어요$/,'$1년 $2 사용 없음'],
+[/^병가 30일을 ([\d.]+)일 넘어서 소집해제가 (\d+)일 늦어져요$/,'병가 30일 $1일 초과 → 소집해제 $2일 연기'],
+[/^대체휴무를 적립보다 ([\d.]+)일 더 등록했어요$/,'대체휴무 적립보다 $1일 초과 등록'],
+[/^1년차 연가 ([\d.]+)일이 (\S+)에 사라져요$/,'1년차 연가 $1일 · $2 소멸 예정'],
+[/^이 달은 일근 근무일이 더 많아서 ([\d.]+)일 모자라요\.$/,'평일 근무일이 더 많아 $1일 부족'],
+[/^적립된 대체휴무보다 ([\d.]+)일 더 등록돼 있어요\..*$/,'적립보다 $1일 초과 등록 · 확인 필요'],
+[/^첫 월급은 일한 다음 달에 들어와요\..*$/,'첫 월급은 다음 달 입금 → 첫 달 적금은 가진 돈으로 납입'],[/^근무지를 설정에서 입력하세요$/,'근무지 미입력 · 설정에서 입력'],[/^설정 탭에서 복무 시작일을 입력하세요\..*$/,'설정에서 복무 시작일 입력 → 소집해제일 자동 계산'],[/^설정 탭에서 복무 시작일을 입력하세요\.$/,'설정에서 복무 시작일 입력'],[/^이 달에는 군적금 납입 회차가 없어요\.$/,'이 달 적금 납입 없음'],[/^시작일을 입력하세요$/,'시작일 입력 필요'],[/^복무 시작일을 넣으면 진급일이 자동으로 채워져요\.$/,'복무 시작일 입력 → 진급일 자동 입력'],[/^소집해제 날 전에 한 번 더 넣으면 22회차가 돼요\..*$/,'소집해제 달 추가 납입 · 이자는 붙음 · 매칭지원금은 21회차까지만']];
+APP_VER='1.18';APP_DATE='2026.11.12';
+/* ---- 줄바꿈 다듬기: '·' '→' 단위로만 넘어가게 ---- */
+function niceWrap(){var app=document.getElementById('app');if(!app)return;
+ app.querySelectorAll('.note,.lnote,.lbs,.lvx,.lwarn,.card>.sub,.sub[style*="margin"]').forEach(function(el){if(el.dataset.nw)return;el.dataset.nw=1;
+  [].slice.call(el.childNodes).forEach(function(n){if(n.nodeType!==3)return;var v=n.nodeValue;if(!/ · | → /.test(v))return;
+   var parts=v.split(/( · | → )/),f=document.createDocumentFragment();
+   parts.forEach(function(p){if(p===' · '||p===' → '){f.appendChild(document.createTextNode(' '+p.trim()+' '))}else if(p){var s=document.createElement('span');s.textContent=p;if(p.trim().length<=24)s.className='nw';f.appendChild(s)}});
+   n.parentNode.replaceChild(f,n)})})}
+var _rn8=render;render=function(){_rn8()};
+APP_VER='1.23';
+/* ---- 모바일 줄바꿈 다듬기: ' · ' 단위로 끊기 ---- */
+function segText(){var app=document.getElementById('app');if(!app||!app.querySelectorAll)return;
+ app.querySelectorAll('.note,.lnote,.lbs,.lvx,.ls,.ts,.lwarn,.sub,.lvempty,.lbs').forEach(function(el){if(el.children.length||el.dataset.seg)return;var t=el.textContent;if(t.indexOf(' · ')<0&&t.indexOf(' → ')<0)return;
+  var parts=t.split(/( · | → )/),last=null;el.textContent='';parts.forEach(function(p){if(p===' · '){if(last)last.textContent+='\u00a0·';el.appendChild(document.createTextNode(' '))}else if(p===' → '){if(last)last.textContent+='\u00a0→';el.appendChild(document.createTextNode(' '))}else if(p){var s=document.createElement('span');s.className='wseg';s.textContent=p;el.appendChild(s);last=s}});el.dataset.seg='1'});requestAnimationFrame(fixSep)}
+function fixSep(){var app=document.getElementById('app');if(!app||!app.querySelectorAll)return;app.querySelectorAll('.wseg').forEach(function(s){s.style.display='';var lh=parseFloat(getComputedStyle(s).lineHeight)||20;if(s.offsetHeight>lh*1.5)s.style.display='inline'});[].forEach.call([],function(s){s.style.display='';var a=s.previousElementSibling,b=s.nextElementSibling;if(!a||!b)return;var ra=a.getClientRects(),rb=b.getClientRects();if(!ra.length||!rb.length)return;var la=ra[ra.length-1],fb=rb[0];if(Math.abs(fb.top-la.top)>4)s.style.display='none'})}
+window.addEventListener('resize',function(){requestAnimationFrame(fixSep)});
+var _rnSeg=render;render=function(){_rnSeg();segText()};
+APP_VER='1.19';
+/* ---- 설정: 휴가별 식비·교통비 표 형태 ---- */
+var _st10=settings;settings=function(){var h=_st10(),i=h.indexOf('<div class="card"><h2>휴가별 식비·교통비</h2>');if(i<0)return h;var j=h.indexOf('<div class="card"',i+10);if(j<0)j=h.length;
+ var cb=function(i,k,on){return '<td><input type="checkbox" aria-label="'+k+'" '+(on?'checked':'')+' onchange="S.types['+i+'].'+k+'=this.checked;save()"></td>'};
+ var rows=S.types.map(function(t,i){return '<tr><th>'+esc(t.n)+'</th>'+cb(i,'a',t.a)+cb(i,'m',t.m)+cb(i,'t',t.t)+'</tr>'}).join('');
+ var c='<div class="card"><h2>휴가별 식비·교통비</h2><div class="sub">체크한 휴가 쓴 날 식비·교통비 미지급 · 반가·지참·조퇴·외출은 0.5일로 등록</div><table class="ttb"><thead><tr><th>휴가</th><th>연가<br>차감</th><th>식비<br>제외</th><th>교통비<br>제외</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+ return h.slice(0,i)+c+h.slice(j)};
+TXT.push([/^기준일 근무만 선택 → .*$/,'기준일 근무만 고르면 4일 주기 자동 · 비우면 시작일이 주간']);
+for(var _q=0;_q<TXT.length;_q++){if(String(TXT[_q][0]).indexOf('기준일에 어떤 근무였는지만')>=0)TXT[_q][1]='기준일 근무만 고르면 4일 주기로 자동 반복 · 비우면 시작일이 주간'}
+APP_VER='1.19';
+/* ---- 근무 순서 재정렬(앵커) ---- */
+var shMode='from';
+function anchorFor(d){var A=(S.anch||[]).filter(function(a){return pd(a.d)<=d}).sort(function(a,b){return a.d<b.d?-1:1});return A.length?A[A.length-1]:null}
+routine=function(d){var a=anchorFor(d),c=a?pd(a.d):(pd(S.cyc)||pd(S.start));if(!c)return 0;var s0=a?+a.s:(+S.cycShift||0),n=Math.round((d-c)/864e5);return((s0+n)%4+4)%4};
+(function(){S.anch=S.anch||[];var ov=S.ov||{},ks=Object.keys(ov).sort(),ch=false;ks.forEach(function(k){if(ov[k]!==1)return;var d=pd(k),n=dstr(new Date(d.getFullYear(),d.getMonth(),d.getDate()+1));if(ov[n]===2){S.anch=S.anch.filter(function(a){return a.d!==k});S.anch.push({d:k,s:1});delete ov[k];delete ov[n];ch=true}});
+ if(ch){Object.keys(ov).forEach(function(k){if(ov[k]===routine(pd(k)))delete ov[k]});S.ov=ov;save()}})();
+setShift=function(v){v=+v;var d=pd(sel);S.ov=S.ov||{};
+ if(shMode==='one'){setOv(d,v);if(v===1)setOv(new Date(d.getFullYear(),d.getMonth(),d.getDate()+1),2)}else{delete S.ov[sel];S.anch=(S.anch||[]).filter(function(a){return a.d!==sel});var prev=routine(d);if(prev!==v)S.anch.push({d:sel,s:v});
+  Object.keys(S.ov).forEach(function(k){if(S.ov[k]===routine(pd(k)))delete S.ov[k]})}
+ save();render()};
+resetShift=function(){if(S.ov){var d=pd(sel),nx=dstr(new Date(d.getFullYear(),d.getMonth(),d.getDate()+1));if(S.ov[sel]===1&&S.ov[nx]===2)delete S.ov[nx];delete S.ov[sel]}S.anch=(S.anch||[]).filter(function(a){return a.d!==sel});save();render()};
+var _shSel=null;var _sh3=sheet;sheet=function(){if(sel!==_shSel){_shSel=sel;shMode='from'}var h=_sh3();if(!h)return h;var hasA=(S.anch||[]).some(function(a){return a.d===sel}),hasO=S.ov&&S.ov[sel]!==undefined;
+ var tg='<div class="shm"><button class="'+(shMode==='from'?'on':'')+'" onclick="shMode=\'from\';render()">이 날부터 순서 변경</button><button class="'+(shMode==='one'?'on':'')+'" onclick="shMode=\'one\';render()">이 날만 변경</button></div>';
+ h=h.replace('<div class="og">',tg+'<div class="og">');
+ h=h.replace(/\((직접 변경|루틴 자동)\)/,'('+(hasO?'이 날만 변경':hasA?'이 날부터 순서 변경':'자동')+')');
+ if(hasA&&h.indexOf('resetShift()')<0)h=h.replace('<button class="btn"','<button class="ghost" style="margin-top:10px" onclick="resetShift()">원래 순서로 되돌리기</button><button class="btn"');
+ h=h.replace('루틴으로 되돌리기','원래 순서로 되돌리기');
+ return h.replace(/야간을 고르면 다음날은 자동으로 비번이 돼요\.[^<]*/,'순서 변경: 이 날부터 주간→야간→비번→휴무 다시 맞춤 · 이 날만: 그날만 바꿈(야간은 다음날 비번까지) · 휴가는 다시 누르면 취소')};
+var _st11=settings;settings=function(){var h=_st11(),n=(S.anch||[]).length+Object.keys(S.ov||{}).length;if(!n)return h;
+ return h.replace(/(<div class="card"><h2>주야비휴 근무표<\/h2>[\s\S]*?)(<\/div><\/div><\/div>)/,'$1$2'.replace('$2','')+'</div></div><div class="row" style="margin-top:6px"><span>달력에서 바꾼 근무 '+n+'건</span><button class="ghost" onclick="S.anch=[];S.ov={};save();render()">모두 되돌리기</button></div></div>')};
+APP_VER='1.25';
 applyTheme();
 setInterval(function(){pctTick()},100);
 render();
