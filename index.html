@@ -520,7 +520,7 @@ h2.m0{margin:0}
 .rsi b{font-size:14px;font-weight:700;line-height:20px}.rsi span{font-size:12.5px;color:var(--sub);line-height:18px}
 /* 상단·현황판 여백 정리 */
 main{padding-top:max(8px,calc(env(safe-area-inset-top,0px) - 22px))!important}
-@media (display-mode: standalone){main{padding-top:max(22px,calc(env(safe-area-inset-top,0px) - 8px))!important}}.eyebrow{margin-top:4px!important}h1{margin-bottom:14px!important}
+@media (display-mode: standalone){main{padding-top:max(30px,calc(env(safe-area-inset-top,0px) - 8px))!important}}.eyebrow{margin-top:4px!important}h1{margin-bottom:14px!important}
 .hero{padding-top:18px!important}
 .hero .hl:first-child{line-height:18px!important}.hero .hl:first-child .place{line-height:18px!important}
 .hero .hl:nth-child(2){margin-top:10px!important}
@@ -2041,7 +2041,7 @@ function holCard(){var u=holUser(),ys=payYears().filter(function(y){return y<=20
   +auto.map(function(d){return '<div class="hlr"><span>'+lab(d)+'</span><span class="sub">'+(HNAMEY[d]||HNAME[d.slice(5)]||'')+'</span></div>'}).join('')+'</details>'
   +'<div class="note">임시공휴일이 발표되면 날짜만 고르면 돼요 · 대체휴무 계산에 바로 반영</div></div>'}
 phLoad();
-APP_VER='2.43';
+APP_VER='2.44';
 
 
 
