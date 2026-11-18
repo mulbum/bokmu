@@ -560,7 +560,7 @@ main{padding-top:max(8px,calc(env(safe-area-inset-top,0px) - 22px))!important}
 .phv{position:fixed;inset:0;z-index:100;background:#000;display:flex;flex-direction:column;color:#fff}
 .phbar{display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;font-size:14px;font-variant-numeric:tabular-nums}
 .phbar button{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:18px;font:inherit;font-size:14px;font-weight:600;padding:8px 14px;min-height:36px}.phbar .phd.on{background:#e5484d}
-.phimg{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}.phimg img{max-width:100%;max-height:100%;object-fit:contain}
+.phimg{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden;touch-action:none}.phimg img{will-change:transform;transform-origin:center center;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}.phimg img{max-width:100%;max-height:100%;object-fit:contain}
 .phft{text-align:center;font-size:12.5px;opacity:.6;padding:8px 0 calc(env(safe-area-inset-bottom) + 12px)}
 .mmcard[open]>summary{margin-bottom:12px}.mmc{font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
 .mmta{resize:none;margin-top:0!important;min-height:64px;line-height:22px;font-size:16px!important;overflow:hidden;display:block}
@@ -1906,12 +1906,13 @@ function phClose(){phIdx=-1;var o=document.getElementById('phv');if(o)o.remove()
 function phStep(n){var p=PH[phIdx];if(!p)return;var L=phList(p.sec),j=L.indexOf(p)+n;if(j<0||j>=L.length)return;phIdx=PH.indexOf(L[j]);phDel=false;phView()}
 function phView(){var p=PH[phIdx];if(!p)return phClose();var L=phList(p.sec),j=L.indexOf(p),o=document.getElementById('phv');
  if(!o){o=document.createElement('div');o.id='phv';o.className='phv';document.body.appendChild(o);document.body.style.overflow='hidden';
-  var sx=0;o.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});o.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)phStep(dx<0?1:-1)},{passive:true})}
+  phGest(o)}
+ PZ={s:1,x:0,y:0};
  var d=new Date(p.t);
  o.innerHTML='<div class="phbar"><button class="phx" onclick="phClose()" aria-label="닫기">닫기</button><span>'+(j+1)+' / '+L.length+'</span>'
   +(phDel?'<button class="phd on" onclick="phDelId(\''+p.id+'\')">삭제 확인</button>':'<button class="phd" onclick="phDel=true;phView()">삭제</button>')+'</div>'
-  +'<div class="phimg" onclick="if(event.target===this)phClose()"><img src="'+p.d+'" alt=""></div>'
-  +'<div class="phft">'+fdz(d)+' 추가</div>'}
+  +'<div class="phimg" onclick="if(event.target===this&&PZ.s===1)phClose()"><img src="'+p.d+'" alt=""></div>'
+  +'<div class="phft">'+fdz(d)+' 추가 · 두 번 탭하거나 벌려서 확대</div>'}
 function phGrid(sec){var L=phList(sec);
  return '<div class="phg">'+L.map(function(p){return '<button class="pht" onclick="phOpen(\''+p.id+'\')"><img src="'+p.d+'" alt="" loading="lazy"></button>'}).join('')
   +'<label class="pht add"><input type="file" accept="image/*" multiple hidden onchange="phAdd(this,\''+sec+'\')"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>사진</span></label></div>'}
@@ -2040,8 +2041,33 @@ function holCard(){var u=holUser(),ys=payYears().filter(function(y){return y<=20
   +'<details class="hlst"><summary>자동 공휴일 보기</summary>'+(ys.length>1?'<div class="pyt">'+ys.map(function(y){return '<button class="'+(y===holYr?'on':'')+'" onclick="holYr='+y+';render();setTimeout(function(){var d=document.querySelector(\'.hlst\');if(d)d.open=true},0)">'+y+'년</button>'}).join('')+'</div>':'')
   +auto.map(function(d){return '<div class="hlr"><span>'+lab(d)+'</span><span class="sub">'+(HNAMEY[d]||HNAME[d.slice(5)]||'')+'</span></div>'}).join('')+'</details>'
   +'<div class="note">임시공휴일이 발표되면 날짜만 고르면 돼요 · 대체휴무 계산에 바로 반영</div></div>'}
+/* ---- 사진 확대: 두 손가락 핀치 · 두 번 탭 · 확대 중 드래그 ---- */
+var PZ={s:1,x:0,y:0};
+function pzApply(an){var im=document.querySelector('#phv .phimg img');if(!im)return;im.style.transition=an?'transform .22s ease':'none';im.style.transform='translate('+PZ.x+'px,'+PZ.y+'px) scale('+PZ.s+')'}
+function pzClamp(){var im=document.querySelector('#phv .phimg img');if(!im)return;if(PZ.s<=1){PZ={s:1,x:0,y:0};return}
+ var w=im.offsetWidth*PZ.s,h=im.offsetHeight*PZ.s,box=im.parentNode.getBoundingClientRect(),mx=Math.max(0,(w-box.width)/2),my=Math.max(0,(h-box.height)/2);
+ PZ.x=Math.max(-mx,Math.min(mx,PZ.x));PZ.y=Math.max(-my,Math.min(my,PZ.y))}
+function pzAt(cx,cy,ns){var im=document.querySelector('#phv .phimg img');if(!im)return;var box=im.parentNode.getBoundingClientRect(),ox=cx-(box.left+box.width/2),oy=cy-(box.top+box.height/2),k=ns/PZ.s;
+ PZ.x=ox-(ox-PZ.x)*k;PZ.y=oy-(oy-PZ.y)*k;PZ.s=ns}
+function phGest(o){var T=null,lastTap=0,moved=false,lastTouch=0;
+ function dist(t){return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY)}
+ function mid(t){return{x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2}}
+ o.addEventListener('touchstart',function(e){lastTouch=Date.now();if(!e.target.closest('.phimg'))return;moved=false;var t=e.touches;
+  if(t.length===2){var m=mid(t);T={m:'p',d:dist(t),s:PZ.s,x:PZ.x,y:PZ.y,cx:m.x,cy:m.y}}
+  else if(t.length===1)T={m:PZ.s>1?'d':'w',sx:t[0].clientX,sy:t[0].clientY,x:PZ.x,y:PZ.y}},{passive:true});
+ o.addEventListener('touchmove',function(e){if(!T)return;var t=e.touches;e.preventDefault();
+  if(T.m==='p'&&t.length===2){var m=mid(t),ns=Math.max(1,Math.min(5,T.s*dist(t)/T.d));PZ.s=T.s;PZ.x=T.x;PZ.y=T.y;pzAt(T.cx,T.cy,ns);PZ.x+=m.x-T.cx;PZ.y+=m.y-T.cy;moved=true;pzApply()}
+  else if(T.m==='d'&&t.length===1){PZ.x=T.x+t[0].clientX-T.sx;PZ.y=T.y+t[0].clientY-T.sy;moved=true;pzApply()}
+  else if(T.m==='w'&&t.length===1){if(Math.abs(t[0].clientX-T.sx)>8)moved=true}},{passive:false});
+ o.addEventListener('touchend',function(e){if(!T)return;var c=e.changedTouches[0];
+  if(T.m==='p'){if(e.touches.length)return;pzClamp();pzApply(true);T=null;return}
+  if(T.m==='w'){var dx=c.clientX-T.sx,dy=c.clientY-T.sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){T=null;phStep(dx<0?1:-1);return}}
+  if(T.m==='d'){pzClamp();pzApply(true)}
+  if(!moved){var n=Date.now();if(n-lastTap<300){lastTap=0;if(PZ.s>1)PZ={s:1,x:0,y:0};else{pzAt(c.clientX,c.clientY,2.5);pzClamp()}pzApply(true)}else lastTap=n}
+  T=null},{passive:true});
+ o.addEventListener('dblclick',function(e){if(!e.target.closest('.phimg')||Date.now()-lastTouch<1000)return;if(PZ.s>1)PZ={s:1,x:0,y:0};else{pzAt(e.clientX,e.clientY,2.5);pzClamp()}pzApply(true)})}
 phLoad();
-APP_VER='2.44';
+APP_VER='2.45';
 
 
 
