@@ -577,6 +577,10 @@ input,select,textarea{font-size:16px!important}.mta,.mmta{line-height:22px}
 .hlr{display:flex;align-items:center;justify-content:space-between;min-height:46px;border-bottom:1px solid var(--line);font-size:15px;font-variant-numeric:tabular-nums}.hlr:last-child{border-bottom:0}.hlr>.sub{font-size:13px}.hdel{background:none;border:0;font:inherit;font-size:13px;font-weight:600;color:var(--warn);padding:6px 2px;min-height:32px}
 .hemp{font-size:14px;color:var(--sub);padding:10px 0 2px}.hadd{width:100%;margin-top:12px}
 .hlst{margin-top:14px}.hlst>summary{font-size:14px;font-weight:600;color:var(--sub);padding:8px 0;cursor:pointer}.hlst .pyt{margin:6px 0 4px}
+.stsg{margin-top:6px;background:var(--tile);border-radius:12px;overflow:hidden}.stsg[hidden]{display:none}
+.stsi{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:0 14px;background:none;border:0;border-top:1px solid var(--line);font:inherit;color:var(--ink);text-align:left;cursor:pointer}.stsi:first-child{border-top:0}
+.stsi b{font-size:15px;font-weight:700;flex:none}.stsi span{font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.stn{margin-top:8px!important}
 </style>
 </head>
 <body>
@@ -1686,7 +1690,7 @@ function heroPages(){var tri=document.querySelector('.hero .tri');if(!tri||tri.c
  requestAnimationFrame(function(){sc.scrollLeft=heroPg*sc.clientWidth;mark()})}
 var _rnHp=render;render=function(){_rnHp.apply(this,arguments);if(tab==='home'){heroPages();if(typeof preDash==='function')preDash()}};
 ;
-APP_DATE='2026.11.18';
+APP_DATE='2026.11.20';
 /* ---- 휴가는 하루에 하나만 (다른 걸 누르면 교체, 같은 걸 다시 누르면 취소) ---- */
 toggleLeave=function(t){var had=S.leaves.some(function(l){return l.date===sel&&l.type===t});S.leaves=S.leaves.filter(function(l){return l.date!==sel});
  if(!had)S.leaves.push({date:sel,type:t,days:HALF.indexOf(t)>=0?0.5:1});save();render()};
@@ -2066,8 +2070,75 @@ function phGest(o){var T=null,lastTap=0,moved=false,lastTouch=0;
   if(!moved){var n=Date.now();if(n-lastTap<300){lastTap=0;if(PZ.s>1)PZ={s:1,x:0,y:0};else{pzAt(c.clientX,c.clientY,2.5);pzClamp()}pzApply(true)}else lastTap=n}
   T=null},{passive:true});
  o.addEventListener('dblclick',function(e){if(!e.target.closest('.phimg')||Date.now()-lastTouch<1000)return;if(PZ.s>1)PZ={s:1,x:0,y:0};else{pzAt(e.clientX,e.clientY,2.5);pzClamp()}pzApply(true)})}
+/* ---- 근무지 역 검색: 이름·초성 검색, 운영기관 자동 붙이기 ---- */
+var STOP={SM:'서울교통공사',KR:'한국철도공사',IC:'인천교통공사',BS:'부산교통공사',DG:'대구교통공사',GJ:'광주교통공사',DJ:'대전교통공사',SR:'에스알'};
+var STG={
+SM:{'1호선':'서울 시청 종각 종로3가 종로5가 동대문 동묘앞 신설동 제기동 청량리',
+'2호선':'시청 을지로입구 을지로3가 을지로4가 동대문역사문화공원 신당 상왕십리 왕십리 한양대 뚝섬 성수 건대입구 구의 강변 잠실나루 잠실 잠실새내 종합운동장 삼성 선릉 역삼 강남 교대 서초 방배 사당 낙성대 서울대입구 봉천 신림 신대방 구로디지털단지 대림 신도림 문래 영등포구청 당산 합정 홍대입구 신촌 이대 아현 충정로 용답 신답 용두 신설동 도림천 양천구청 신정네거리 까치산',
+'3호선':'지축 구파발 연신내 불광 녹번 홍제 무악재 독립문 경복궁 안국 종로3가 을지로3가 충무로 동대입구 약수 금호 옥수 압구정 신사 잠원 고속터미널 교대 남부터미널 양재 매봉 도곡 대치 학여울 대청 일원 수서 가락시장 경찰병원 오금',
+'4호선':'진접 오남 별내별가람 불암산 상계 노원 창동 쌍문 수유 미아 미아사거리 길음 성신여대입구 한성대입구 혜화 동대문 동대문역사문화공원 충무로 명동 회현 서울 숙대입구 삼각지 신용산 이촌 동작 총신대입구 사당 남태령',
+'5호선':'방화 개화산 김포공항 송정 마곡 발산 우장산 화곡 까치산 신정 목동 오목교 양평 영등포구청 영등포시장 신길 여의도 여의나루 마포 공덕 애오개 충정로 서대문 광화문 종로3가 을지로4가 동대문역사문화공원 청구 신금호 행당 왕십리 마장 답십리 장한평 군자 아차산 광나루 천호 강동 길동 굽은다리 명일 고덕 상일동 강일 미사 하남풍산 하남시청 하남검단산 둔촌동 올림픽공원 방이 오금 개롱 거여 마천',
+'6호선':'응암 역촌 불광 독바위 연신내 구산 새절 증산 디지털미디어시티 월드컵경기장 마포구청 망원 합정 상수 광흥창 대흥 공덕 효창공원앞 삼각지 녹사평 이태원 한강진 버티고개 약수 청구 신당 동묘앞 창신 보문 안암 고려대 월곡 상월곡 돌곶이 석계 태릉입구 화랑대 봉화산 신내',
+'7호선':'장암 도봉산 수락산 마들 노원 중계 하계 공릉 태릉입구 먹골 중화 상봉 면목 사가정 용마산 중곡 군자 어린이대공원 건대입구 자양 청담 강남구청 학동 논현 반포 고속터미널 내방 이수 남성 숭실대입구 상도 장승배기 신대방삼거리 보라매 신풍 대림 남구로 가산디지털단지 철산 광명사거리 천왕 온수',
+'8호선':'별내 다산 동구릉 구리 장자호수공원 암사역사공원 암사 천호 강동구청 몽촌토성 잠실 석촌 송파 가락시장 문정 장지 복정 남위례 산성 남한산성입구 단대오거리 신흥 수진 모란',
+'9호선':'언주 선정릉 삼성중앙 봉은사 종합운동장 삼전 석촌고분 석촌 송파나루 한성백제 올림픽공원 둔촌오륜 중앙보훈병원'},
+KR:{'1호선':'서울 남영 용산 노량진 대방 신길 영등포 신도림 구로 구일 개봉 오류동 온수 역곡 소사 부천 중동 송내 부개 부평 백운 동암 간석 주안 도화 제물포 도원 동인천 인천 가산디지털단지 독산 금천구청 광명 석수 관악 안양 명학 금정 군포 당정 의왕 성균관대 화서 수원 세류 병점 서동탄 세마 오산대 오산 진위 송탄 서정리 평택지제 평택 성환 직산 두정 천안 봉명 쌍용 아산 탕정 배방 온양온천 신창 청량리 회기 외대앞 신이문 석계 광운대 월계 녹천 창동 방학 도봉 도봉산 망월사 회룡 의정부 가능 녹양 양주 덕계 덕정 지행 동두천중앙 보산 동두천 소요산 청산 전곡 연천',
+'3호선':'대화 주엽 정발산 마두 백석 대곡 화정 원당 원흥 삼송',
+'4호선':'선바위 경마공원 대공원 과천 정부과천청사 인덕원 평촌 범계 금정 산본 수리산 대야미 반월 상록수 한대앞 중앙 고잔 초지 안산 신길온천 정왕 오이도',
+'경의중앙선':'문산 파주 월롱 금촌 금릉 운정 야당 탄현 일산 풍산 백마 곡산 대곡 능곡 행신 강매 한국항공대 수색 디지털미디어시티 가좌 신촌 서울 홍대입구 서강대 공덕 효창공원앞 용산 이촌 서빙고 한남 옥수 응봉 왕십리 청량리 회기 중랑 상봉 망우 양원 구리 도농 양정 덕소 도심 팔당 운길산 양수 신원 국수 아신 오빈 양평 원덕 용문 지평',
+'경춘선':'광운대 상봉 망우 신내 갈매 별내 퇴계원 사릉 금곡 평내호평 천마산 마석 대성리 청평 상천 가평 굴봉산 백양리 강촌 김유정 남춘천 춘천',
+'수인분당선':'청량리 왕십리 서울숲 압구정로데오 강남구청 선정릉 선릉 한티 도곡 구룡 개포동 대모산입구 수서 복정 가천대 태평 모란 야탑 이매 서현 수내 정자 미금 오리 죽전 보정 구성 신갈 기흥 상갈 청명 영통 망포 매탄권선 수원시청 매교 수원 고색 오목천 어천 야목 사리 한대앞 중앙 고잔 초지 안산 신길온천 정왕 오이도 달월 월곶 소래포구 인천논현 호구포 남동인더스파크 원인재 연수 송도 인하대 숭의 신포 인천',
+'경강선':'판교 이매 삼동 경기광주 초월 곤지암 신둔도예촌 이천 부발 세종대왕릉 여주',
+'서해선':'일산 풍산 백마 곡산 대곡 능곡 김포공항 원종 부천종합운동장 소사',
+'동해선':'부전 거제해맞이 거제 교대 동래 안락 부산원동 재송 센텀 벡스코 신해운대 송정 오시리아 기장 일광 좌천 월내 서생 남창 망양 덕하 개운포 태화강',
+'대경선':'구미 사곡 북삼 왜관 서대구 대구 동대구 경산',
+'경부선':'영등포 광명 수원 천안 천안아산 오송 조치원 전의 부강 신탄진 대전 옥천 이원 지탄 심천 영동 황간 추풍령 김천 김천구미 구미 약목 왜관 서대구 대구 동대구 경산 청도 밀양 삼랑진 원동 물금 화명 구포 사상 부산',
+'호남·전라선':'서대전 계룡 연산 논산 강경 함열 익산 김제 신태인 정읍 백양사 장성 광주송정 나주 함평 무안 몽탄 일로 임성리 목포 공주 삼례 전주 임실 오수 남원 곡성 구례구 순천 여천 여수엑스포',
+'장항선':'도고온천 신례원 예산 삽교 홍성 광천 청소 대천 웅천 서천 장항 군산 대야',
+'경전선':'진영 창원중앙 창원 마산 함안 군북 반성 진주 하동 광양 보성 벌교 화순 광주',
+'충북·중앙선':'청주 오근장 청주공항 증평 음성 주덕 충주 봉양 제천 원주 서원주 만종 단양 풍기 영주 안동 의성 영천 신경주 경주 울산 포항',
+'강원권':'횡성 둔내 평창 진부 강릉 영월 민둥산 사북 고한 태백 철암 도계 동해 묵호 정동진',
+'경북선':'상주 함창 점촌 예천'},
+IC:{'인천1호선':'계양 귤현 박촌 임학 계산 경인교대입구 작전 갈산 부평구청 부평시장 부평 동수 부평삼거리 간석오거리 인천시청 예술회관 인천터미널 문학경기장 선학 신연수 원인재 동춘 동막 캠퍼스타운 테크노파크 지식정보단지 인천대입구 센트럴파크 국제업무지구 송도달빛축제공원',
+'인천2호선':'검단오류 왕길 검단사거리 마전 완정 독정 검암 검바위 아시아드경기장 서구청 가정 가정중앙시장 석남 서부여성회관 인천가좌 가재울 주안국가산단 주안 시민공원 석바위시장 인천시청 석천사거리 모래내시장 만수 남동구청 인천대공원 운연',
+'7호선':'까치울 부천종합운동장 춘의 신중동 부천시청 상동 삼산체육관 굴포천 부평구청 산곡 석남'},
+BS:{'1호선':'다대포해수욕장 다대포항 낫개 신장림 장림 동매 신평 하단 당리 사하 괴정 대티 서대신 동대신 토성 자갈치 남포 중앙 부산 초량 부산진 좌천 범일 범내골 서면 부전 양정 시청 연산 교대 동래 명륜 온천장 부산대 장전 구서 두실 남산 범어사 노포',
+'2호선':'장산 중동 해운대 동백 벡스코 센텀시티 민락 수영 광안 금련산 남천 경성대·부경대 대연 못골 지게골 문현 국제금융센터·부산은행 전포 서면 부암 가야 동의대 개금 냉정 주례 감전 사상 덕포 모덕 모라 구남 구명 덕천 수정 화명 율리 동원 금곡 호포 증산 부산대양산캠퍼스 남양산 양산',
+'3호선':'수영 망미 배산 물만골 연산 거제 종합운동장 사직 미남 만덕 남산정 숙등 덕천 구포 강서구청 체육공원 대저',
+'4호선':'미남 동래 수안 낙민 충렬사 명장 서동 금사 반여농산물시장 석대 영산대 윗반송 고촌 안평'},
+DG:{'1호선':'설화명곡 화원 대곡 진천 월배 상인 월촌 송현 서부정류장 대명 안지랑 현충로 영대병원 교대 명덕 반월당 중앙로 대구 칠성시장 신천 동대구 동구청 아양교 동촌 해안 방촌 용계 율하 신기 반야월 각산 안심',
+'2호선':'문양 다사 대실 강창 계명대 성서산업단지 이곡 용산 죽전 감삼 두류 내당 반고개 청라언덕 반월당 경대병원 대구은행 범어 수성구청 만촌 담티 연호 대공원 고산 신매 사월 정평 임당 영남대',
+'3호선':'칠곡경대병원 학정 팔거 동천 칠곡운암 구암 태전 매천 매천시장 팔달 공단 만평 팔달시장 원대 북구청 달성공원 서문시장 청라언덕 남산 명덕 건들바위 대봉교 수성시장 수성구민운동장 어린이세상 황금 수성못 지산 범물 용지'},
+GJ:{'1호선':'녹동 소태 학동·증심사입구 남광주 문화전당 금남로4가 금남로5가 양동시장 돌고개 농성 화정 쌍촌 운천 상무 김대중컨벤션센터 공항 송정공원 광주송정 도산 평동'},
+DJ:{'1호선':'판암 신흥 대동 대전 중앙로 중구청 서대전네거리 오룡 용문 탄방 시청 정부청사 갈마 월평 갑천 유성온천 구암 현충원 월드컵경기장 노은 지족 반석'},
+SR:{'SRT':'수서 동탄 평택지제'}};
+var STL=(function(){var m={},a=[];Object.keys(STG).forEach(function(op){Object.keys(STG[op]).forEach(function(ln){STG[op][ln].split(' ').forEach(function(n){var k=op+'|'+n;if(!m[k]){m[k]={n:n,op:op,ln:[]};a.push(m[k])}if(m[k].ln.indexOf(ln)<0)m[k].ln.push(ln)})})});
+ var CH='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';a.forEach(function(x){x.c=x.n.split('').map(function(ch){var c=ch.charCodeAt(0)-44032;return c>=0&&c<11172?CH[Math.floor(c/588)]:ch}).join('')});return a})();
+function stNorm(q){return String(q||'').replace(/\s+/g,'').replace(/역$/,'')}
+function stMatch(x,q){var n=x.n,c=x.c;for(var i=0;i+q.length<=n.length;i++){var ok=true;for(var j=0;j<q.length;j++){var qc=q[j];if(/[ㄱ-ㅎ]/.test(qc)?c[i+j]!==qc:n[i+j]!==qc){ok=false;break}}if(ok)return i}return -1}
+function stFind(q){q=stNorm(q);if(!q)return[];if(/^(서울교통공사|한국철도공사|인천교통공사|부산교통공사|대구교통공사|광주교통공사|대전교통공사|에스알)/.test(q))return[];
+ var r=[];STL.forEach(function(x){var i=stMatch(x,q);if(i<0)return;var sc=(x.n===q?0:i===0?1:2)*100+x.n.length+(x.op==='SR'?5:0);r.push({x:x,sc:sc})});
+ r.sort(function(a,b){return a.sc-b.sc});return r.slice(0,7).map(function(o){return o.x})}
+function stFull(x){return STOP[x.op]+(x.n==='서울'?'서울역':x.n+'역')}
+function stLabel(x){return x.n==='서울'?'서울역':x.n+'역'}
+function stShow(v){var b=document.getElementById('stl');if(!b)return;if(!b.hidden&&b.dataset.q===String(v))return;b.dataset.q=String(v);var L=stFind(v);
+ if(!L.length){b.innerHTML='';b.hidden=true;b.dataset.q='';return}
+ b.hidden=false;b.innerHTML=L.map(function(x,i){return '<button type="button" class="stsi" data-i="'+i+'"><b>'+stLabel(x)+'</b><span>'+STOP[x.op]+' · '+x.ln.join('·')+'</span></button>'}).join('');
+ [].forEach.call(b.querySelectorAll('.stsi'),function(el){var x=L[+el.dataset.i];
+  el.addEventListener('pointerdown',function(e){e.preventDefault()});
+  el.addEventListener('click',function(){stPick(stFull(x))})})}
+function stPick(v){S.place=v;save();var i=document.getElementById('pla');if(i){i.value=v;i.blur()}var b=document.getElementById('stl');if(b){b.innerHTML='';b.hidden=true;b.dataset.q=''}}
+function stCommit(v){var q=stNorm(v),ex=STL.filter(function(x){return x.n===q});
+ if(ex.length===1){stPick(stFull(ex[0]));return}
+ S.place=v;save();if(ex.length>1)stShow(v);else setTimeout(function(){var b=document.getElementById('stl');if(b&&document.activeElement!==document.getElementById('pla')){b.innerHTML='';b.hidden=true;b.dataset.q=''}},250)}
+/* 역 이름만 써둔 근무지 → 앱 열 때마다 운영기관 붙이기 (기관 하나인 역만) */
+(function(){var _pq=stNorm(S.place);if(_pq){var _ex=STL.filter(function(x){return x.n===_pq});if(_ex.length===1&&!/^(서울교통공사|한국철도공사|인천교통공사|부산교통공사|대구교통공사|광주교통공사|대전교통공사|에스알)/.test(String(S.place).replace(/\s+/g,''))){S.place=stFull(_ex[0]);save()}}})();
+var _stP=settings;settings=function(){var h=_stP();
+ var a='<input id="pla" value="'+esc(S.place||'')+'" placeholder="예: 서울교통공사 ○○역" onchange="S.place=this.value;save()">';
+ var b='<input id="pla" value="'+esc(S.place||'')+'" placeholder="역 이름 또는 초성 (예: 성환, ㅅㅎ)" autocomplete="off" oninput="stShow(this.value)" onfocus="stShow(this.value)" onchange="stCommit(this.value)"><div id="stl" class="stsg" hidden></div><div class="note stn">역을 고르면 운영기관이 앞에 붙어요 · 목록에 없으면 그대로 입력</div>';
+ return h.indexOf(a)>=0?h.replace(a,b):h};
 phLoad();
-APP_VER='2.45';
+APP_VER='2.48';
 
 
 
