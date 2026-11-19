@@ -581,6 +581,17 @@ input,select,textarea{font-size:16px!important}.mta,.mmta{line-height:22px}
 .stsi{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:0 14px;background:none;border:0;border-top:1px solid var(--line);font:inherit;color:var(--ink);text-align:left;cursor:pointer}.stsi:first-child{border-top:0}
 .stsi b{font-size:15px;font-weight:700;flex:none}.stsi span{font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .stn{margin-top:8px!important}
+#nlo{position:fixed;inset:0;z-index:60}.nlb{position:absolute;inset:0;background:rgba(0,0,0,.45);animation:nlf .18s ease}
+.nls{position:absolute;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;background:var(--card);border-radius:22px 22px 0 0;padding:8px 18px calc(16px + env(safe-area-inset-bottom,0px));animation:nlu .22s ease}
+.nls .grab{width:36px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.nlh{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 4px}.nlh b{font-size:19px;font-weight:800}.nlh span{font-size:14px;color:var(--sub);font-variant-numeric:tabular-nums}
+.nlq{font-size:14px;color:var(--sub);margin:0 2px 14px}
+.nls [data-n]{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;font:inherit;color:var(--ink);border:0;border-radius:16px;padding:13px 16px;margin-bottom:8px;cursor:pointer;min-height:62px}
+.nls [data-n] span{display:flex;flex-direction:column;gap:3px}.nls [data-n] b{font-size:16px;font-weight:800}.nls [data-n] small{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
+.nlo2{background:var(--soft);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--acc) 55%,transparent)}.nlo2 b{color:var(--acc)}.nlo2 i{font-style:normal;font-size:12px;font-weight:700;color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent);border-radius:10px;padding:3px 8px}
+.nlo1{background:var(--tile)}.nls .nlc{width:100%;min-height:46px;margin-top:2px}
+@keyframes nlu{from{transform:translateY(100%)}to{transform:none}}@keyframes nlf{from{opacity:0}to{opacity:1}}
+.nlt{font-size:12.5px;line-height:18px;color:var(--sub);margin:4px 4px 12px;word-break:keep-all}.nlt b{color:var(--ink);font-weight:700;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -2137,8 +2148,33 @@ var _stP=settings;settings=function(){var h=_stP();
  var a='<input id="pla" value="'+esc(S.place||'')+'" placeholder="예: 서울교통공사 ○○역" onchange="S.place=this.value;save()">';
  var b='<input id="pla" value="'+esc(S.place||'')+'" placeholder="역 이름 또는 초성 (예: 성환, ㅅㅎ)" autocomplete="off" oninput="stShow(this.value)" onfocus="stShow(this.value)" onchange="stCommit(this.value)"><div id="stl" class="stsg" hidden></div><div class="note stn">역을 고르면 운영기관이 앞에 붙어요 · 목록에 없으면 그대로 입력</div>';
  return h.indexOf(a)>=0?h.replace(a,b):h};
+/* ---- 야간에 휴가 넣을 때: 1일(야간만) / 2일(야간+다음날 비번) 고르기 ---- */
+function nlNext(ds){var d=pd(ds);return new Date(d.getFullYear(),d.getMonth(),d.getDate()+1)}
+function nlNeed(ds,t){var d=pd(ds);if(!d||HALF.indexOf(t)>=0)return false;var x=dayInfo(d);if(!x.in||x.tr||x.bo||shiftOn(d)!==1)return false;
+ var n=nlNext(ds),y=dayInfo(n),nk=dstr(n);if(!y.in||y.tr||shiftOn(n)!==2)return false;return !S.leaves.some(function(l){return l.date===nk&&l.pair!==ds})}
+function nlClose(){var o=document.getElementById('nlo');if(o)o.remove()}
+function nlAsk(ds,t,cb){nlClose();var d=pd(ds),n=nlNext(ds),W='일월화수목금토',f=function(x){return (x.getMonth()+1)+'/'+x.getDate()+' ('+W[x.getDay()]+')'};
+ var o=document.createElement('div');o.id='nlo';o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div>'
+  +'<div class="nlh"><b>야간 '+esc(t)+'</b><span>'+f(d)+'</span></div>'
+  +'<div class="nlq">어떻게 쓰나요?</div>'
+  +'<button class="nlo2" data-n="2"><span><b>2일 · 야간 통째로</b><small>야간 '+f(d)+' + 비번 '+f(n)+'</small></span></button>'
+  +'<button class="nlo1" data-n="3"><span><b>1일 · 출근 후 새벽 퇴근</b><small>야간 출근 → 자정 넘어 퇴근 · 비번 '+f(n)+'에 기록</small></span></button>'
+  +'<button class="ghost nlc">취소</button></div>';
+ document.body.appendChild(o);
+ o.querySelector('.nlb').onclick=nlClose;o.querySelector('.nlc').onclick=nlClose;
+ [].forEach.call(o.querySelectorAll('[data-n]'),function(b){b.onclick=function(){nlClose();cb(+b.dataset.n)}})}
+function nlApply(ds,t,n){var nk=dstr(nlNext(ds));S.leaves=S.leaves.filter(function(l){return l.date!==ds&&!(n>=2&&l.date===nk)&&l.pair!==ds});
+ if(n===3){S.leaves.push({date:nk,type:t,days:1});save();render();return}
+ S.leaves.push({date:ds,type:t,days:1});if(n===2)S.leaves.push({date:nk,type:t,days:1,pair:ds});save();render()}
+var _tgN=toggleLeave;toggleLeave=function(t){var ds=sel,had=S.leaves.some(function(l){return l.date===ds&&l.type===t});
+ if(had){var nk=ds&&dstr(nlNext(ds));S.leaves=S.leaves.filter(function(l){return !(l.date===nk&&l.pair===ds)});return _tgN(t)}
+ if(ds&&nlNeed(ds,t)){nlAsk(ds,t,function(n){nlApply(ds,t,n)});return}
+ _tgN(t)};
+var _alN=addLeave;addLeave=function(){var d=document.getElementById("ld"),t=document.getElementById("lt"),n=document.getElementById("ln");
+ if(d&&t&&n&&parseFloat(n.value)===1&&nlNeed(d.value,t.value)){var ds=d.value,tv=t.value;nlAsk(ds,tv,function(k){nlApply(ds,tv,k)});return}
+ _alN()};
 phLoad();
-APP_VER='2.48';
+APP_VER='2.53';
 
 
 
