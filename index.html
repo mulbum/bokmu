@@ -642,6 +642,7 @@ input,select,textarea{font-size:16px!important}.mta,.mmta{line-height:22px}
 .dsta{width:100%;resize:none;margin:0 0 4px!important;line-height:22px}
 .wln{display:flex;flex-direction:column;gap:2px;margin-top:4px}.wln em{font-style:normal;font-size:12.5px;line-height:17px;color:var(--sub);padding-left:10px;position:relative}.wln em::before{content:"";position:absolute;left:1px;top:7px;width:4px;height:4px;border-radius:2px;background:#f08c2e}
 .wlt{display:flex;flex-direction:column}.wli>span{display:flex;flex-direction:column}
+.vrow{flex-wrap:wrap;row-gap:4px}.vpill,.vup{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -2320,7 +2321,7 @@ function wlLab(k){var d=pd(k),W='일월화수목금토',x=dayInfo(d),h=shiftOn(d
 function wlBody(){var k=wlKey(),L=S.wlog[k]||[],lb=wlLab(k),tot=L.reduce(function(a,x){return a+x.n},0);
  var head='<div class="wlh"><b>'+lb.lb+'</b>'+(lb.s>=0?'<span class="ths s'+lb.s+'">'+(lb.s?'야간':lb.dm?'근무':'주간')+'</span>':'')+wlHalfTag(k)+(tot?'<em>'+tot+'건</em>':'')+'</div>';
  var rows=L.map(function(x,i){return '<div class="wlr"><span class="wlt">'+esc(x.t)+wlNotes(x)+'</span><div class="wls"><button onclick="wlStep('+i+',-1)" aria-label="빼기">−</button><b>'+x.n+'</b><button onclick="wlStep('+i+',1)" aria-label="더하기">+</button></div></div>'}).join('');
- var all=wlFreq();WLP.forEach(function(t){if(all.indexOf(t)<0)all.push(t)});var fq0=all.filter(function(t){return !L.some(function(x){return x.t===t})}),fq=wlAll?fq0:fq0.slice(0,8);
+ var all=wlFreq();WLP.forEach(function(t){if(all.indexOf(t)<0)all.push(t)});var fq0=all.filter(function(t){return (typeof wlAskOf==='function'&&wlAskOf(t))||!L.some(function(x){return x.t===t})}),fq=wlAll?fq0:fq0.slice(0,8);
  return head+(rows||'<div class="tde">오늘 한 업무를 아래에서 골라 기록하세요 · 같은 업무를 또 누르면 +1건</div>')
   +(fq.length?'<div class="wlqh">탭해서 추가</div><div class="wlq">'+fq.map(function(t){return '<button onclick="wlAddName(this.dataset.t)" data-t="'+esc(t)+'">+ '+esc(t)+'</button>'}).join('')+(fq0.length>8?'<button class="wlmore" onclick="wlAll=!wlAll;mtRefresh()">'+(wlAll?'접기':'더보기 '+(fq0.length-8))+'</button>':'')+'</div>':'')
   +'<div class="tdadd"><input id="wlin" maxlength="40" autocomplete="off" placeholder="목록에 없으면 직접 입력" onkeydown="if(event.key===\'Enter\'){event.preventDefault();wlAdd()}"><button class="tdp" onclick="wlAdd()" aria-label="추가"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>'
@@ -2486,7 +2487,7 @@ function wlPush(t,note){var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x
 var _wlAN=wlAddName;wlAddName=function(t){t=String(t||'').trim().slice(0,40);if(wlAskOf(t)){dsAsk(t,function(r){wlPush(t,r)});return}_wlAN(t)};
 var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAskOf(e.t)){if(d>0){dsAsk(e.t,function(r){wlPush(e.t,r)});return}if(e.notes&&e.notes.length)e.notes.pop()}_wlSt(i,d)};
 phLoad();
-APP_VER='3.2';
+APP_VER='3.2.1';
 
 
 
