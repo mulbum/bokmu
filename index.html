@@ -1752,7 +1752,7 @@ function heroPages(){var tri=document.querySelector('.hero .tri');if(!tri||tri.c
  requestAnimationFrame(function(){sc.scrollLeft=heroPg*sc.clientWidth;mark()})}
 var _rnHp=render;render=function(){_rnHp.apply(this,arguments);if(tab==='home'){heroPages();if(typeof preDash==='function')preDash()}};
 ;
-APP_DATE='2026.11.21';
+APP_DATE='2026.11.22';
 /* ---- 휴가는 하루에 하나만 (다른 걸 누르면 교체, 같은 걸 다시 누르면 취소) ---- */
 toggleLeave=function(t){var had=S.leaves.some(function(l){return l.date===sel&&l.type===t});S.leaves=S.leaves.filter(function(l){return l.date!==sel});
  if(!had)S.leaves.push({date:sel,type:t,days:HALF.indexOf(t)>=0?0.5:1});save();render()};
@@ -2287,13 +2287,20 @@ mtCur=function(){return mtTab||'td'};
 S.todo.log=S.todo.log||[];var tdHist=false,tdHistN=14;
 tdPurge=function(){var n=Date.now(),mv=[];S.todo.items=S.todo.items.filter(function(i){if(i.done&&n-i.done>=12*36e5){mv.push(i);return false}return true});
  if(mv.length){mv.forEach(function(i){S.todo.log.push({t:i.t,d:dstr(new Date(i.done))})});var lim=dstr(new Date(today().getFullYear(),today().getMonth(),today().getDate()-365));S.todo.log=S.todo.log.filter(function(l){return l.d>=lim});save()}};
-function tdHistHTML(){var g={},W='일월화수목금토';S.todo.log.forEach(function(l){(g[l.d]=g[l.d]||[]).push(l.t)});
- var ks=Object.keys(g).sort().reverse();if(!ks.length)return '';
- var sh=ks.slice(0,tdHistN).map(function(k){var d=pd(k),x=dayInfo(d),h=shiftOn(d),sl=x.in&&(h===0||h===1)?(h===1?'야간':isDayMode(d)?'근무':'주간'):'';
+function histEmpty(ym,feat,curMsg){var M=+ym.slice(5),now=ymOf(today()),s0=pd(S.start),e0=endD();
+ if(e0&&ym>ymOf(e0))return '소집해제 이후예요';
+ if(ym>now)return '아직 오지 않은 달이에요';
+ if(s0&&ym<ymOf(s0))return '복무 시작 전이에요';
+ if(ym===now)return curMsg;
+ if(ym<'2026-11')return '이때는 '+feat+' 기능이 없었어요';
+ return M+'월엔 기록이 없어요'}
+function tdHistHTML(){var g={},W='일월화수목금토',ym=cym,M=+ym.slice(5);S.todo.log.forEach(function(l){(g[l.d]=g[l.d]||[]).push(l.t)});
+ var allk=Object.keys(g).sort();if(!allk.length)return '';
+ var ks=allk.filter(function(k){return k.slice(0,7)===ym}).reverse(),cnt=ks.reduce(function(a,k){return a+g[k].length},0);
+ var sh=ks.map(function(k){var d=pd(k),x=dayInfo(d),h=shiftOn(d),sl=x.in&&(h===0||h===1)?(h===1?'야간':isDayMode(d)?'근무':'주간'):'';
   var nx=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1),lb=h===1&&sl?(d.getMonth()+1)+'/'+d.getDate()+'~'+(nx.getMonth()!==d.getMonth()?(nx.getMonth()+1)+'/':'')+nx.getDate()+' ('+W[d.getDay()]+'~'+W[nx.getDay()]+')':(d.getMonth()+1)+'/'+d.getDate()+' ('+W[d.getDay()]+')';
   return '<div class="thd"><div class="thh"><b>'+lb+'</b>'+(sl?'<span class="ths s'+h+'">'+sl+'</span>':'')+'<em>'+g[k].length+'개</em></div>'+g[k].map(function(t){return '<div class="thi">'+esc(t)+'</div>'}).join('')+'</div>'}).join('');
- return '<details class="thl"'+(tdHist?' open':'')+' ontoggle="tdHist=this.open"><summary>지난 기록 <span>'+ks.length+'일 · '+S.todo.log.length+'개</span></summary>'+sh
-  +(ks.length>tdHistN?'<button class="thm" onclick="tdHistN+=30;tdHist=true;mtRefresh()">더 보기</button>':'')+'</details>'}
+ return '<details class="thl"'+(tdHist?' open':'')+' ontoggle="tdHist=this.open"><summary>'+M+'월 지난 기록 <span>'+(ks.length?ks.length+'일 · '+cnt+'개':'없음')+'</span></summary>'+(sh||'<div class="tde wle">'+histEmpty(ym,'체크리스트','완료한 항목이 여기에 날짜별로 쌓여요')+'</div>')+'</details>'}
 var _tdB3=tdBody;tdBody=function(){var h=_tdB3();
  h=h.replace('근무 중 틈틈이 할 일을 적어두세요 · 공부, 운동, 독서 등','근무 중 틈틈이 할 것을 적어두세요 · 공부, 운동, 독서 등').replace('placeholder="할 일 추가"','placeholder="항목 추가"').replace('체크한 일은 다음 날 자동으로 정리돼요','체크한 항목은 다음 날 지난 기록으로 옮겨져요');
  return h+tdHistHTML()};
@@ -2308,7 +2315,7 @@ tdPurge=function(){var n=Date.now(),mv=[];S.todo.items=S.todo.items.filter(funct
 
 /* ---- 업무 일지: 그날 한 업무를 건수로 · 지난 기록 · 월 합계 ---- */
 if(!S.wlog||typeof S.wlog!=='object')S.wlog={};var wlHist=false,wlHistN=14,wlEdit=false,wlAll=false;
-var WLP=['시각장애인 안내','유실물 습득·이관','리프트 지원','물품 운반','개찰구 안내','역사 순찰','승강기 안전관리','당직 근무','환경 정리','환승 안내','안내문 부착','CCTV 모니터링','노숙인 계도','취객 대응','무임승차 계도','응급환자 대응','시설 이상 신고 업무','돌발상황'];
+var WLP=['시각장애인 안내','유실물 습득·이관','리프트 지원','물품 운반','개찰구 안내','역사 순찰','승강기 안전관리','당직 근무','환경 정리','환승 안내','안내문 부착','CCTV 모니터링','노숙인 계도','취객 대응','난동 대응','무임승차 계도','응급환자 대응','시설 이상 신고 업무','돌발상황'];
 function wlKey(){return tdWK(Date.now())}
 function wlDay(k){return S.wlog[k]||(S.wlog[k]=[])}
 function wlAddName(t){t=String(t||'').trim().slice(0,40);if(!t)return;var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x.t===t})[0];if(e)e.n++;else L.push({t:t,n:1});save();mtRefresh()}
@@ -2347,19 +2354,20 @@ var _mtHW=mtHTML;mtHTML=function(){var cur=mtCur(),h;
 function wlLeave(k){var l=S.leaves.filter(function(x){return x.date===k&&HALF.indexOf(x.type)<0})[0];return l?l.type:''}
 var _wlB5=wlBody;wlBody=function(){var k=wlKey(),lv=wlLeave(k);if(!lv||(S.wlog[k]||[]).length)return _wlB5();
  var d=pd(k),W='일월화수목금토';return '<div class="wlh"><b>'+(d.getMonth()+1)+'/'+d.getDate()+' ('+W[d.getDay()]+')</b><span class="ths lv">'+esc(lv)+'</span></div><div class="tde wle">'+esc(lv)+' 쓴 날이라 업무 기록이 없어요</div>'+wlHistHTML()};
-wlHistHTML=function(){var cur=wlKey(),ks=Object.keys(S.wlog).filter(function(k){return k!==cur&&S.wlog[k].length});
- var ym=ymOf(today()),mt={};Object.keys(S.wlog).forEach(function(k){if(k.slice(0,7)===ym)S.wlog[k].forEach(function(x){mt[x.t]=(mt[x.t]||0)+x.n})});
- var mk=Object.keys(mt).sort(function(a,b){return mt[b]-mt[a]}),all=Object.keys(S.wlog).filter(function(k){return S.wlog[k].length}).sort();
- if(!ks.length&&!mk.length)return '';
- var lv={};if(all.length){var st=all[0];S.leaves.forEach(function(l){if(HALF.indexOf(l.type)<0&&l.date>=st&&l.date<cur&&!(S.wlog[l.date]||[]).length)lv[l.date]=l.type})}
- var keys=ks.concat(Object.keys(lv)).sort().reverse();
- var sum=mk.length?'<div class="wlm"><div class="wlmh">'+(+ym.slice(5))+'월 합계 · 오늘 포함</div>'+mk.map(function(t){return '<span>'+esc(t)+' <b>'+mt[t]+'</b></span>'}).join('')+'</div>':'';
- var days=keys.slice(0,wlHistN).map(function(k){var lb=wlLab(k);
+wlHistHTML=function(){var cur=wlKey(),ym=cym,M=+ym.slice(5),all=Object.keys(S.wlog).filter(function(k){return S.wlog[k].length}).sort();
+ if(!all.length)return '';
+ var ks=all.filter(function(k){return k!==cur&&k.slice(0,7)===ym});
+ var mt={};all.forEach(function(k){if(k.slice(0,7)===ym)S.wlog[k].forEach(function(x){mt[x.t]=(mt[x.t]||0)+x.n})});
+ var mk=Object.keys(mt).sort(function(a,b){return mt[b]-mt[a]}),mtot=mk.reduce(function(a,t){return a+mt[t]},0);
+ var lv={},st=all[0];S.leaves.forEach(function(l){if(HALF.indexOf(l.type)<0&&l.date.slice(0,7)===ym&&l.date>=st&&l.date<cur&&!(S.wlog[l.date]||[]).length)lv[l.date]=l.type});
+ var keys=ks.concat(Object.keys(lv)).sort().reverse(),inCur=cur.slice(0,7)===ym;
+ var sum=mk.length?'<div class="wlm"><div class="wlmh">'+M+'월 합계 · '+mtot+'건'+(inCur&&(S.wlog[cur]||[]).length?' · 오늘 포함':'')+'</div>'+mk.map(function(t){return '<span>'+esc(t)+' <b>'+mt[t]+'</b></span>'}).join('')+'</div>':'';
+ var days=keys.map(function(k){var lb=wlLab(k);
   if(lv[k]){var dd=pd(k),WW='일월화수목금토';return '<div class="thd lvd"><div class="thh"><b>'+(dd.getMonth()+1)+'/'+dd.getDate()+' ('+WW[dd.getDay()]+')</b><span class="ths lv">'+esc(lv[k])+'</span><em>기록 없음</em></div></div>'}
   var L=S.wlog[k],tot=L.reduce(function(a,x){return a+x.n},0);
   return '<div class="thd"><div class="thh"><b>'+lb.lb+'</b>'+(lb.s>=0?'<span class="ths s'+lb.s+'">'+(lb.s?'야간':lb.dm?'근무':'주간')+'</span>':'')+wlHalfTag(k)+'<em>'+tot+'건</em></div>'+L.map(function(x){return '<div class="thi wli"><span>'+esc(x.t)+wlNotes(x)+'</span><b>'+x.n+'건</b></div>'}).join('')+'</div>'}).join('');
- return '<details class="thl"'+(wlHist?' open':'')+' ontoggle="wlHist=this.open"><summary>지난 기록 <span>'+(ks.length?ks.length+'일':'아직 없음')+'</span></summary>'+(days||'<div class="tde wle">날짜가 바뀌면 오늘 기록이 여기에 날짜별로 쌓여요</div>')
-  +(keys.length>wlHistN?'<button class="thm" onclick="wlHistN+=30;wlHist=true;mtRefresh()">더 보기</button>':'')+sum+'</details>'};
+ var emp=histEmpty(ym,'업무 일지','날짜가 바뀌면 오늘 기록이 여기에 날짜별로 쌓여요');
+ return '<details class="thl"'+(wlHist?' open':'')+' ontoggle="wlHist=this.open"><summary>'+M+'월 지난 기록 <span>'+(ks.length?ks.length+'일':'없음')+'</span></summary>'+(days||'<div class="tde wle">'+emp+'</div>')+sum+'</details>'};
 function wlHalfTag(k){var l=S.leaves.filter(function(x){return x.date===k&&HALF.indexOf(x.type)>=0})[0];return l?'<span class="ths hf">'+esc(l.type)+'</span>':''}
 /* ---- 소집해제 결산: 업무 일지 합계 ---- */
 function wlTotals(){var c={},days=0,tot=0;Object.keys(S.wlog).forEach(function(k){var L=S.wlog[k];if(!L.length)return;days++;L.forEach(function(x){c[x.t]=(c[x.t]||0)+x.n;tot+=x.n})});return{c:c,days:days,tot:tot}}
@@ -2471,6 +2479,7 @@ var _rnCJ=render;render=function(){_rnCJ();if(tab!=='cal')return;var c=document.
 var WL_ASK={'돌발상황':['어떤 상황이었는지 적어두세요','예: 승객 어지럼증 119 신고','사유'],
 '응급환자 대응':['어떤 상황이었는지 적어두세요','예: 계단 낙상 · 119 인계','메모'],
 '취객 대응':['어떤 상황이었는지 적어두세요','예: 승강장 취객 · 경찰 인계','메모'],
+'난동 대응':['어떤 상황이었는지 적어두세요','예: 대합실 행인 소란 · 철도경찰 동행','메모'],
 '시설 이상 신고 업무':['어디가 어떻게 이상했는지 적어두세요','예: 2번 출구 에스컬레이터 정지','메모']};
 function wlAskOf(t){return Object.prototype.hasOwnProperty.call(WL_ASK,t)?WL_ASK[t]:null}
 function wlNotes(x){var a=wlAskOf(x.t),w=(a?a[2]:'메모')+' 없음';return x.notes&&x.notes.length?'<span class="wln">'+x.notes.map(function(n){return '<em>'+(n?esc(n):w)+'</em>'}).join('')+'</span>':''}
@@ -2486,8 +2495,11 @@ function dsAsk(name,cb){dsClose();var a=wlAskOf(name)||['내용을 적어두세�
 function wlPush(t,note){var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x.t===t})[0];if(!e){e={t:t,n:0};L.push(e)}e.n++;if(note!==undefined){e.notes=e.notes||[];e.notes.push(note)}save();mtRefresh()}
 var _wlAN=wlAddName;wlAddName=function(t){t=String(t||'').trim().slice(0,40);if(wlAskOf(t)){dsAsk(t,function(r){wlPush(t,r)});return}_wlAN(t)};
 var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAskOf(e.t)){if(d>0){dsAsk(e.t,function(r){wlPush(e.t,r)});return}if(e.notes&&e.notes.length)e.notes.pop()}_wlSt(i,d)};
+/* 이름 변경: 난동 승객 대응 → 난동 대응 */
+(function(){if(!S.wlog)return;var ch=false;Object.keys(S.wlog).forEach(function(k){var L=S.wlog[k],a=null;for(var i=L.length-1;i>=0;i--){if(L[i].t==='난동 승객 대응'){L[i].t='난동 대응';ch=true}}
+ var m={};S.wlog[k]=L.filter(function(x){if(m[x.t]){m[x.t].n+=x.n;if(x.notes)m[x.t].notes=(m[x.t].notes||[]).concat(x.notes);return false}m[x.t]=x;return true})});if(ch)save()})();
 phLoad();
-APP_VER='3.2.1';
+APP_VER='3.2.6';
 
 
 
