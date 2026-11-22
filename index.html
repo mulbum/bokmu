@@ -1752,7 +1752,7 @@ function heroPages(){var tri=document.querySelector('.hero .tri');if(!tri||tri.c
  requestAnimationFrame(function(){sc.scrollLeft=heroPg*sc.clientWidth;mark()})}
 var _rnHp=render;render=function(){_rnHp.apply(this,arguments);if(tab==='home'){heroPages();if(typeof preDash==='function')preDash()}};
 ;
-APP_DATE='2026.11.22';
+APP_DATE='2026.11.23';
 /* ---- 휴가는 하루에 하나만 (다른 걸 누르면 교체, 같은 걸 다시 누르면 취소) ---- */
 toggleLeave=function(t){var had=S.leaves.some(function(l){return l.date===sel&&l.type===t});S.leaves=S.leaves.filter(function(l){return l.date!==sel});
  if(!had)S.leaves.push({date:sel,type:t,days:HALF.indexOf(t)>=0?0.5:1});save();render()};
@@ -2315,7 +2315,7 @@ tdPurge=function(){var n=Date.now(),mv=[];S.todo.items=S.todo.items.filter(funct
 
 /* ---- 업무 일지: 그날 한 업무를 건수로 · 지난 기록 · 월 합계 ---- */
 if(!S.wlog||typeof S.wlog!=='object')S.wlog={};var wlHist=false,wlHistN=14,wlEdit=false,wlAll=false;
-var WLP=['시각장애인 안내','유실물 습득·이관','리프트 지원','물품 운반','개찰구 안내','역사 순찰','승강기 안전관리','당직 근무','환경 정리','환승 안내','안내문 부착','CCTV 모니터링','노숙인 계도','취객 대응','난동 대응','무임승차 계도','응급환자 대응','시설 이상 신고 업무','돌발상황'];
+var WLP=['시각장애인 안내','유실물 습득·이관','리프트 지원','휠체어 도우미','물품 운반','개찰구 안내','역사 순찰','승강기 안전관리','당직 근무','환경 정리','환승 안내','안내문 부착','CCTV 모니터링','노숙인 계도','취객 대응','난동 대응','무임승차 계도','응급환자 대응','시설 이상 신고 업무','돌발상황'];
 function wlKey(){return tdWK(Date.now())}
 function wlDay(k){return S.wlog[k]||(S.wlog[k]=[])}
 function wlAddName(t){t=String(t||'').trim().slice(0,40);if(!t)return;var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x.t===t})[0];if(e)e.n++;else L.push({t:t,n:1});save();mtRefresh()}
@@ -2499,7 +2499,7 @@ var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAs
 (function(){if(!S.wlog)return;var ch=false;Object.keys(S.wlog).forEach(function(k){var L=S.wlog[k],a=null;for(var i=L.length-1;i>=0;i--){if(L[i].t==='난동 승객 대응'){L[i].t='난동 대응';ch=true}}
  var m={};S.wlog[k]=L.filter(function(x){if(m[x.t]){m[x.t].n+=x.n;if(x.notes)m[x.t].notes=(m[x.t].notes||[]).concat(x.notes);return false}m[x.t]=x;return true})});if(ch)save()})();
 phLoad();
-APP_VER='3.2.6';
+APP_VER='3.2.7';
 
 
 
