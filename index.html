@@ -643,6 +643,20 @@ input,select,textarea{font-size:16px!important}.mta,.mmta{line-height:22px}
 .wln{display:flex;flex-direction:column;gap:2px;margin-top:4px}.wln em{font-style:normal;font-size:12.5px;line-height:17px;color:var(--sub);padding-left:10px;position:relative}.wln em::before{content:"";position:absolute;left:1px;top:7px;width:4px;height:4px;border-radius:2px;background:#f08c2e}
 .wlt{display:flex;flex-direction:column}.wli>span{display:flex;flex-direction:column}
 .vrow{flex-wrap:wrap;row-gap:4px}.vpill,.vup{white-space:nowrap}
+.mch{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.mch h2{margin:0!important}.mch>span{font-size:12.5px;font-weight:600;color:var(--sub);white-space:nowrap;font-variant-numeric:tabular-nums}
+.mcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.mcd{border:0;background:none;padding:0;margin:0;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;-webkit-tap-highlight-color:transparent;min-width:0}
+.mcm{height:12px;font-size:10.5px;font-weight:700;color:var(--acc);line-height:12px}
+.mcw{font-size:12px;font-weight:600;color:var(--sub)}.mcd.td .mcw{color:var(--acc);font-weight:700}
+.mcn{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mcw.r,.mcn.r{color:var(--warn)}.mcw.b,.mcn.b{color:#3b74e0}
+.mcd.td .mcn{background:var(--acc);color:var(--acc-ink)}
+.mcs{align-self:stretch;margin-top:2px;border-radius:9px;padding:6px 0;font-size:12.5px;font-weight:700;text-align:center;background:var(--tile,var(--bg));color:var(--sub);white-space:nowrap;overflow:hidden}
+.mcs.w{background:var(--soft);color:var(--acc)}.mcs.lv{background:rgba(251,146,60,.14);color:var(--warn)}
+.mcd:active .mcn{transform:scale(.92)}
+.mcvp{overflow:hidden;margin:0 -4px;padding:0 4px;touch-action:pan-y}.mcal{will-change:transform}
+.mct{border:0;background:var(--soft);color:var(--acc);font:inherit;font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;margin-right:8px;cursor:pointer}
+.mch>span{display:flex;align-items:center}
 </style>
 </head>
 <body>
@@ -2498,8 +2512,44 @@ var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAs
 /* 이름 변경: 난동 승객 대응 → 난동 대응 */
 (function(){if(!S.wlog)return;var ch=false;Object.keys(S.wlog).forEach(function(k){var L=S.wlog[k],a=null;for(var i=L.length-1;i>=0;i--){if(L[i].t==='난동 승객 대응'){L[i].t='난동 대응';ch=true}}
  var m={};S.wlog[k]=L.filter(function(x){if(m[x.t]){m[x.t].n+=x.n;if(x.notes)m[x.t].notes=(m[x.t].notes||[]).concat(x.notes);return false}m[x.t]=x;return true})});if(ch)save()})();
+/* 현황: 오늘 근무 → 미니 달력, 군적금 위로 */
+var mcOff=0,_mcLastTab=null;
+function mcRange(){var t=today(),s=pd(S.start),e=endD();if(!s||!e)return[0,0];return[Math.floor((s-t)/864e5/7),Math.floor((e-t)/864e5/7)]}
+function mcalInner(){var t=today(),W='일월화수목금토',ms={},cross=false,o=mcOff,y0=null;
+ function lab(d,x){if(!x.in)return['-',''];var ds=dstr(d),lv=S.leaves.filter(function(l){return l.date===ds});
+  if(lv.length&&HALF.indexOf(lv[0].type)<0)return[String(lv[0].type).slice(0,2),' lv'];
+  if(x.tr)return['훈련',''];var w=x.h===0||x.h===1;return[(x.h===0&&isDayMode(d))?'근무':RK[x.h],w?' w':'']}
+ var cells=[0,1,2,3,4,5,6].map(function(i){var d=new Date(t.getFullYear(),t.getMonth(),t.getDate()+o*7+i);if(y0===null)y0=d.getFullYear();ms[d.getFullYear()*100+d.getMonth()]=1;if(i&&d.getDate()===1)cross=true;return d});
+ var g=cells.map(function(d,i){var x=dayInfo(d),L=lab(d,x),dw=d.getDay(),c=(dw===0||isHol(d))?' r':dw===6?' b':'',td=!o&&!i;
+  return '<div class="mcd'+(td?' td':'')+'">'+(cross?'<span class="mcm">'+(i&&d.getDate()===1?(d.getMonth()+1)+'월':'')+'</span>':'')
+  +'<span class="mcw'+c+'">'+(td?'오늘':W[dw])+'</span><span class="mcn'+c+'">'+d.getDate()+'</span><span class="mcs'+L[1]+'">'+L[0]+'</span></div>'}).join('');
+ var mk=Object.keys(ms).sort().map(function(k,i){var Y=Math.floor(k/100),M=k%100+1;return (i===0||Y!==y0?Y+'년 ':'')+M+'월'}).join(' · ');
+ var ti;if(!o){var di=dayInfo(t);ti='오늘 근무 · '+(di.in?(di.tr?'훈련소':(di.h===0&&isDayMode(t))?'근무':RK[di.h]):'-')}
+ else ti=o===1?'다음 주':o===-1?'지난주':Math.abs(o)+'주 '+(o>0?'뒤':'전');
+ return '<div class="mch"><h2>'+ti+'</h2><span>'+(o?'<button class="mct" onclick="mcGo(-mcOff)">오늘</button>':'')+mk+'</span></div><div class="mcvp"><div class="mcal">'+g+'</div></div>'}
+function mcalCard(){if(_mcLastTab!=='home')mcOff=0;return '<div class="card mcc" id="mcc">'+mcalInner()+'</div>'}
+function mcGo(d){var r=mcRange(),n=Math.max(r[0],Math.min(r[1],mcOff+d)),c=document.getElementById('mcc');if(!c)return;
+ if(n===mcOff){var g0=c.querySelector('.mcal');if(g0){g0.style.transition='transform .25s cubic-bezier(.2,.8,.2,1)';g0.style.transform=''}return}
+ var dir=n>mcOff?1:-1,jump=Math.abs(n-mcOff)>1;mcOff=n;var g=c.querySelector('.mcal'),W=c.querySelector('.mcvp').offsetWidth;
+ if(jump||!g){c.innerHTML=mcalInner();return}
+ g.style.transition='transform .18s ease-in';g.style.transform='translateX('+(-dir*W)+'px)';
+ setTimeout(function(){c.innerHTML=mcalInner();var g2=c.querySelector('.mcal');g2.style.transition='none';g2.style.transform='translateX('+(dir*W*.6)+'px)';
+  g2.offsetWidth;g2.style.transition='transform .26s cubic-bezier(.2,.8,.2,1)';g2.style.transform=''},170)}
+(function(){var sx=0,sy=0,on=false,lock=0,g=null;
+ document.addEventListener('touchstart',function(e){var c=e.target.closest&&e.target.closest('#mcc .mcvp');if(!c)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;on=true;lock=0;g=c.querySelector('.mcal');if(g)g.style.transition='none'},{passive:true});
+ document.addEventListener('touchmove',function(e){if(!on||!g)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+  if(!lock){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;lock=Math.abs(dx)>Math.abs(dy)?1:2}
+  if(lock!==1)return;e.preventDefault();var r=mcRange(),edge=(dx<0&&mcOff>=r[1])||(dx>0&&mcOff<=r[0]);g.style.transform='translateX('+(edge?dx*.25:dx)+'px)'},{passive:false});
+ function end(e){if(!on)return;on=false;if(lock!==1||!g){return}var t=e.changedTouches[0],dx=t.clientX-sx;
+  if(Math.abs(dx)>45)mcGo(dx<0?1:-1);else{g.style.transition='transform .22s cubic-bezier(.2,.8,.2,1)';g.style.transform=''}}
+ document.addEventListener('touchend',end,{passive:true});document.addEventListener('touchcancel',end,{passive:true})})();
+var _rnMC=render;render=function(){var r=_rnMC.apply(this,arguments);_mcLastTab=tab;return r};
+var _hmMC=home;home=function(){var h=_hmMC(),j=h.indexOf('<div class="card"><h2>오늘 근무');if(j<0)return h;
+ var k=h.indexOf('<div class="card',j+10);if(k<0)k=h.length;h=h.slice(0,j)+h.slice(k);
+ var i=h.indexOf('<div class="card savc');if(i<0)i=h.indexOf('<div class="card"><div class="svr">');if(i<0)i=j;
+ return h.slice(0,i)+mcalCard()+h.slice(i)};
 phLoad();
-APP_VER='3.2.7';
+APP_VER='3.2.9';
 
 
 
