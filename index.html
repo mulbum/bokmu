@@ -708,6 +708,7 @@ button.p2chip.pct{border:0;font:inherit;font-size:12px;font-weight:700;cursor:po
 .p2in .p2mini{margin-top:12px!important;gap:6px!important}.p2in .p2mini>div{padding:9px 12px!important;gap:2px!important;border-radius:11px}
 .p2in .p2mini span{font-size:11.5px;line-height:15px}.p2in .p2mini b{font-size:14px;line-height:18px}.p2in .p2ms{font-size:10.5px}
 .p2in .p2real{margin-top:10px!important;padding-top:4px!important}.p2in .p2real>div{padding:5px 0!important}.p2in .p2real span{font-size:12.5px}.p2in .p2real small{font-size:11px}.p2in .p2real b{font-size:14px!important}
+.npc .nph{margin-bottom:6px}.npc .npd{margin:-6px 0}
 </style>
 </head>
 <body>
@@ -2638,9 +2639,9 @@ var _adRK=addDischarge;addDischarge=function(){_adRK();if(tab!=='home')return;va
  btn.innerHTML=hoAll?'<span>접기</span><i class="up">›</i>':'<span>앞으로의 호봉 <b>'+hoNext().length+'</b>개</span><i>›</i>'};
 /* 현황: 다음 월급 카드 재구성 */
 function npCard(){var np=nextPay();if(!np)return null;var amt=Math.round(calcMonth(np.y).total),c=cash(ymOf(np.d)),W='일월화수목금토',d=np.d;
- var h='<div class="card npc"><div class="nph"><h2>월급날</h2><span class="npd">'+dd(d)+'</span></div>'
+ var h='<div class="card npc"><div class="nph"><h2>월급날</h2><span class="npd">'+(d.getMonth()+1)+'/'+d.getDate()+' ('+W[d.getDay()]+') · '+dd(d)+'</span></div>'
  +'<div class="npa">'+amt.toLocaleString('ko-KR')+'<small>원</small></div>'
- +'<div class="nps">'+(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+W[d.getDay()]+') 입금 · '+(+np.y.split('-')[1])+'월 근무분</div>';
+ +'<div class="nps">'+(+np.y.split('-')[1])+'월 근무분 월급</div>';
  if(c.si&&c.si.amt>0)h+='<div class="npf"><div><span>적금 납입</span><b class="npo">−'+won(c.si.amt)+'</b></div><div class="npl"><span>적금 빼고 남는 돈</span><b>'+won(amt-c.si.amt)+'</b></div></div>';
  return h+'</div>'}
 var _hmNP=home;home=function(){var h=_hmNP(),a=h.indexOf('<div class="card"><h2>다음 월급</h2>');if(a<0)return h;var n=npCard();if(!n)return h;
