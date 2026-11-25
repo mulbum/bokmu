@@ -701,7 +701,7 @@ input,select,textarea{font-size:16px!important}.mta,.mmta{line-height:22px}
 .pcl{display:flex;align-items:center;gap:12px;margin-top:12px;font-size:11.5px;color:var(--sub);font-weight:600}.pcl i{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--acc);opacity:.32;margin-right:5px;vertical-align:0}.pcl i.got{opacity:1}.pcl .pcn{margin-left:auto}
 button.p2chip.pct{border:0;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
 .pcb{position:relative}.pcb.ny::before{content:attr(data-y);position:absolute;top:-2px;left:-2px;font-size:10px;font-weight:700;color:var(--sub);white-space:nowrap;letter-spacing:-.02em}.pcb.ny::after{content:"";position:absolute;left:-2.5px;top:14px;bottom:18px;width:1px;background:var(--line)}
-.pcg{position:relative}.pcg::before{content:attr(data-y0);position:absolute;top:0;left:0;font-size:10px;font-weight:700;color:var(--sub)}
+.pcg{position:relative}.pcg::before{content:attr(data-y0);position:absolute;top:-2px;left:0;font-size:10px;font-weight:700;color:var(--sub)}
 @media (max-width:360px){.pcb.ev:not(.sel):not(.cur) span{visibility:hidden}.pcg{gap:2px}.pcb span{font-size:9px}}
 .p2in{padding:16px 18px 12px!important}.p2in .p2h{margin-bottom:6px}.p2in .p2t{font-size:14px}.p2in .p2chip{font-size:11.5px;padding:3px 9px}
 .p2in .p2big{font-size:28px!important;letter-spacing:-.6px!important;line-height:1.2!important}.p2in .p2sub{font-size:12.5px;margin-top:2px!important}
@@ -710,6 +710,93 @@ button.p2chip.pct{border:0;font:inherit;font-size:12px;font-weight:700;cursor:po
 .p2in .p2real{margin-top:10px!important;padding-top:4px!important}.p2in .p2real>div{padding:5px 0!important}.p2in .p2real span{font-size:12.5px}.p2in .p2real small{font-size:11px}.p2in .p2real b{font-size:14px!important}
 .npc .nph{margin-bottom:6px}.npc .npd{margin:-6px 0}
 .wln em .wlx{font-style:normal;font-weight:800;color:var(--acc);margin-left:6px;font-size:.95em;font-variant-numeric:tabular-nums}
+#pro{position:fixed;inset:0;z-index:60}#pro .nlb{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.prw{display:flex;align-items:center;gap:8px;margin-bottom:6px}.prw input{flex:1;font-size:22px!important;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;margin:0!important;height:52px}.prw span{font-size:16px;font-weight:700;color:var(--sub)}
+.prd{min-height:20px;font-size:13px;font-weight:700;margin:0 2px 12px;text-align:right}.prd.neg{color:#e5484d}.prd.pos{color:var(--acc)}.prd.eq{color:var(--sub)}
+.nlq small{font-weight:500;color:var(--sub);margin-left:4px;font-size:12px}
+.prc{position:relative;margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--tile)}.prc .prr{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;font-size:13.5px;color:var(--sub);font-weight:600}.prc .prr b{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.prc b.neg{color:#e5484d!important}.prc b.pos{color:var(--acc)!important}.prc b.eq{color:var(--sub)!important}
+.prm{margin-top:6px;padding-top:8px;border-top:1px solid var(--line);font-size:12.5px;color:var(--sub);line-height:1.45}
+.prb{position:absolute;top:10px;right:10px;border:0;background:var(--soft);color:var(--acc);font:inherit;font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;cursor:pointer}
+.prc .prr:first-child b{margin-right:0}
+.prq{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:14px;padding:12px 14px;border:1px dashed color-mix(in srgb,var(--acc) 45%,transparent);border-radius:14px;background:color-mix(in srgb,var(--acc) 7%,transparent);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.prq span{display:flex;flex-direction:column;gap:2px}.prq b{font-size:14px;font-weight:800;color:var(--acc)}.prq small{font-size:12px;color:var(--sub);font-weight:500}.prq i{font-style:normal;font-size:20px;color:var(--acc)}
+.prc.cp,.prq.cp{margin-top:12px}
+.prt{font-size:12.5px;font-weight:800;color:var(--sub);margin-bottom:6px;padding-right:56px}
+.pcb.rec span{color:#e8952a!important;font-weight:800}.pcb.rec i{background-image:linear-gradient(#e8952a,#e8952a);background-size:100% 3px;background-repeat:no-repeat}.pcl .pcrc{color:var(--sub)}
+.nps .nprc{color:var(--acc);font-weight:700}
+.prl{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:12px;padding:11px 2px 0;border:0;border-top:1px solid var(--line);background:none;font:inherit;text-align:left;cursor:pointer;color:var(--sub);font-size:13px;font-weight:600}
+.prl b{display:flex;align-items:center;gap:4px;color:var(--acc);font-size:13px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}.prl i{font-style:normal;font-size:17px;line-height:1;color:var(--sub);margin-left:2px}
+.prl b.neg{color:#e5484d}.prl b.pos{color:var(--acc)}.prl b.eq{color:var(--sub)}
+.prl.pm span{display:flex;flex-direction:column;gap:2px;min-width:0}.prl.pm em{font-style:normal;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}.prl.pm small{font-size:12px;color:var(--sub);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.p2in .prl{border-top-color:color-mix(in srgb,var(--acc) 18%,transparent)}
+.pcl .pcrc i{display:inline-block;width:8px;height:8px;border-radius:2px;background:#e8952a;margin-right:5px;opacity:1}.pcl .pcrc{margin-left:0}
+.prtag{display:inline-block;font-style:normal;font-size:11px;font-weight:800;color:#e8952a;background:rgba(232,149,42,.15);border-radius:5px;padding:1px 6px;margin-right:6px;vertical-align:1px;line-height:16px}
+.p2sub b.neg{color:#e5484d}.p2sub b.pos{color:var(--acc)}
+.prcal{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 8px;font-size:12.5px;color:var(--sub);font-weight:700}.prcal b{color:var(--sub);font-weight:700;font-variant-numeric:tabular-nums}
+.prcal+.p2bar{margin-top:0!important}
+.p2h{flex-wrap:nowrap!important;gap:8px}.p2h .p2t{white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}.p2h .p2chip{flex:none;white-space:nowrap}
+.nbr{display:none}
+@media (max-width:360px){.wdy{display:none}.prx{display:none}.nbr{display:inline}.nbx{display:none}.p2h .p2t{font-size:14.5px}.p2h .p2chip{font-size:11px;padding:4px 9px}}
+.prl em.prx{font-style:normal;color:inherit;font-weight:inherit}
+@media (max-width:360px){.p2real small{display:none}details>summary b{white-space:nowrap}details>summary .sms{white-space:nowrap;margin-left:auto;padding-left:10px}.smx{display:none}}
+.lrc summary{display:flex;align-items:center;gap:8px}.lrc summary .sms{margin-left:auto;margin-right:6px;font-size:12.5px;color:var(--sub);font-weight:600}
+.lrs{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.lrs:first-of-type{margin-top:10px}
+.lrt{font-size:13px;font-weight:800;color:var(--acc);margin-bottom:8px;letter-spacing:-.01em}.lrt small{font-size:11.5px;font-weight:600;color:var(--sub);margin-left:6px}
+.lrs ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}.lrs li{position:relative;padding-left:12px;font-size:13.5px;line-height:1.5;color:var(--ink2,var(--ink));word-break:keep-all}
+.lrs li::before{content:"";position:absolute;left:1px;top:9px;width:4px;height:4px;border-radius:50%;background:var(--sub)}
+.lrs li b{font-weight:800;color:var(--ink)}.lrs .lrd{color:var(--sub);font-size:12.5px}
+.lrf{margin-top:16px;padding:10px 12px;border-radius:12px;background:var(--tile);font-size:11.5px;line-height:1.5;color:var(--sub);word-break:keep-all}
+.lrw{margin:0 0 12px;padding:12px 14px;border-radius:14px;background:rgba(232,149,42,.12);border:1px solid rgba(232,149,42,.3);display:flex;flex-direction:column;gap:3px}.lrw b{font-size:14px;font-weight:800;color:#e8952a}.lrw span{font-size:12.5px;color:var(--sub);line-height:1.45}
+.lrw.over{background:rgba(229,72,77,.12);border-color:rgba(229,72,77,.35)}.lrw.over b{color:#e5484d}
+@media (max-width:360px){.lrc summary .sms{display:none}.lrs li{font-size:13px}}
+.pcl .pcrc{color:var(--sub)!important;font-weight:inherit}
+.pch .p2h{margin-bottom:16px!important}.pch .pcg{margin-top:4px}
+.web{display:flex;justify-content:flex-end;align-items:center;gap:4px;width:100%;margin-top:10px;padding:9px 0 0;border:0;border-top:1px solid var(--line);background:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--sub);cursor:pointer}.web span{font-size:16px;line-height:1}
+.web.wet{border-top:0;margin:2px 0 4px;padding:4px 2px}
+#weo,#cwo{position:fixed;inset:0;z-index:45}#weo .nls,#cwo .nls{overscroll-behavior:contain;max-height:88vh;overflow:auto}
+.mke{display:flex;flex-direction:column;gap:8px;margin:10px 0 4px;max-height:56vh;overflow:auto;overscroll-behavior:contain}
+.mkr{background:var(--tile);border-radius:14px;padding:11px 12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 10px}
+.mkt2{display:flex;align-items:center;gap:8px;min-width:0}.mkt2 b{font-size:14.5px;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mkx{border:0;background:none;color:#e5484d;font:inherit;font-size:12px;font-weight:700;padding:2px 4px;cursor:pointer;flex:none}
+.mks{display:flex;align-items:center;gap:6px}.mks button{width:32px;height:32px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:18px;font-weight:700;cursor:pointer;padding:0}.mks button:disabled{opacity:.35}
+.mks em{font-style:normal;min-width:20px;text-align:center;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
+.mkm{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--card);font-size:13px;color:var(--ink)}
+.mkm span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mkm span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#e8952a;margin-right:7px;vertical-align:2px}
+.mkm button{border:0;background:none;font:inherit;font-size:12px;font-weight:700;color:var(--acc);padding:2px;cursor:pointer;flex:none}.mkm button.mkx{color:#e5484d}
+.mkmi{padding:4px 4px 4px 10px}.mkmi input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:inherit;font-size:16px;padding:6px 0;outline:none}.mkmi button{padding:6px 8px}
+.mkn{grid-column:1/-1;justify-self:start;border:0;background:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--acc);padding:2px 0;cursor:pointer}
+.mka{border:1px dashed var(--line);background:none;border-radius:14px;padding:12px;color:var(--acc);font:inherit;font-weight:700;font-size:14px;cursor:pointer;width:100%}
+.mkp{border:1px dashed var(--line);border-radius:14px;padding:10px}.mkph{font-size:12.5px;color:var(--sub);font-weight:700;margin:0 2px 8px}.mkp .wlq{max-height:150px;overflow:auto}.mkp .tdadd{margin-top:8px}
+.cwls{display:flex;flex-direction:column;gap:8px}
+.cwr{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;border-radius:14px;background:var(--tile);color:var(--ink);font:inherit;padding:12px;cursor:pointer}
+.cwa{flex:none;width:38px;height:38px;border-radius:50%;background:var(--soft);color:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.cwb{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.cwn{display:flex;align-items:baseline;gap:8px;min-width:0}.cwn b{font-size:15px;font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cwn small,.cwlg small{font-size:11.5px;font-weight:600;color:var(--sub);margin-left:3px}
+.cwn em{font-style:normal;margin-left:auto;flex:none;font-size:12px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums}.cwn em.dn{color:var(--sub)}
+.cwl,.cwo{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cwl i{font-style:normal;font-size:11px;font-weight:700;padding:1px 5px;border-radius:5px;background:var(--line);color:var(--sub);margin-left:2px}
+.cwo{color:var(--ink);font-weight:600}
+.cwg{flex:none;color:var(--sub);font-size:20px;line-height:1}
+.cwad{margin-top:10px}.cwh{font-size:12px;color:var(--sub);text-align:center;margin-top:8px}
+.cd.cwm{position:relative;overflow:hidden}.cd.cwm::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-top:12px solid var(--ink);border-left:12px solid transparent;opacity:.85;pointer-events:none}
+.cwlg{display:inline-flex;align-items:center;gap:5px}.lg .cwlg i{width:0!important;height:0!important;border-radius:0!important;background:none!important;border:0!important;border-top:10px solid var(--ink)!important;border-left:10px solid transparent!important;opacity:.85}
+.cwsh{margin:14px 0 4px}.cwsl{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 2px 8px}.cwsl b{font-size:13px;font-weight:700;color:var(--sub)}.cwsl span{font-size:12.5px;color:var(--sub)}.cwsl span.on{color:var(--ink);font-weight:700}.cwcs{display:flex;flex-wrap:wrap;gap:6px}
+.cwc{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:none;color:var(--ink);font:inherit;font-size:14px;font-weight:700;padding:7px 14px 7px 9px;border-radius:999px;cursor:pointer}.cwck{flex:none;width:16px;height:16px;border-radius:50%;border:1.6px solid var(--sub);box-sizing:border-box;position:relative;opacity:.7}.cwc.on .cwck{border-color:var(--card);background:var(--card);opacity:1}.cwc.on .cwck::after{content:"";position:absolute;left:4.5px;top:1.5px;width:3.5px;height:7px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg)}.cwc.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.cwq{font-size:14px;color:var(--sub);margin:14px 2px 8px;display:flex;align-items:center;gap:6px}.cwt{font-style:normal;font-size:12px;font-weight:800;color:var(--acc)}
+.cwin{display:flex;align-items:center;gap:8px;height:50px;border-radius:14px;background:var(--tile);padding:0 16px}.cwin input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:inherit;font-size:16px;font-weight:700;outline:none}.cwin span{color:var(--sub);font-size:14px;font-weight:600}.cwsx{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer}.cwsx.off{color:var(--sub);text-decoration:line-through;opacity:.6;background:none}.cwsn{font-size:12px;color:var(--sub);margin:6px 2px 0}.cwsn:empty{display:none}.cwc small{font-size:11.5px;font-weight:600;opacity:.7;margin-left:2px}
+.cwin input.bad::placeholder{color:#e5484d}
+.cwf{display:flex;align-items:center;height:50px;border-radius:14px;background:var(--tile);border:1px solid transparent}.cwf.auto{border:1px dashed var(--line);background:none}
+.cwf button{border:0;background:none;color:var(--ink);font:inherit;font-size:16px;font-weight:700;height:100%;cursor:pointer}.cwf button:first-child{flex:1;text-align:left;padding:0 16px}.cwf.auto button:first-child{color:var(--sub)}.cwf button span{color:var(--sub);font-weight:500}
+.cwx{flex:none;width:44px;color:var(--sub)!important;font-size:20px!important}
+.cwnote{font-size:12.5px;color:var(--sub);margin:10px 2px 2px;line-height:1.5}
+.btn.line.dg{color:#e5484d;border-color:#e5484d}
+.cwsh{border-top:1px solid var(--line);margin:16px 0 4px;padding-top:12px}
+.cwsh .qh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 2px 8px}.cwsh .qh b{font-size:13px;font-weight:700;color:var(--sub);flex:none}.cwsh .qh span{font-size:12px;color:var(--sub);text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cwsh .qh span.on{color:var(--ink);font-weight:600}
+.cwsh .qc{display:flex;flex-wrap:wrap;gap:6px}.cwsh .qc button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:none;color:var(--sub);font:inherit;font-size:13px;font-weight:600;padding:5px 11px 5px 8px;border-radius:999px;cursor:pointer}
+.cwsh .qc button small{font-size:11px;margin-left:1px;opacity:.8}.cwsh .qc i{flex:none;width:13px;height:13px;border-radius:50%;border:1.5px solid var(--sub);box-sizing:border-box;opacity:.7;position:relative}
+.cwsh .qc button.on{color:var(--ink);border-color:var(--sub)}.cwsh .qc button.on i{border-color:var(--ink);background:var(--ink);opacity:1}.cwsh .qc button.on i::after{content:"";position:absolute;left:3.3px;top:1px;width:3px;height:6px;border:solid var(--card);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
+.cwseg{display:flex;background:var(--tile);border-radius:12px;padding:3px;margin:0 0 12px}.cwseg button{flex:1;border:0;background:none;color:var(--sub);font:inherit;font-size:14px;font-weight:700;padding:8px 4px;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}.cwseg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.2)}.cwseg em{font-style:normal;font-size:11px;font-weight:800;min-width:17px;height:17px;padding:0 5px;border-radius:9px;background:var(--ink);color:var(--card);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+.cwsh.cwtab{border-top:0;margin:2px 0 14px;padding-top:0}.cwtab .qh b{color:var(--ink);font-size:14px}.cwtab .qc button{font-size:14px;padding:7px 13px 7px 9px}.cwnt{font-size:12.5px;color:var(--sub);margin:12px 2px 0;line-height:1.5}
 </style>
 </head>
 <body>
@@ -1819,7 +1906,7 @@ function heroPages(){var tri=document.querySelector('.hero .tri');if(!tri||tri.c
  requestAnimationFrame(function(){sc.scrollLeft=heroPg*sc.clientWidth;mark()})}
 var _rnHp=render;render=function(){_rnHp.apply(this,arguments);if(tab==='home'){heroPages();if(typeof preDash==='function')preDash()}};
 ;
-APP_DATE='2026.11.24';
+APP_DATE='2026.11.26';
 /* ---- 휴가는 하루에 하나만 (다른 걸 누르면 교체, 같은 걸 다시 누르면 취소) ---- */
 toggleLeave=function(t){var had=S.leaves.some(function(l){return l.date===sel&&l.type===t});S.leaves=S.leaves.filter(function(l){return l.date!==sel});
  if(!had)S.leaves.push({date:sel,type:t,days:HALF.indexOf(t)>=0?0.5:1});save();render()};
@@ -2432,7 +2519,7 @@ wlHistHTML=function(){var cur=wlKey(),ym=cym,M=+ym.slice(5),all=Object.keys(S.wl
  var days=keys.map(function(k){var lb=wlLab(k);
   if(lv[k]){var dd=pd(k),WW='일월화수목금토';return '<div class="thd lvd"><div class="thh"><b>'+(dd.getMonth()+1)+'/'+dd.getDate()+' ('+WW[dd.getDay()]+')</b><span class="ths lv">'+esc(lv[k])+'</span><em>기록 없음</em></div></div>'}
   var L=S.wlog[k],tot=L.reduce(function(a,x){return a+x.n},0);
-  return '<div class="thd"><div class="thh"><b>'+lb.lb+'</b>'+(lb.s>=0?'<span class="ths s'+lb.s+'">'+(lb.s?'야간':lb.dm?'근무':'주간')+'</span>':'')+wlHalfTag(k)+'<em>'+tot+'건</em></div>'+L.map(function(x){return '<div class="thi wli"><span>'+esc(x.t)+wlNotes(x)+'</span><b>'+x.n+'건</b></div>'}).join('')+'</div>'}).join('');
+  return '<div class="thd"><div class="thh"><b>'+lb.lb+'</b>'+(lb.s>=0?'<span class="ths s'+lb.s+'">'+(lb.s?'야간':lb.dm?'근무':'주간')+'</span>':'')+wlHalfTag(k)+'<em>'+tot+'건</em></div>'+L.map(function(x){return '<div class="thi wli"><span>'+esc(x.t)+wlNotes(x)+'</span><b>'+x.n+'건</b></div>'}).join('')+'<button class="web" onclick="weOpen(\''+k+'\')">이날 기록 수정 <span>›</span></button></div>'}).join('');
  var emp=histEmpty(ym,'업무 일지','날짜가 바뀌면 오늘 기록이 여기에 날짜별로 쌓여요');
  return '<details class="thl"'+(wlHist?' open':'')+' ontoggle="wlHist=this.open"><summary>'+M+'월 지난 기록 <span>'+(ks.length?ks.length+'일':'없음')+'</span></summary>'+(days||'<div class="tde wle">'+emp+'</div>')+sum+'</details>'};
 function wlHalfTag(k){var l=S.leaves.filter(function(x){return x.date===k&&HALF.indexOf(x.type)>=0})[0];return l?'<span class="ths hf">'+esc(l.type)+'</span>':''}
@@ -2532,7 +2619,7 @@ var _dpD=dpDraw;dpDraw=function(){_dpD.apply(this,arguments);var o=document.getE
 var _nlA=nlAsk;nlAsk=function(ds,t,cb){_nlA(ds,t,cb);var o=document.getElementById('nlo');if(o)dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),nlClose)};
 /* ---- 창이 떠 있을 때 뒤 화면 고정 ---- */
 var SL={on:false,y:0};
-function slCheck(){var on=!!document.querySelector('#dpo,#nlo,#phv,#shin,#dso');if(on===SL.on)return;var b=document.body;
+function slCheck(){var on=!!document.querySelector('#dpo,#nlo,#phv,#shin,#dso,#pro,#weo,#cwo');if(on===SL.on)return;var b=document.body;
  if(on){SL.y=window.scrollY||0;b.style.position='fixed';b.style.top=(-SL.y)+'px';b.style.left='0';b.style.right='0';b.style.width='100%';SL.on=true}
  else{b.style.position='';b.style.top='';b.style.left='';b.style.right='';b.style.width='';SL.on=false;window.scrollTo(0,SL.y)}}
 (function(){var q=0;new MutationObserver(function(){if(q)return;q=1;requestAnimationFrame(function(){q=0;slCheck()})}).observe(document.body,{childList:true,subtree:true})})();
@@ -2641,10 +2728,10 @@ var _adRK=addDischarge;addDischarge=function(){_adRK();if(tab!=='home')return;va
  var btn=h2.parentNode.querySelector('button.btn.line');if(!btn)return;btn.classList.add('hom');
  btn.innerHTML=hoAll?'<span>접기</span><i class="up">›</i>':'<span>앞으로의 호봉 <b>'+hoNext().length+'</b>개</span><i>›</i>'};
 /* 현황: 다음 월급 카드 재구성 */
-function npCard(){var np=nextPay();if(!np)return null;var amt=Math.round(calcMonth(np.y).total),c=cash(ymOf(np.d)),W='일월화수목금토',d=np.d;
+function npCard(){var np=nextPay();if(!np)return null;var rq=prAct(np.y),amt=rq?rq.a:Math.round(calcMonth(np.y).total),c=cash(ymOf(np.d)),W='일월화수목금토',d=np.d;
  var h='<div class="card npc"><div class="nph"><h2>월급날</h2><span class="npd">'+(d.getMonth()+1)+'/'+d.getDate()+' ('+W[d.getDay()]+') · '+dd(d)+'</span></div>'
  +'<div class="npa">'+amt.toLocaleString('ko-KR')+'<small>원</small></div>'
- +'<div class="nps">'+(+np.y.split('-')[1])+'월 근무분 월급</div>';
+ +'<div class="nps">'+(+np.y.split('-')[1])+'월 근무분 월급'+(rq?' · <b class="nprc">실제 입금액</b>':'')+'</div>';
  if(c.si&&c.si.amt>0)h+='<div class="npf"><div><span>적금 납입</span><b class="npo">−'+won(c.si.amt)+'</b></div><div class="npl"><span>적금 빼고 남는 돈</span><b>'+won(amt-c.si.amt)+'</b></div></div>';
  return h+'</div>'}
 var _hmNP=home;home=function(){var h=_hmNP(),a=h.indexOf('<div class="card"><h2>다음 월급</h2>');if(a<0)return h;var n=npCard();if(!n)return h;
@@ -2676,8 +2763,182 @@ var _payCH=pay;pay=function(){var h=_payCH();if(tab!=='pay'||!pd(S.start))return
  var used=[h1,inC,mon,all,sv,rc,ml],rest=top.filter(function(e){return used.indexOf(e)<0&&!e.classList.contains('pmn')&&!(e.querySelector&&e.querySelector('button.today'))});
  function oh(e){return e?e.outerHTML:''}
  return oh(h1)+oh(inC)+payChart()+oh(mon)+oh(all)+oh(sv)+oh(rc)+rest.map(oh).join('')+oh(ml)};
+/* 실제 입금액 기록 */
+function prGet(y){if(!S.paid||typeof S.paid!=='object')S.paid={};return S.paid[y]||null}
+function prClose(){var o=document.getElementById('pro');if(o)o.remove()}
+function prFmt(v){var n=String(v).replace(/[^0-9]/g,'');return n?(+n).toLocaleString('ko-KR'):''}
+function payRecOpen(y){prClose();var c=Math.round(calcMonth(y).total),r=prGet(y),M=+y.split('-')[1];var o=document.createElement('div');o.id='pro';
+ o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div>'
+ +'<div class="nlh"><b>'+M+'월 근무분 실제 입금</b><span>계산 '+won(c)+'</span></div>'
+ +'<div class="nlq">통장에 실제로 들어온 금액</div><div class="prw"><input id="prin" class="ta" inputmode="numeric" autocomplete="off" value="'+prFmt(r?r.a:c)+'"><span>원</span></div>'
+ +'<div class="prd" id="prdf"></div>'
+ +'<div class="nlq">차이 이유 <small>선택</small></div><textarea id="prme" class="ta dsta" rows="2" maxlength="80" placeholder="예: 식비 1일 덜 나옴">'+(r&&r.m?esc(r.m):'')+'</textarea>'
+ +'<div class="g2 wmbt">'+(r?'<button class="btn line" id="prdel">기록 삭제</button>':'<button class="btn line" id="prno">취소</button>')+'<button class="btn" id="prok">저장</button></div>'+(r?'<button class="ghost nlc">취소</button>':'')+'</div>';
+ document.body.appendChild(o);var i=o.querySelector('#prin'),df=o.querySelector('#prdf');
+ function upd(){var n=+String(i.value).replace(/[^0-9]/g,'')||0,d=n-c;df.className='prd '+(d<0?'neg':d>0?'pos':'eq');df.textContent=!n?'':d===0?'계산과 같아요':'계산보다 '+won(Math.abs(d))+(d<0?' 적게':' 많이')+' 들어왔어요'}
+ i.oninput=function(){var p=i.value.length-i.selectionStart;i.value=prFmt(i.value);try{var q=Math.max(0,i.value.length-p);i.setSelectionRange(q,q)}catch(e){}upd()};upd();
+ setTimeout(function(){i.focus();try{i.select()}catch(e){}},250);
+ o.querySelector('.nlb').onclick=prClose;var cn=o.querySelector('.nlc,#prno');if(cn)cn.onclick=prClose;var dl=o.querySelector('#prno');if(dl)dl.onclick=prClose;
+ var del=o.querySelector('#prdel');if(del)del.onclick=function(){delete S.paid[y];save();prClose();render()};
+ o.querySelector('#prok').onclick=function(){var n=+String(i.value).replace(/[^0-9]/g,'')||0;if(!n){i.focus();return}prGet(y);S.paid[y]={a:n,m:o.querySelector('#prme').value.trim()};save();prClose();render()};
+ dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),prClose)}
+function prAct(y){var r=prGet(y);return r&&payDate(y)<=today()?r:null}
+function payRecHTML(y,compact){var r=prAct(y),c=Math.round(calcMonth(y).total),go=' onclick="payRecOpen(\''+y+'\')"';
+ if(r){var d=r.a-c,dt=d===0?'계산과 같음':(d>0?'+':'−')+won(Math.abs(d)),cl=d<0?'neg':d>0?'pos':'eq';
+  if(compact)return '<button class="prl rc"'+go+'><span><em class="prx">실제 입금액 · </em>계산 '+won(c)+'</span><b class="'+cl+'">'+dt+'<i>›</i></b></button>';
+  return '<button class="prl rc pm"'+go+'><span><em>차이 이유</em><small>'+(r.m?esc(r.m):'적어두지 않았어요')+'</small></span><b>수정<i>›</i></b></button>'}
+ if(payDate(y)<=today())return '<button class="prl"'+go+'><span>계산과 다르게 들어왔나요?</span><b>실제 금액 기록<i>›</i></b></button>';
+ return ''}
+/* 기록한 달은 실제 금액으로: 들어오는 돈·누적·그래프 */
+var _cashPR=cash;cash=function(y){var c=_cashPR(y),r=c&&c.py?prAct(c.py):null;if(r&&c.has){c.calc=c.inc;c.inc=r.a;c.left=r.a-(c.si?c.si.amt:0);c.real=r.a+(c.si?c.si.match:0);c.rec=true}return c};
+var _paPR=payAll;payAll=function(){var r=_paPR();r.all=0;r.got=0;r.list.forEach(function(x){var a=prAct(x.y);if(a){x.c=x.v;x.v=a.a;x.rec=true}r.all+=x.v;if(x.p)r.got+=x.v});return r};
+var _payPR=pay;pay=function(){var h=_payPR();if(tab!=='pay'||!pd(S.start))return h;var tmp=document.createElement('div');tmp.innerHTML=h;
+ var mon=[].filter.call(tmp.querySelectorAll('.p2c'),function(c){var t=c.querySelector('.p2t');return t&&/근무분$/.test(t.textContent)&&!c.classList.contains('p2in')})[0];
+ if(mon){var x=payRecHTML(ym,false);if(x)mon.insertAdjacentHTML('beforeend',x);var rr=prAct(ym);
+  if(rr){var cv=Math.round(calcMonth(ym).total),df=rr.a-cv,bg=mon.querySelector('.p2big'),sb=mon.querySelector('.p2sub'),br=mon.querySelector('.p2bar');
+   if(bg)bg.textContent=won(rr.a);
+   if(sb)sb.innerHTML='<span class="prtag">실제 입금</span>'+(df===0?'계산과 같아요':'계산보다 <b class="'+(df<0?'neg':'pos')+'">'+won(Math.abs(df))+(df<0?' 적게':' 많이')+'</b> 들어왔어요');
+   if(br)br.insertAdjacentHTML('beforebegin','<div class="prcal"><span>계산 내역</span><b>'+won(cv)+'</b></div>')}}
+
+ var inC=tmp.querySelector('.p2in'),cc=cash(ymOf(today()));
+ if(inC&&cc&&cc.has&&/월에 들어오는 돈/.test(inC.textContent)){var x2=payRecHTML(cc.py,true);if(x2)inC.insertAdjacentHTML('beforeend',x2)}
+ [].forEach.call(tmp.querySelectorAll('.pcb'),function(bn){var m=(bn.getAttribute('onclick')||'').match(/ym='(\d{4}-\d{2})'/);if(m&&prAct(m[1]))bn.classList.add('rec')});
+ if(tmp.querySelector('.pcb.rec')){var pl=tmp.querySelector('.pcl .pcn');if(pl){pl.outerHTML='<span class="pcrc"><i></i>실제 입금 기록</span>'}}
+ [].forEach.call(tmp.querySelectorAll('.p2chip'),function(c){c.innerHTML=c.innerHTML.replace(/(\d+\/\d+) (\([일월화수목금토]\)) /,'$1<span class="wdy">&nbsp;$2</span>&nbsp;')});
+ [].forEach.call(tmp.querySelectorAll('summary .sms'),function(c){c.innerHTML=c.innerHTML.replace(/(회차) · /,'$1<span class="smx"> · ')+(/회차 · /.test(c.textContent)?'</span>':'')});
+ [].forEach.call(tmp.querySelectorAll('.p2sub'),function(c){if(/연 [\d.]+% · 매칭지원금/.test(c.textContent))c.innerHTML=c.innerHTML.replace(/(연 [\d.]+%) · (매칭지원금)/,'$1<span class="nbx"> · </span><br class="nbr">$2')});
+ return tmp.innerHTML};
+function prRows(){if(tab!=='pay')return;[].forEach.call(document.querySelectorAll('main .mrow[data-m]'),function(row){var y=row.getAttribute('data-m'),r2=prAct(y),it=row.querySelector('.mr i');if(!r2||!it||it.dataset.pr)return;it.dataset.pr=1;var d2=r2.a-Math.round(calcMonth(y).total);
+ it.innerHTML='<span class="prtag">실제</span>'+(d2===0?'계산과 같음':'계산보다 '+(d2>0?'+':'−')+won(Math.abs(d2)))})}
+var _rnPR=render;render=function(){var r=_rnPR.apply(this,arguments);prRows();return r};
+/* 휴가 탭: 규정 한눈에 + 병가 30일 경고 */
+var lvRuleOpen=false;
+function lvRuleCard(){function sec(t,rows){return '<div class="lrs"><div class="lrt">'+t+'</div><ul>'+rows.map(function(r){return '<li>'+r+'</li>'}).join('')+'</ul></div>'}
+ return '<details class="card lrc"'+(lvRuleOpen?' open':'')+' ontoggle="lvRuleOpen=this.open"><summary><b>휴가 · 복무 규정</b><span class="sms">연가 · 병가 · 지각</span></summary>'
+ +sec('연가',['복무 21개월 기준 <b>통틀어 28일</b>','남은 연가는 <b>다음 해로 넘어가지 않아요</b> (불가피한 경우 제외)','소집일부터 소집해제 30일 전까지 공무 외 병가를 <b>안 쓰면 연가 +5일</b>, <b>2일 이내로 썼으면 +2일</b> (결근·복무이탈 없을 때 · 기관장 재량)','해외여행은 연가·청원·특별휴가 일수 안에서만 허가돼요'])
+ +sec('병가',['공무 외 병가는 <b>통틀어 30일</b>까지 복무기간에 들어가요','<b>30일을 넘긴 날은 그만큼 연장복무</b> + 그날 월급 없음 (공무상 병가는 제외)','아파서 지각·조퇴·외출한 시간은 <b>누계 8시간 = 병가 1일</b>','원칙은 미리 신청 · <b>당일 갑자기 아프면 바로 담당자에게 연락</b>하고 서류는 나중에 내도 돼요','직접 못 가면 가족이 대신 신청할 수 있어요 (병가 대리 신청서 + 위임장)','기관장이 병가의 전부 또는 일부를 허가하지 않을 수 있어요'])
+ +sec('병가 서류',['<b>1일 미만</b> (병지각·병조퇴): 서류 없음','<b>3일 이하</b>: 진료확인서 · 처방전 · 소견서 중 하나 (복무기간 통틀어 6일까지는 생략 가능)','<span class="lrd">진료확인서 = 진료 당일 1일 · 처방전 = 1~3일 · 소견서 = 적힌 치료기간</span>','<b>3일 초과</b>: 진단서 (입원했으면 입·퇴원 확인서도)','증빙이 안 되면 연가로 바뀔 수 있어요','<b>허위 서류는 복무이탈</b> · 경고 처분(5일 연장복무)'])
+ +sec('지각 · 조퇴 · 외출 · 결근',['부득이하면 <b>미리 허가</b> · 갑자기 생긴 일이면 <b>나중에라도 허가</b>를 받아야 해요','개인 사유는 <b>누계 8시간 = 연가 1일</b> · 아파서면 <b>누계 8시간 = 병가 1일</b>','연가·병가를 다 쓴 뒤에 지각·조퇴·결근하면 그만큼 <b>연장복무</b>','허가 없이 하면 무단지각·무단조퇴·무단결근으로 기록돼요','기관 사정으로 초과근무가 <b>누계 8시간</b>이 되면 하루 쉬게 해 줄 수 있어요 (기관 재량)'])
+ +sec('경고 · 복무이탈 <small>꼭 알아두기</small>',['<b>무단지각·무단조퇴·근무지 이탈</b>: 경고 1회마다 <b>5일 연장복무</b> · 통틀어 <b>8회 이상</b>이면 고발 (1년 이하 징역)','<b>무단결근(복무이탈)</b>: 통틀어 <b>7일까지</b>는 이탈일의 <b>5배</b> 연장복무 · <b>8일 이상</b>이면 고발 (3년 이하 징역)','근무 중 음주·도박 등 근무기강 문란: 경고 1회마다 5일 연장복무','다른 사람 개인정보 무단 검색·열람: 1회 경고(5일 연장) · 2회 이상이면 고발','연장복무 기간에는 공휴일도 포함돼요'])
+ +sec('청원휴가 <small>연가에서 안 빠져요</small>',['본인 결혼 <b>5일</b>','배우자, 본인·배우자 부모 사망 <b>5일</b>','자녀 사망, 본인·배우자 조부모·외조부모 사망 <b>3일</b>','본인·배우자 형제자매 사망 <b>3일</b>','배우자 출산 <b>20일</b> (쌍둥이 이상 25일) · 유산·사산 <b>3일</b>','임신한 배우자 검진 동행 <b>10일</b>','자녀 돌봄·학교 행사·자녀 병원 동행, 가족 돌봄 등 <b>연 10일</b> (가족 돌봄은 본인 말고 돌볼 사람이 없을 때)','재난 피해 <b>5일</b> (대규모 재난 10일) · 난임 시술 1일','8세 이하(초2 이하) 자녀가 있으면 <b>육아시간</b> 하루 최대 2시간'])
+ +sec('특별휴가',['근무성적 우수 <b>연 5일</b> 이내 · 선행 표창 <b>연 5일</b> 이내','사회복지시설·특수교육 지원 근무 <b>연 10일</b> 이내','근무 여건이 열악한 분야 위로 <b>연 5일</b> 이내'])
+ +'<div class="lrf">병역법 · 같은 법 시행령 제59조(2026.10.2 시행) · 사회복무요원 복무관리 규정 · 병무청 안내 기준 · 2026.11.25 확인 · 규정은 바뀔 수 있고 최종 기준은 복무기관 담당자예요</div></details>'}
+var _lvRC=leaves;leaves=function(){var h=_lvRC();if(!pd(S.start))return h;var u=sickUsed(),w='';
+ if(u>=25){var rest=Math.max(0,SICK_MAX-u);w='<div class="lrw'+(u>SICK_MAX?' over':'')+'"><b>'+(u>SICK_MAX?'병가 '+rnd(u-SICK_MAX)+'일 초과 · 그만큼 연장복무돼요':'병가 '+rnd(u)+'일 사용 · 남은 '+rnd(rest)+'일')+'</b><span>30일을 넘긴 날은 복무가 그만큼 늘고 그날 월급도 안 나와요</span></div>'}
+ var tmp=document.createElement('div');tmp.innerHTML=h;var first=tmp.querySelector('.card');if(w&&first)first.insertAdjacentHTML('afterend',w);
+ return tmp.innerHTML+lvRuleCard()};
+/* ==== 3.6: 지난 업무 기록 수정 ==== */
+var WE=null;
+function weClose(){var o=document.getElementById('weo');if(o)o.remove();WE=null}
+function weOpen(k){weClose();WE={k:k,L:JSON.parse(JSON.stringify(S.wlog[k]||[])),add:false,ed:null};var o=document.createElement('div');o.id='weo';
+ o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div><div id="wein"></div>'
+ +'<div class="g2 wmbt"><button class="btn line" id="weno">취소</button><button class="btn" id="weok">저장</button></div></div>';
+ document.body.appendChild(o);o.querySelector('.nlb').onclick=weClose;o.querySelector('#weno').onclick=weClose;
+ o.querySelector('#weok').onclick=function(){weCommit();var L=WE.L.filter(function(x){return x.n>0});L.forEach(function(x){if(x.notes){x.notes=x.notes.filter(function(n){return n&&String(n).trim()});if(!x.notes.length)delete x.notes}});
+  if(L.length)S.wlog[WE.k]=L;else delete S.wlog[WE.k];save();weClose();mtRefresh()};
+ weDraw();dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),weClose)}
+function weCommit(){var i=document.getElementById('wemi');if(i&&WE&&WE.ed){var x=WE.L[WE.ed[0]];if(x){var v=i.value.trim();x.notes=x.notes||[];if(WE.ed[1]<0){if(v)x.notes.push(v)}else if(v)x.notes[WE.ed[1]]=v;else x.notes.splice(WE.ed[1],1)}}if(WE)WE.ed=null}
+function weDraw(){var el=document.getElementById('wein');if(!el||!WE)return;var lb=wlLab(WE.k),tot=WE.L.reduce(function(a,x){return a+x.n},0),cur=WE.k===wlKey();
+ var rows=WE.L.map(function(x,i){var N=x.notes||[];
+  var ms=N.map(function(n,j){if(WE.ed&&WE.ed[0]===i&&WE.ed[1]===j)return weMI(n);return '<div class="mkm"><span>'+esc(n)+'</span><button onclick="weNote('+i+','+j+')">고치기</button><button class="mkx" onclick="weNDel('+i+','+j+')">지우기</button></div>'}).join('');
+  if(WE.ed&&WE.ed[0]===i&&WE.ed[1]<0)ms+=weMI('');
+  else if(wlAskOf(x.t)&&N.length<x.n)ms+='<button class="mkn" onclick="weNote('+i+',-1)">+ 메모 적기</button>';
+  return '<div class="mkr"><div class="mkt2"><b>'+esc(x.t)+'</b><button class="mkx" onclick="weDel('+i+')">삭제</button></div><div class="mks"><button onclick="weStep('+i+',-1)"'+(x.n<=1?' disabled':'')+' aria-label="빼기">−</button><em>'+x.n+'</em><button onclick="weStep('+i+',1)" aria-label="더하기">+</button></div>'+ms+'</div>'}).join('');
+ var have=WE.L.map(function(x){return x.t}),pool=wlFreq();WLP.forEach(function(t){if(pool.indexOf(t)<0)pool.push(t)});pool=pool.filter(function(t){return have.indexOf(t)<0});
+ var add=WE.add?'<div class="mkp"><div class="mkph">빠뜨린 업무 고르기</div><div class="wlq">'+pool.map(function(t){return '<button onclick="weAdd(this.dataset.t)" data-t="'+esc(t)+'">+ '+esc(t)+'</button>'}).join('')+'</div>'
+  +'<div class="tdadd"><input id="wein2" maxlength="40" autocomplete="off" placeholder="목록에 없으면 직접 입력" onkeydown="if(event.key===\'Enter\'){event.preventDefault();weAdd(this.value)}"><button class="tdp" onclick="weAdd(document.getElementById(\'wein2\').value)" aria-label="추가"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>'
+  :'<button class="mka" onclick="weCommit();WE.add=true;weDraw()">+ 빠뜨린 업무 추가</button>';
+ el.innerHTML='<div class="nlh"><b>'+(cur?'오늘':lb.lb)+' 기록 수정</b><span>총 '+tot+'건</span></div><div class="mke">'+(rows||'<div class="tde">기록이 모두 지워졌어요 · 저장하면 이날 기록이 없어져요</div>')+add+'</div>';
+ var mi=document.getElementById('wemi');if(mi){mi.focus();try{mi.setSelectionRange(mi.value.length,mi.value.length)}catch(e){}}}
+function weMI(v){return '<div class="mkm mkmi"><input id="wemi" maxlength="80" autocomplete="off" value="'+esc(v)+'" placeholder="메모 내용" onkeydown="if(event.key===\'Enter\'){event.preventDefault();weCommit();weDraw()}"><button onclick="weCommit();weDraw()">확인</button></div>'}
+function weNote(i,j){weCommit();WE.ed=[i,j];weDraw()}
+function weNDel(i,j){weCommit();var x=WE.L[i];if(x&&x.notes)x.notes.splice(j,1);weDraw()}
+function weStep(i,d){weCommit();var x=WE.L[i];if(!x)return;x.n=Math.max(1,x.n+d);if(x.notes&&x.notes.length>x.n)x.notes.length=x.n;weDraw()}
+function weDel(i){weCommit();WE.L.splice(i,1);weDraw()}
+function weAdd(t){t=String(t||'').trim().slice(0,40);if(!t)return;weCommit();var e=WE.L.filter(function(x){return x.t===t})[0];if(e)e.n++;else WE.L.push({t:t,n:1});WE.add=false;weDraw()}
+var _wlBE=wlBody;wlBody=function(){var h=_wlBE(),L=S.wlog[wlKey()]||[];if(!L.length)return h;
+ var b='<button class="web wet" onclick="weOpen(wlKey())">오늘 기록 수정 <span>›</span></button>';
+ return h.indexOf('<div class="wlqh">')>=0?h.replace('<div class="wlqh">',b+'<div class="wlqh">'):h.replace('<div class="tdadd">',b+'<div class="tdadd">')};
+
+/* ==== 3.6: 동료 요원 ==== */
+if(!Array.isArray(S.cw))S.cw=[];S.cw.forEach(function(c){c.n=String(c.n||'').replace(/\s*요원$/,'')||c.n});function cwL(){if(!Array.isArray(S.cw))S.cw=[];return S.cw}
+var cwOpen=false,CW=null;
+function cwF(d){return d?d.replace(/-/g,'.'):''}
+function cwEndOf(s){var d=pd(s);if(!d)return '';var e=addM(d,21);return dstr(new Date(e.getFullYear(),e.getMonth(),e.getDate()-1))}
+function cwStartOf(e){var d=pd(e);if(!d)return '';return dstr(addM(new Date(d.getFullYear(),d.getMonth(),d.getDate()+1),-21))}
+var CW_HON=/(형|형아|님|씨|쌤|선배|후배|선임|후임|동기|동생|막내|친구|오빠|누나|언니|아저씨|선생|반장|주임|대리|과장|팀장|실장|조장|요원|공익|군)\s*[.!~]*$/;
+function cwSf(c){return c.sf===true||c.sf===false?c.sf:!CW_HON.test(String(c.n||''))}
+function cwNm(c){return esc(c.n)+(cwSf(c)?'<small>요원</small>':'')}
+function cwOffOn(ds){return cwL().filter(function(c){return (c.off||[]).indexOf(ds)>=0})}
+function cwTog(i){var c=cwL()[i];if(!c||!sel)return;var ds=sel;c.off=c.off||[];c.pr=c.pr||{};var j=c.off.indexOf(ds);
+ if(j>=0){c.off.splice(j,1);delete c.pr[ds];var nk=dstr(nlNext(ds));if(c.pr[nk]===ds){c.off=c.off.filter(function(x){return x!==nk});delete c.pr[nk]}cwSv(c);return}
+ if(cwNight(ds)){cwAsk(c,ds,function(n){var nk=dstr(nlNext(ds));if(n===2){cwAddD(c,ds);cwAddD(c,nk);c.pr[nk]=ds}else cwAddD(c,nk);cwSv(c)});return}
+ cwAddD(c,ds);cwSv(c)}
+function cwAddD(c,d){if(c.off.indexOf(d)<0)c.off.push(d);c.off.sort()}
+function cwSv(c){if(c.pr&&!Object.keys(c.pr).length)delete c.pr;save();render()}
+function cwNight(ds){var d=pd(ds);if(!d)return false;var x=dayInfo(d);if(!x.in||x.tr||x.bo||shiftOn(d)!==1)return false;var n=nlNext(ds),y=dayInfo(n);return y.in&&!y.tr&&shiftOn(n)===2}
+function cwAsk(c,ds,cb){nlClose();var d=pd(ds),n=nlNext(ds),W='일월화수목금토',f=function(x){return (x.getMonth()+1)+'/'+x.getDate()+' ('+W[x.getDay()]+')'};
+ var o=document.createElement('div');o.id='nlo';o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div>'
+  +'<div class="nlh"><b>'+esc(c.n)+(cwSf(c)?' 요원':'')+' 쉬는 날</b><span>야간 '+f(d)+'</span></div>'
+  +'<div class="nlq">어떻게 쉬나요?</div>'
+  +'<button class="nlo2" data-n="2"><span><b>2일 · 야간 통째로</b><small>야간 '+f(d)+' + 비번 '+f(n)+'</small></span></button>'
+  +'<button class="nlo1" data-n="1"><span><b>1일 · 출근 후 새벽 퇴근</b><small>야간 출근 → 자정 넘어 퇴근 · 비번 '+f(n)+'에 표시</small></span></button>'
+  +'<button class="ghost nlc">취소</button></div>';
+ document.body.appendChild(o);o.querySelector('.nlb').onclick=nlClose;o.querySelector('.nlc').onclick=nlClose;
+ [].forEach.call(o.querySelectorAll('[data-n]'),function(b){b.onclick=function(){nlClose();cb(+b.dataset.n)}});
+ dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),nlClose)}
+function cwDday(c){if(!c.e)return '';var e=pd(c.e),t=today(),n=Math.round((new Date(e.getFullYear(),e.getMonth(),e.getDate())-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5);return n>0?'D-'+n:n===0?'D-day':'소집해제'}
+function cwCard(){var M=+cym.slice(5),ym=cym,L=cwL(),offN=0;
+ var rows=L.map(function(c,i){return{c:c,i:i}}).sort(function(a,b){return (a.c.e||'9')<(b.c.e||'9')?-1:1}).map(function(o){var c=o.c,ds=(c.off||[]).filter(function(d){return d.slice(0,7)===ym});offN+=ds.length;
+  var dd=cwDday(c);
+  return '<button class="cwr" onclick="cwEdit('+o.i+')"><span class="cwa">'+esc(String(c.n).charAt(0))+'</span><span class="cwb"><span class="cwn"><b>'+cwNm(c)+'</b>'+(dd?'<em'+(dd==='소집해제'?' class="dn"':'')+'>'+dd+'</em>':'')+'</span>'
+   +'<span class="cwl">'+(c.e?'소집해제 '+cwF(c.e)+(c.ea?' <i>예상</i>':''):'소집해제일 미입력')+'</span>'
+   +'<span class="cwo">'+(ds.length?M+'월 쉼 · '+ds.map(function(d){return +d.slice(8)+'일'}).join(' · '):M+'월 쉬는 날 없음')+'</span></span><span class="cwg">›</span></button>'}).join('');
+ var sub=L.length?L.length+'명 · '+M+'월 쉼 '+offN+'일':'같이 일하는 요원의 쉬는 날을 달력에 표시';
+ var IC='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.5" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.8 14.5c2.3 0 4.1 1.3 4.7 3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+ return '<summary><span class="mti">'+IC+'</span><span class="mth"><b>동료 요원</b><small>'+sub+'</small></span></summary>'
+  +(rows?'<div class="cwls">'+rows+'</div>':'<div class="tde">동료를 추가한 뒤, 달력에서 날짜를 눌러 쉬는 동료를 체크하세요</div>')
+  +'<button class="mka cwad" onclick="cwEdit(-1)">+ 동료 추가</button>'+(rows?'<div class="cwh">쉬는 날은 달력에서 날짜를 눌러 체크해요</div>':'')}
+var _rnCW=render;render=function(){_rnCW.apply(this,arguments);if(tab!=='cal')return;var app=document.getElementById('app');if(!app)return;
+ [].forEach.call(app.querySelectorAll('.calg [data-d]'),function(b){if(cwOffOn(b.dataset.d).length)b.classList.add('cwm')});
+ var d=document.createElement('details');d.className='card shc mmcard cwcard';d.id='cwcard';if(cwOpen)d.open=true;d.innerHTML=cwCard();d.addEventListener('toggle',function(){cwOpen=d.open});
+ var mt=document.getElementById('mtcard');if(mt)mt.parentNode.insertBefore(d,mt);else{var c=app.querySelector(':scope>.card');if(c)c.insertAdjacentElement('afterend',d);else app.appendChild(d)}};
+var _lgCW=legend;legend=function(){var h=_lgCW();if(!cwL().length)return h;return h.replace(/<\/div>$/,'<span class="cwlg"><i></i>동료 쉼</span></div>')};
+var cwShT='me',cwShFor=null;
+var _shCW=sheet;sheet=function(){var h=_shCW();if(!h||!sel||!cwL().length)return h;
+ if(cwShFor!==sel){cwShFor=sel;cwShT='me'}
+ var ch=cwL().map(function(c,i){var on=(c.off||[]).indexOf(sel)>=0;return '<button class="'+(on?'on':'')+'" onclick="cwTog('+i+')" aria-pressed="'+on+'"><i></i>'+cwNm(c)+'</button>'}).join(''),ons=cwL().filter(function(c){return (c.off||[]).indexOf(sel)>=0}),hint=ons.length===1?esc(ons[0].n)+(cwSf(ons[0])?' 요원':'')+' 쉬는 날':ons.length?ons.length+'명 쉬는 날':'';
+ var d=pd(sel),W='일월화수목금토',dl=(d.getMonth()+1)+'/'+d.getDate()+' ('+W[d.getDay()]+')';
+ var seg='<div class="cwseg" role="tablist"><button role="tab" class="'+(cwShT==='me'?'on':'')+'" onclick="cwShT=\'me\';render()">내 근무 · 휴가</button><button role="tab" class="'+(cwShT==='cw'?'on':'')+'" onclick="cwShT=\'cw\';render()">동료 쉬는 날'+(ons.length?'<em>'+ons.length+'</em>':'')+'</button></div>';
+ h=h.replace('<div class="og">',seg+'<div class="og">');
+ if(cwShT==='me')return h;
+ h=h.replace(/<div class="og">[\s\S]*?<\/div>/,'').replace(/<button class="ghost"[^>]*>[^<]*<\/button>/g,'').replace(/<div class="sub" style="margin-top:10px">[\s\S]*?<\/div>(?=<\/div><\/div>\s*$)/,'');
+ return h.replace('<button class="btn" onclick="closeSheet()">','<div class="cwsh cwtab"><div class="qh"><b>'+dl+' 쉬는 동료</b>'+(hint?'<span class="on">'+hint+'</span>':'')+'</div><div class="qc">'+ch+'</div><div class="cwnt">쉬는 동료 이름만 누르면 돼요 · 연가·병가 같은 종류는 고르지 않아요</div></div><button class="btn" onclick="closeSheet()">')};
+function cwClose(){var o=document.getElementById('cwo');if(o)o.remove();CW=null}
+function cwEdit(i){cwClose();var c=i>=0?cwL()[i]:null;CW={i:i,n:c?String(c.n).replace(/\s*요원$/,''):'',s:c?c.s||'':'',e:c?c.e||'':'',sa:c?!!c.sa:false,ea:c?!!c.ea:false,del:false,sf:c&&(c.sf===true||c.sf===false)?c.sf:null};
+ var o=document.createElement('div');o.id='cwo';
+ o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div><div class="nlh"><b>'+(c?'동료 정보':'동료 추가')+'</b><span>날짜는 하나만 알아도 돼요</span></div>'
+ +'<div class="cwq">이름</div><div class="cwin"><input id="cwnm" maxlength="10" autocomplete="off" placeholder="예: 민수" value="'+esc(CW.n)+'"><button id="cwsx" class="cwsx" aria-label="요원 표시">요원</button></div>'
+ +'<div id="cwds"></div><div class="g2 wmbt">'+(c?'<button class="btn line" id="cwdel">삭제</button>':'<button class="btn line" id="cwno">취소</button>')+'<button class="btn" id="cwok">저장</button></div></div>';
+ document.body.appendChild(o);o.querySelector('.nlb').onclick=cwClose;var no=o.querySelector('#cwno');if(no)no.onclick=cwClose;
+ var nm=o.querySelector('#cwnm');var sx=o.querySelector('#cwsx'),sn=null;function sxu(){var n=CW.n.trim().replace(/\s*요원$/,''),on=cwSf({n:n,sf:CW.sf});sx.classList.toggle('off',!on)}
+ nm.oninput=function(){CW.n=nm.value;nm.classList.remove('bad');sxu()};sx.onclick=function(){var n=CW.n.trim().replace(/\s*요원$/,'');CW.sf=!cwSf({n:n,sf:CW.sf});if(CW.sf===!CW_HON.test(n))CW.sf=null;sxu()};sxu();
+ var dl=o.querySelector('#cwdel');if(dl)dl.onclick=function(){if(!CW.del){CW.del=true;dl.textContent='한 번 더 누르면 삭제';dl.classList.add('dg');return}cwL().splice(CW.i,1);save();cwClose();render()};
+ o.querySelector('#cwok').onclick=function(){var n=CW.n.trim().replace(/\s+/g,' ').replace(/\s*요원$/,'');if(!n){nm.classList.add('bad');nm.focus();return}
+  var r={n:n,sf:CW.sf===null?undefined:CW.sf,s:CW.s,e:CW.e,sa:CW.sa&&!!CW.s,ea:CW.ea&&!!CW.e,off:c?(c.off||[]):[]};if(c&&c.pr)r.pr=c.pr;if(c)cwL()[CW.i]=r;else cwL().push(r);save();cwOpen=true;cwClose();render()};
+ cwDraw();if(!c)setTimeout(function(){nm.focus()},250);dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),cwClose)}
+function cwDraw(){var el=document.getElementById('cwds');if(!el||!CW)return;
+ function f(k,lab,auto,tag){var v=CW[k];return '<div class="cwq">'+lab+(v&&auto?' <em class="cwt">'+tag+'</em>':'')+'</div><div class="cwf'+(v&&auto?' auto':'')+'"><button onclick="cwPick(\''+k+'\')">'+(v?cwF(v):'<span>모르면 비워두세요</span>')+'</button>'+(v?'<button class="cwx" onclick="cwSet(\''+k+'\',\'\')" aria-label="지우기">×</button>':'')+'</div>'}
+ var note=CW.sa||CW.ea?'<div class="cwnote">'+(CW.ea?'복무 21개월 기준으로 계산했어요 · 복무 연장이나 전환복무면 달라질 수 있어요':'소집해제일로 거꾸로 계산한 날짜예요 · 전환복무 등은 실제와 다를 수 있어요')+' · 정확한 날짜를 알면 눌러서 고치세요</div>':'';
+ el.innerHTML=f('s','복무 시작일',CW.sa,'추정')+f('e','소집해제일',CW.ea,'자동 계산')+note}
+function cwPick(k){var i=document.createElement('input');i.type='date';i.value=CW[k]||'';i.addEventListener('change',function(){if(/^\d{4}-\d{2}-\d{2}$/.test(i.value))cwSet(k,i.value)});dpOpen(i)}
+function cwSet(k,v){if(!CW)return;var o=k==='s'?'e':'s';CW[k]=v;CW[k+'a']=false;
+ if(v){if(!CW[o]||CW[o+'a']){CW[o]=k==='s'?cwEndOf(v):cwStartOf(v);CW[o+'a']=true}}
+ else if(CW[o+'a']){CW[o]='';CW[o+'a']=false}
+ cwDraw()}
+
 phLoad();
-APP_VER='3.4.1';
+APP_VER='3.6';
 
 
 
