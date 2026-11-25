@@ -709,6 +709,7 @@ button.p2chip.pct{border:0;font:inherit;font-size:12px;font-weight:700;cursor:po
 .p2in .p2mini span{font-size:11.5px;line-height:15px}.p2in .p2mini b{font-size:14px;line-height:18px}.p2in .p2ms{font-size:10.5px}
 .p2in .p2real{margin-top:10px!important;padding-top:4px!important}.p2in .p2real>div{padding:5px 0!important}.p2in .p2real span{font-size:12.5px}.p2in .p2real small{font-size:11px}.p2in .p2real b{font-size:14px!important}
 .npc .nph{margin-bottom:6px}.npc .npd{margin:-6px 0}
+.wln em .wlx{font-style:normal;font-weight:800;color:var(--acc);margin-left:6px;font-size:.95em;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -2548,7 +2549,8 @@ var WL_ASK={'돌발상황':['어떤 상황이었는지 적어두세요','예: �
 '난동 대응':['어떤 상황이었는지 적어두세요','예: 대합실 행인 소란 · 철도경찰 동행','메모'],
 '시설 이상 신고 업무':['어디가 어떻게 이상했는지 적어두세요','예: 2번 출구 에스컬레이터 정지','메모']};
 function wlAskOf(t){return Object.prototype.hasOwnProperty.call(WL_ASK,t)?WL_ASK[t]:null}
-function wlNotes(x){var a=wlAskOf(x.t),w=(a?a[2]:'메모')+' 없음';return x.notes&&x.notes.length?'<span class="wln">'+x.notes.map(function(n){return '<em>'+(n?esc(n):w)+'</em>'}).join('')+'</span>':''}
+function wlNotes(x){var N=(x.notes||[]).filter(function(n){return n&&String(n).trim()}),c={},o=[];N.forEach(function(n){n=String(n).trim();if(!c[n]){c[n]=0;o.push(n)}c[n]++});
+ return o.length?'<span class="wln">'+o.map(function(n){return '<em>'+esc(n)+(c[n]>1?'<b class="wlx">×'+c[n]+'</b>':'')+'</em>'}).join('')+'</span>':''}
 function dsClose(){var o=document.getElementById('dso');if(o)o.remove()}
 function dsAsk(name,cb){dsClose();var a=wlAskOf(name)||['내용을 적어두세요','','메모'];var o=document.createElement('div');o.id='dso';o.innerHTML='<div class="nlb"></div><div class="nls" role="dialog" aria-modal="true"><div class="grab"></div>'
  +'<div class="nlh"><b>'+esc(name)+'</b><span>+1건</span></div><div class="nlq">'+a[0]+'</div>'
@@ -2558,9 +2560,10 @@ function dsAsk(name,cb){dsClose();var a=wlAskOf(name)||['내용을 적어두세�
  o.querySelector('.nlb').onclick=dsClose;o.querySelector('.nlc').onclick=dsClose;
  o.querySelector('#dsk').onclick=function(){dsClose();cb('')};o.querySelector('#dsy').onclick=function(){var v=t.value.trim();dsClose();cb(v)};
  dragClose(o.querySelector('.nls'),o.querySelector('.nlb'),dsClose)}
-function wlPush(t,note){var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x.t===t})[0];if(!e){e={t:t,n:0};L.push(e)}e.n++;if(note!==undefined){e.notes=e.notes||[];e.notes.push(note)}save();mtRefresh()}
+function wlPush(t,note){var k=wlKey(),L=wlDay(k),e=L.filter(function(x){return x.t===t})[0];if(!e){e={t:t,n:0};L.push(e)}e.n++;note=note==null?'':String(note).trim();if(note){e.notes=e.notes||[];e.notes.push(note)}save();mtRefresh()}
 var _wlAN=wlAddName;wlAddName=function(t){t=String(t||'').trim().slice(0,40);if(wlAskOf(t)){dsAsk(t,function(r){wlPush(t,r)});return}_wlAN(t)};
-var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAskOf(e.t)){if(d>0){dsAsk(e.t,function(r){wlPush(e.t,r)});return}if(e.notes&&e.notes.length)e.notes.pop()}_wlSt(i,d)};
+var _wlSt=wlStep;wlStep=function(i,d){var k=wlKey(),L=wlDay(k),e=L[i];if(e&&wlAskOf(e.t)){if(d>0){dsAsk(e.t,function(r){wlPush(e.t,r)});return}if(e.notes&&e.notes.length>=e.n)e.notes.pop()}_wlSt(i,d)};
+(function(){if(!S.wlog)return;var ch=false;Object.keys(S.wlog).forEach(function(k){(S.wlog[k]||[]).forEach(function(x){if(x.notes){var a=x.notes.filter(function(n){return n&&String(n).trim()});if(a.length!==x.notes.length){ch=true;if(a.length)x.notes=a;else delete x.notes}}})});if(ch)save()})();
 /* 이름 변경: 난동 승객 대응 → 난동 대응 */
 (function(){if(!S.wlog)return;var ch=false;Object.keys(S.wlog).forEach(function(k){var L=S.wlog[k],a=null;for(var i=L.length-1;i>=0;i--){if(L[i].t==='난동 승객 대응'){L[i].t='난동 대응';ch=true}}
  var m={};S.wlog[k]=L.filter(function(x){if(m[x.t]){m[x.t].n+=x.n;if(x.notes)m[x.t].notes=(m[x.t].notes||[]).concat(x.notes);return false}m[x.t]=x;return true})});if(ch)save()})();
@@ -2674,7 +2677,7 @@ var _payCH=pay;pay=function(){var h=_payCH();if(tab!=='pay'||!pd(S.start))return
  function oh(e){return e?e.outerHTML:''}
  return oh(h1)+oh(inC)+payChart()+oh(mon)+oh(all)+oh(sv)+oh(rc)+rest.map(oh).join('')+oh(ml)};
 phLoad();
-APP_VER='3.4';
+APP_VER='3.4.1';
 
 
 
